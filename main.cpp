@@ -3,10 +3,6 @@
 
 int main() {
     sf::RenderWindow window (sf::VideoMode(1000, 800), "Image Recovery");
-
-    //sf::CircleShape shape(100.f);
-    //shape.setFillColor(sf::Color::Green);
-
     while (window.isOpen())
     {
         sf::Event event;
@@ -16,8 +12,6 @@ int main() {
                 window.close();
         }
         window.clear(sf::Color(23,57,84,255));
-        //window.clear();
-        //window.draw(shape);
         window.display();
     }
     return 0;
