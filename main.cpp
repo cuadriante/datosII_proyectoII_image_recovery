@@ -1,17 +1,19 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 
+using namespace sf;
+
 int main() {
-    sf::RenderWindow window (sf::VideoMode(1000, 800), "Image Recovery");
+    RenderWindow window (VideoMode(1000, 800), "Image Recovery");
     while (window.isOpen())
     {
-        sf::Event event;
+        Event event;
         while(window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == Event::Closed)
                 window.close();
         }
-        window.clear(sf::Color(23,57,84,255));
+        window.clear(Color(23,57,84,255));
         window.display();
     }
     return 0;
