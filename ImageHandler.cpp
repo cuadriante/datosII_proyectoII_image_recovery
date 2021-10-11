@@ -30,13 +30,14 @@ ImageHandler::ImageHandler(String imageName) {
             currentSignedColorG = (int) colorAtImagePosition.g;
             currentSignedColorB = (int) colorAtImagePosition.b;
 
-            cout << "32 bit color: " << currentColorInt;
-            cout << " R: " << currentSignedColorR;
-            cout << " G: " << currentSignedColorG;
-            cout << " B: " << currentSignedColorB;
-            cout << " in x: " << x << " and y: " << y << endl;
-
             if(previousColorInt != currentColorInt){
+
+                cout << "32 bit color: " << currentColorInt;
+                cout << " R: " << currentSignedColorR;
+                cout << " G: " << currentSignedColorG;
+                cout << " B: " << currentSignedColorB;
+                cout << " in x: " << x << " and y: " << y << endl;
+
                 //todo: add range for similar colors
                 if (previousColorInt == -1){
                     whiteRectangleCoordinates[3] = y - 1;
@@ -45,12 +46,15 @@ ImageHandler::ImageHandler(String imageName) {
                 previousColorInt = currentColorInt;
             }
 
+            ogImage.push_back(currentColorInt);
+
             if(currentSignedColorR == 255 && currentSignedColorG == 255 && currentSignedColorB == 255){
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0){
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
                 }
-                cout << "32 bit color: " << currentColorInt << endl;
+
+                whiteRectangle.push_back(currentColorInt);
             }
 
         }
