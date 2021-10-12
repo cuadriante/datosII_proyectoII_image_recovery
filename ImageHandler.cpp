@@ -16,8 +16,11 @@ ImageHandler::ImageHandler(String imageName) {
     int y;
     int currentColorInt = 0;
     int currentSignedColorR = 0;
+    int previousColorR = 0;
     int currentSignedColorG = 0;
+    int previousColorG = 0;
     int currentSignedColorB = 0;
+    int previousColorB = 0;
     int previousColorInt = 0;
 
     for(x = 0; x < 550; x++){
@@ -31,19 +34,13 @@ ImageHandler::ImageHandler(String imageName) {
             currentSignedColorB = (int) colorAtImagePosition.b;
 
             if(previousColorInt != currentColorInt){
-
-                cout << "32 bit color: " << currentColorInt;
-                cout << " R: " << currentSignedColorR;
-                cout << " G: " << currentSignedColorG;
-                cout << " B: " << currentSignedColorB;
-                cout << " in x: " << x << " and y: " << y << endl;
-
-                //todo: add range for similar colors
                 if (previousColorInt == -1){
                     whiteRectangleCoordinates[3] = y - 1;
                     whiteRectangleCoordinates[2] = x - 1;
                 }
-                previousColorInt = currentColorInt;
+                if (find(colorList.begin(), colorList.end(), currentColorInt) == colorList.end()) {
+                    colorList.push_back(currentColorInt);
+                }
             }
 
             ogImage.push_back(currentColorInt);
@@ -56,6 +53,11 @@ ImageHandler::ImageHandler(String imageName) {
 
                 whiteRectangle.push_back(currentColorInt);
             }
+
+            previousColorInt = currentColorInt;
+            previousColorR = currentSignedColorR;
+            previousColorG = currentSignedColorG;
+            previousColorB = currentSignedColorB;
 
         }
 
@@ -71,4 +73,18 @@ ImageHandler::ImageHandler(String imageName) {
         }
         cout << ", ";
     }
+
+    cout << "Found " << colorList.size() << " colors: ";
+    for(int i = 0; i <= colorList.size() - 1; i++){
+        cout << colorList[i];
+        if (i == colorList.size() - 1){
+            cout << endl;
+            break;
+        }
+        cout << ", ";
+    }
+
+
+
+
 }
