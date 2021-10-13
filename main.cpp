@@ -6,7 +6,7 @@ using namespace sf;
 
 int main() {
 
-    ImageHandler imageHandler("basicRedPattern.png");
+    ImageHandler imageHandler("/home/cuadriante/CLionProjects/datosII_proyectoII_image_recovery/images/darkBluePattern.png");
 
 
     //sfml window

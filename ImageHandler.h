@@ -7,6 +7,7 @@
 
 #include<SFML/Graphics.hpp>
 #include <iostream>
+#include "ColorInfo.h"
 
 using namespace sf;
 using namespace std;
@@ -20,14 +21,17 @@ private:
     vector<int> ogImage;
     vector<int> newImage;
     vector<int> whiteRectangle;
-    vector<int> colorList;
+    vector<ColorInfo> colorList;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
-    int imageLength = 500;
 
 public:
     explicit ImageHandler(String imageName);
 
     [[noreturn]] void storeImageAsPixels();
+
+    int getHue(int red, int green, int blue);
+
+    const Image &getImage() const;
 };
 
 

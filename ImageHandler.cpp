@@ -23,29 +23,39 @@ ImageHandler::ImageHandler(String imageName) {
     int previousColorB = 0;
     int previousColorInt = 0;
 
-    for(x = 0; x < 550; x++){
+    for(x = 0; x < image.getSize().x; x++){
 
-        for(y = 0; y < 550; y++){
+        for(y = 0; y < image.getSize().y; y++){
             Color colorAtImagePosition = image.getPixel(x, y);
 
-            currentColorInt = (int) colorAtImagePosition.toInteger();
-            currentSignedColorR = (int) colorAtImagePosition.r;
-            currentSignedColorG = (int) colorAtImagePosition.g;
-            currentSignedColorB = (int) colorAtImagePosition.b;
+            ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
 
-            if(previousColorInt != currentColorInt){
-                if (previousColorInt == -1){
-                    whiteRectangleCoordinates[3] = y - 1;
-                    whiteRectangleCoordinates[2] = x - 1;
+            if (!colorAtImagePositionInfo.isGrayScale()){
+                bool exists = false;
+                for(ColorInfo ci: colorList){
+                    if (ci.isSimilar(&colorAtImagePositionInfo)){
+                        exists = true;
+                        image.setPixel(x, y, ci.getColor());
+                        break;
+                    }
                 }
-                if (find(colorList.begin(), colorList.end(), currentColorInt) == colorList.end()) {
-                    colorList.push_back(currentColorInt);
+
+                if (!exists){
+                    colorList.push_back(colorAtImagePositionInfo);
+                    cout << "R: " << colorAtImagePositionInfo.getRed();
+                    cout << " G: " << colorAtImagePositionInfo.getGreen();
+                    cout << " B: " << colorAtImagePositionInfo.getBlue() << endl;
+                } else {
+                    cout << "Color already exists:" << colorAtImagePosition.toInteger() << endl;
                 }
+            } else {
+                image.setPixel(x, y, Color::White);
+
             }
 
             ogImage.push_back(currentColorInt);
 
-            if(currentSignedColorR == 255 && currentSignedColorG == 255 && currentSignedColorB == 255){
+            if(currentColorInt == -1){
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0){
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
@@ -53,16 +63,10 @@ ImageHandler::ImageHandler(String imageName) {
 
                 whiteRectangle.push_back(currentColorInt);
             }
-
-            previousColorInt = currentColorInt;
-            previousColorR = currentSignedColorR;
-            previousColorG = currentSignedColorG;
-            previousColorB = currentSignedColorB;
-
         }
-
-
     }
+
+    image.saveToFile("/home/cuadriante/CLionProjects/datosII_proyectoII_image_recovery/images/out.png");
 
     cout << "white rectangle coordinates: ";
     for(int i = 0; i < 4; i++){
@@ -75,16 +79,41 @@ ImageHandler::ImageHandler(String imageName) {
     }
 
     cout << "Found " << colorList.size() << " colors: ";
-    for(int i = 0; i <= colorList.size() - 1; i++){
-        cout << colorList[i];
-        if (i == colorList.size() - 1){
-            cout << endl;
-            break;
-        }
-        cout << ", ";
+    for(ColorInfo ci: colorList){
+        cout << "R: " << ci.getRed();
+        cout << " G: " << ci.getGreen();
+        cout << " B: " << ci.getBlue() << endl;
+    }
+}
+
+int ImageHandler::getHue(int red, int green, int blue) {
+    double minv = min(min(red, green), blue);
+    double maxv = max(max(red, green), blue);
+
+    if (minv == maxv) {
+        return 0;
     }
 
+    double hue = 0.0;
+    if (maxv == red) {
+        hue = (green - blue) / (maxv - minv);
 
+    } else if (maxv == green) {
+        hue = 2.0 + (blue - red) / (maxv - minv);
 
+    } else {
+        hue = 4.0 + (red - green) / (maxv - minv);
+    }
 
+    hue = hue * 60;
+    //if (hue < 0) hue = hue + 360;
+    hue = hue + 0.5 - (hue<0);
+
+    return (int) hue;
 }
+
+const Image &ImageHandler::getImage() const {
+    return image;
+}
+
+
