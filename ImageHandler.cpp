@@ -66,7 +66,7 @@ ImageHandler::ImageHandler(String imageName) {
         }
     }
 
-    image.saveToFile("out.png");
+    image.saveToFile("out2.png");
 
     cout << "white rectangle coordinates: ";
     for(int i = 0; i < 4; i++){
