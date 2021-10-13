@@ -66,7 +66,7 @@ ImageHandler::ImageHandler(String imageName) {
         }
     }
 
-    image.saveToFile("/home/cuadriante/CLionProjects/datosII_proyectoII_image_recovery/images/out.png");
+    image.saveToFile("out.png");
 
     cout << "white rectangle coordinates: ";
     for(int i = 0; i < 4; i++){
