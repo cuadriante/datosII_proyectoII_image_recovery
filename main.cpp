@@ -1,24 +1,36 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 #include "ImageHandler.h"
+#include "Textbox.h"
 #include "imageButton.h"
 
 using namespace sf;
 
 int main() {
 
-    ImageHandler imageHandler("greenPattern.png");
+//    ImageHandler imageHandler("greenPattern.png");
 
 
     //sfml window
     RenderWindow window (VideoMode(1000, 800), "Image Recovery");
 
-    imageButton btn1("Click me", {200, 50}, 20, Color::Green, Color::Black);
-    btn1.setPosition({100, 300});
+    Font arial;
+    arial.loadFromFile("arial.ttf");
+    Textbox textbox1(15, Color::White, true);
+    textbox1.setFont(arial);
+    textbox1.setPosition({100,100});
+//    textbox1.setLimit(true, 10);
 
     while (window.isOpen())
     {
         Event event;
+
+        if (Keyboard::isKeyPressed(Keyboard::Return)) {
+            textbox1.setSelected(true);
+        } else if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+            textbox1.setSelected(false);
+        }
+
         while(window.pollEvent(event))
         {
             switch (event.type) {
@@ -26,17 +38,12 @@ int main() {
                 case Event::Closed:
                     window.close();
 
-                case Event::MouseMoved:
-                    if (btn1.isMouseOver(window)) {
-                        btn1.setBackColor(Color::White);
-                    } else {
-                        btn1.setBackColor(Color::Green);
-                    }
-
+                case Event::TextEntered:
+                    textbox1.typedOn(event);
             }
         }
         window.clear(Color(23,57,84,255));
-        btn1.drawTo(window);
+        textbox1.drawTo(window);
         window.display();
 //        imageHandler.storeImageAsPixels();
     }
