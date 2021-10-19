@@ -15,13 +15,6 @@ ImageHandler::ImageHandler(String imageName) {
     int x;
     int y;
     int currentColorInt = 0;
-    int currentSignedColorR = 0;
-    int previousColorR = 0;
-    int currentSignedColorG = 0;
-    int previousColorG = 0;
-    int currentSignedColorB = 0;
-    int previousColorB = 0;
-    int previousColorInt = 0;
 
     for(x = 0; x < image.getSize().x; x++){
 
@@ -55,19 +48,28 @@ ImageHandler::ImageHandler(String imageName) {
 
             ogImage.push_back(currentColorInt);
 
-            if(currentColorInt == -1){
+            if(colorAtImagePositionInfo.getRed() == 255 && colorAtImagePositionInfo.getGreen() == 255 && colorAtImagePositionInfo.getBlue() == 255){
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0){
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
+                } else {
+                    whiteRectangleCoordinates[2] = x;
+                    whiteRectangleCoordinates[3] = y;
                 }
-
-                whiteRectangle.push_back(currentColorInt);
+                whiteRectangle.push_back(colorAtImagePositionInfo);
             }
         }
     }
+    image.saveToFile("out.png");
+    printContents();
+}
 
-    image.saveToFile("out2.png");
 
+const Image &ImageHandler::getImage() const {
+    return image;
+}
+
+void ImageHandler::printContents() {
     cout << "white rectangle coordinates: ";
     for(int i = 0; i < 4; i++){
         cout << whiteRectangleCoordinates[i];
@@ -84,36 +86,6 @@ ImageHandler::ImageHandler(String imageName) {
         cout << " G: " << ci.getGreen();
         cout << " B: " << ci.getBlue() << endl;
     }
-}
-
-int ImageHandler::getHue(int red, int green, int blue) {
-    double minv = min(min(red, green), blue);
-    double maxv = max(max(red, green), blue);
-
-    if (minv == maxv) {
-        return 0;
-    }
-
-    double hue = 0.0;
-    if (maxv == red) {
-        hue = (green - blue) / (maxv - minv);
-
-    } else if (maxv == green) {
-        hue = 2.0 + (blue - red) / (maxv - minv);
-
-    } else {
-        hue = 4.0 + (red - green) / (maxv - minv);
-    }
-
-    hue = hue * 60;
-    //if (hue < 0) hue = hue + 360;
-    hue = hue + 0.5 - (hue<0);
-
-    return (int) hue;
-}
-
-const Image &ImageHandler::getImage() const {
-    return image;
 }
 
 

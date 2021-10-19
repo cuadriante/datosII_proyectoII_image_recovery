@@ -20,7 +20,7 @@ private:
     Image image;
     vector<int> ogImage;
     vector<int> newImage;
-    vector<int> whiteRectangle;
+    vector<ColorInfo> whiteRectangle;
     vector<ColorInfo> colorList;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
 
@@ -29,7 +29,7 @@ public:
 
     [[noreturn]] void storeImageAsPixels();
 
-    int getHue(int red, int green, int blue);
+    void printContents();
 
     const Image &getImage() const;
 };
