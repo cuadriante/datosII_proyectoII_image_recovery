@@ -69,4 +69,14 @@ const Color &ColorInfo::getColor() const {
     return color;
 }
 
+void ColorInfo::setColor(const Color &newColor) {
+    this->color = newColor;
+    this->red = newColor.r;
+    this->green = newColor.g;
+    this->blue = newColor.b;
+    nRed = normalize(red);
+    nGreen = normalize(green);
+    nBlue = normalize(blue);
+}
+
 

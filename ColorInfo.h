@@ -36,6 +36,8 @@ public:
 
     int getBlue() const;
 
+    void setColor(const Color &newColor);
+
     int getNRed() const;
 
     int getNGreen() const;

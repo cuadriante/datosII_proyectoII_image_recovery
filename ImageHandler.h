@@ -29,6 +29,10 @@ public:
 
     [[noreturn]] void storeImageAsPixels();
 
+    void recolorWhiteRectangle();
+
+    void saveChangesToImageFile();
+
     void printContents();
 
     const Image &getImage() const;

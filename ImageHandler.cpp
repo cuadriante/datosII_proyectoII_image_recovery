@@ -5,7 +5,7 @@
 #include "ImageHandler.h"
 
 ImageHandler::ImageHandler(String imageName) {
-    if(!image.loadFromFile(imageName)){
+    if (!image.loadFromFile(imageName)) {
         cout << "Error: Could not load image." << endl;
     }
 }
@@ -16,24 +16,24 @@ ImageHandler::ImageHandler(String imageName) {
     int y;
     int currentColorInt = 0;
 
-    for(x = 0; x < image.getSize().x; x++){
+    for (x = 0; x < image.getSize().x; x++) {
 
-        for(y = 0; y < image.getSize().y; y++){
+        for (y = 0; y < image.getSize().y; y++) {
             Color colorAtImagePosition = image.getPixel(x, y);
 
             ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
 
-            if (!colorAtImagePositionInfo.isGrayScale()){
+            if (!colorAtImagePositionInfo.isGrayScale()) {
                 bool exists = false;
-                for(ColorInfo ci: colorList){
-                    if (ci.isSimilar(&colorAtImagePositionInfo)){
+                for (ColorInfo ci: colorList) {
+                    if (ci.isSimilar(&colorAtImagePositionInfo)) {
                         exists = true;
                         image.setPixel(x, y, ci.getColor());
                         break;
                     }
                 }
 
-                if (!exists){
+                if (!exists) {
                     colorList.push_back(colorAtImagePositionInfo);
                     cout << "R: " << colorAtImagePositionInfo.getRed();
                     cout << " G: " << colorAtImagePositionInfo.getGreen();
@@ -48,20 +48,22 @@ ImageHandler::ImageHandler(String imageName) {
 
             ogImage.push_back(currentColorInt);
 
-            if(colorAtImagePositionInfo.getRed() == 255 && colorAtImagePositionInfo.getGreen() == 255 && colorAtImagePositionInfo.getBlue() == 255){
-                if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0){
+            if (colorAtImagePositionInfo.getRed() == 255 && colorAtImagePositionInfo.getGreen() == 255 &&
+                colorAtImagePositionInfo.getBlue() == 255) {
+                if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0) {
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
                 } else {
-                    whiteRectangleCoordinates[2] = x;
-                    whiteRectangleCoordinates[3] = y;
+                    whiteRectangleCoordinates[2] = x + 1;
+                    whiteRectangleCoordinates[3] = y + 1;
                 }
                 whiteRectangle.push_back(colorAtImagePositionInfo);
             }
         }
     }
-    image.saveToFile("out.png");
+    saveChangesToImageFile();
     printContents();
+    recolorWhiteRectangle();
 }
 
 
@@ -71,9 +73,9 @@ const Image &ImageHandler::getImage() const {
 
 void ImageHandler::printContents() {
     cout << "white rectangle coordinates: ";
-    for(int i = 0; i < 4; i++){
+    for (int i = 0; i < 4; i++) {
         cout << whiteRectangleCoordinates[i];
-        if (i == 3){
+        if (i == 3) {
             cout << endl;
             break;
         }
@@ -81,11 +83,27 @@ void ImageHandler::printContents() {
     }
 
     cout << "Found " << colorList.size() << " colors: ";
-    for(ColorInfo ci: colorList){
+    for (ColorInfo ci: colorList) {
         cout << "R: " << ci.getRed();
         cout << " G: " << ci.getGreen();
         cout << " B: " << ci.getBlue() << endl;
     }
+}
+
+void ImageHandler::recolorWhiteRectangle() {
+
+    for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
+        for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
+            Color newColor = colorList[0].getColor();
+            image.setPixel(x, y, newColor);
+        }
+    }
+
+    saveChangesToImageFile();
+}
+
+void ImageHandler::saveChangesToImageFile() {
+    image.saveToFile("out.png");
 }
 
 
