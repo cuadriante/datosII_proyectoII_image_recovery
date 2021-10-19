@@ -6,7 +6,7 @@ using namespace sf;
 
 int main() {
 
-    ImageHandler imageHandler("brownPattern.png");
+    ImageHandler imageHandler("purplePattern.png");
 
 
     //sfml window

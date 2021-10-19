@@ -16,6 +16,7 @@ private:
 
     const int GRAY_DELTA = 10;
     const int MIN_GRAY_LEVEL = 100;
+    const int WHITE_MINIMUM = 195;
     int red = 0;
     int green = 0;
     int blue = 0;

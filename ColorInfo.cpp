@@ -52,6 +52,10 @@ bool ColorInfo::isSimilar(ColorInfo * colorInfo){
 }
 
 bool ColorInfo::isGrayScale() {
+
+    if (red >= WHITE_MINIMUM && green >= WHITE_MINIMUM && blue >= WHITE_MINIMUM){
+        return true;
+    }
     if (red <= MIN_GRAY_LEVEL || green <= MIN_GRAY_LEVEL || blue <= MIN_GRAY_LEVEL){
         return false;
     }

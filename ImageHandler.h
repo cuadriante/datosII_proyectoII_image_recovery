@@ -23,7 +23,7 @@ private:
     vector<ColorInfo> whiteRectangle;
     vector<ColorInfo> colorList;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
-    const int WHITE_MINIMUM = 235;
+    const int WHITE_MINIMUM = 195;
 
 public:
     explicit ImageHandler(String imageName);

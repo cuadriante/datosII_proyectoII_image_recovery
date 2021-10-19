@@ -43,13 +43,13 @@ ImageHandler::ImageHandler(String imageName) {
                 }
             } else {
                 image.setPixel(x, y, Color::White);
+                colorAtImagePosition = Color::White;
 
             }
 
             ogImage.push_back(currentColorInt);
 
-            if (colorAtImagePositionInfo.getRed() >= WHITE_MINIMUM && colorAtImagePositionInfo.getGreen() >= WHITE_MINIMUM &&
-                colorAtImagePositionInfo.getBlue() >= WHITE_MINIMUM ) {
+            if (colorAtImagePosition == Color::White) {
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0) {
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
@@ -61,6 +61,7 @@ ImageHandler::ImageHandler(String imageName) {
             }
         }
     }
+
     saveChangesToImageFile();
     printContents();
     recolorWhiteRectangle();
