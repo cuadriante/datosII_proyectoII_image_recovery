@@ -13,7 +13,7 @@ using namespace sf;
 class ColorInfo {
 private:
 
-    const int NORMALIZED_RANGE = 3;
+
     const int GRAY_DELTA = 10;
     const int MIN_GRAY_LEVEL = 100;
     int red = 0;
@@ -27,6 +27,7 @@ private:
     int normalize(int color);
 
 public:
+    const int NORMALIZED_RANGE = 3;
 
     ColorInfo(Color color);
 

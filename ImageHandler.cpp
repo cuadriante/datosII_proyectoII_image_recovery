@@ -48,8 +48,8 @@ ImageHandler::ImageHandler(String imageName) {
 
             ogImage.push_back(currentColorInt);
 
-            if (colorAtImagePositionInfo.getRed() == 255 && colorAtImagePositionInfo.getGreen() == 255 &&
-                colorAtImagePositionInfo.getBlue() == 255) {
+            if (colorAtImagePositionInfo.getRed() >= WHITE_MINIMUM && colorAtImagePositionInfo.getGreen() >= WHITE_MINIMUM &&
+                colorAtImagePositionInfo.getBlue() >= WHITE_MINIMUM ) {
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0) {
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
@@ -94,7 +94,8 @@ void ImageHandler::recolorWhiteRectangle() {
 
     for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
         for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
-            Color newColor = colorList[0].getColor();
+            int index = rand() % colorList.size() ;
+            Color newColor = colorList[index].getColor();
             image.setPixel(x, y, newColor);
         }
     }
