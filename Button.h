@@ -1,14 +1,17 @@
-#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEBUTTON_H
-#define DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEBUTTON_H
+#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H
+#define DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H
+
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 using namespace sf;
 
-class imageButton {
+class Button {
 public:
-    imageButton() {}
+    Button() {}
 
-    imageButton(string t, Vector2f size, int charSize, Color bgColor, Color textColor) {
+    Button(string t, Vector2f size, int charSize, Color bgColor, Color textColor) {
         text.setString(t);
         text.setColor(textColor);
         text.setCharacterSize(charSize);
@@ -33,8 +36,8 @@ public:
     void setPosition(Vector2f pos) {
         button.setPosition(pos);
 
-        float xPos = (pos.x + button.getGlobalBounds().width / 2) - (text.getGlobalBounds().width / 2);
-        float yPos = (pos.y + button.getGlobalBounds().height / 2) - (text.getGlobalBounds().width / 2);
+        float xPos = (pos.x + button.getGlobalBounds().width / 3) - (text.getGlobalBounds().width / 2);
+        float yPos = (pos.y + button.getGlobalBounds().height / 4) - (text.getGlobalBounds().width / 2);
         text.setPosition({xPos, yPos});
     }
 

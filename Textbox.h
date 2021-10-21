@@ -17,6 +17,8 @@ public:
     Textbox() {}
 
     Textbox(int size, Color color, bool sel) {
+        background.setSize({800,20});
+        background.setFillColor(Color(189,195,199,255));
         textbox.setCharacterSize(size);
         textbox.setColor(color);
         isSelected = sel;
@@ -33,6 +35,7 @@ public:
     }
 
     void setPosition(Vector2f pos) {
+        background.setPosition(95,100);
         textbox.setPosition(pos);
     }
 
@@ -63,6 +66,7 @@ public:
     }
 
     void drawTo(RenderWindow &window) {
+        window.draw(background);
         window.draw(textbox);
     }
 
@@ -89,6 +93,7 @@ public:
     }
 
 private:
+    RectangleShape background;
     Text textbox;
     ostringstream text;
     bool isSelected = false;
