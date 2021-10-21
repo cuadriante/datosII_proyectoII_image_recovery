@@ -34,7 +34,15 @@ public:
 
     void saveChangesToImageFile();
 
+    void calculateColorPercentages();
+
     void printContents();
+
+    const vector<ColorInfo> &getWhiteRectangle() const;
+
+    const vector<ColorInfo> &getColorList();
+
+    const int *getWhiteRectangleCoordinates() const;
 
     const Image &getImage() const;
 };

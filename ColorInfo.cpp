@@ -83,4 +83,20 @@ void ColorInfo::setColor(const Color &newColor) {
     nBlue = normalize(blue);
 }
 
+int ColorInfo::getFrequency()  {
+    return frequency;
+}
+
+void ColorInfo::setFrequency(int frequency) {
+    this->frequency = frequency;
+}
+
+double ColorInfo::getPercentage() const {
+    return percentage;
+}
+
+void ColorInfo::setPercentage(double percentage) {
+    ColorInfo::percentage = percentage;
+}
+
 
