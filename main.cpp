@@ -24,7 +24,7 @@ int main() {
 //    textbox1.setLimit(true, 10);
 
     Button btn1("Click me", {200, 50}, 20, Color(55,65,64,255), Color::White);
-    btn1.setPosition({100, 300});
+    btn1.setPosition({680, 135});
     btn1.setFont(arial);
 
     while (window.isOpen())
