@@ -4,6 +4,7 @@
 
 #include "ImageHandler.h"
 #include "Population.h"
+#include "ImageInfo.h"
 
 ImageHandler::ImageHandler(String imageName) {
     if (!image.loadFromFile(imageName)) {
@@ -15,32 +16,23 @@ ImageHandler::ImageHandler(String imageName) {
 
     int x;
     int y;
-    int currentColorInt = 0;
 
     for (x = 0; x < image.getSize().x; x++) {
-
         for (y = 0; y < image.getSize().y; y++) {
             Color colorAtImagePosition = image.getPixel(x, y);
-
             ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
-
             if (!colorAtImagePositionInfo.isGrayScale()) {
                 bool exists = false;
                 for(int i = 0; i < colorList.size(); i++){
                     ColorInfo * ci = &colorList[i];
-                //}
-                //for (ColorInfo ci: colorList) {
                     if (ci->isSimilar(&colorAtImagePositionInfo)) {
-                        ci->setFrequency(ci->getFrequency() + 1);
                         exists = true;
                         image.setPixel(x, y, ci->getColor());
                         break;
                     }
                 }
-
                 if (!exists) {
                     colorList.push_back(colorAtImagePositionInfo);
-                    colorAtImagePositionInfo.setFrequency(colorAtImagePositionInfo.getFrequency() + 1);
                     cout << "R: " << colorAtImagePositionInfo.getRed();
                     cout << " G: " << colorAtImagePositionInfo.getGreen();
                     cout << " B: " << colorAtImagePositionInfo.getBlue() << endl;
@@ -50,11 +42,8 @@ ImageHandler::ImageHandler(String imageName) {
             } else {
                 image.setPixel(x, y, Color::White);
                 colorAtImagePosition = Color::White;
-
             }
-
-            ogImage.push_back(currentColorInt);
-
+            imageContent.push_back(colorAtImagePosition);
             if (colorAtImagePosition == Color::White) {
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0) {
                     whiteRectangleCoordinates[0] = x;
@@ -68,20 +57,13 @@ ImageHandler::ImageHandler(String imageName) {
         }
     }
 
-    calculateColorPercentages();
     saveChangesToImageFile();
-    printContents();
-    Population population(this);
-    //recolorWhiteRectangle();
-}
-
-
-const Image &ImageHandler::getImage() const {
-    return image;
+    //printContents();
+    ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
+    Population population(this, &idealCharacteristics);
 }
 
 void ImageHandler::printContents() {
-    // white rectangle coordinates
     cout << "white rectangle coordinates: ";
     for (int i = 0; i < 4; i++) {
         cout << whiteRectangleCoordinates[i];
@@ -97,7 +79,6 @@ void ImageHandler::printContents() {
         cout << "R: " << ci.getRed();
         cout << " G: " << ci.getGreen();
         cout << " B: " << ci.getBlue();
-        cout << " Occurrence: " << ci.getFrequency() << endl;
     }
 }
 
@@ -118,18 +99,18 @@ void ImageHandler::saveChangesToImageFile() {
     image.saveToFile("out.png");
 }
 
-void ImageHandler::calculateColorPercentages() {
-    for(ColorInfo ci: colorList){
-        double percentage = (ci.getFrequency() / colorList.size()) * 100;
-        ci.setPercentage(percentage);
-    }
-}
+//void ImageHandler::calculateColorDistribution() {
+//    for(ColorInfo ci: colorList){
+//        double percentage = (ci.getFrequency() / colorList.size()) * 100;
+//        ci.setPercentage(percentage);
+//    }
+//}
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {
     return whiteRectangle;
 }
 
-const vector<ColorInfo> &ImageHandler::getColorList() {
+vector<ColorInfo> &ImageHandler::getColorList() {
     return colorList;
 }
 
@@ -137,4 +118,7 @@ const int *ImageHandler::getWhiteRectangleCoordinates() const {
     return whiteRectangleCoordinates;
 }
 
+const Image &ImageHandler::getImage() const {
+    return image;
+}
 

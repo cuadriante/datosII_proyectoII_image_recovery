@@ -4,27 +4,25 @@
 
 #include "Population.h"
 
-Population::Population(ImageHandler  * imageHandler) {
+Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics) {
     this->imageHandler = imageHandler;
-    createPopulation();
+    maxX = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
+    maxY = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
+    createPopulation(idealCharacteristics);
 }
 
-
-void Population::createPopulation() {
+void Population::createPopulation(ImageInfo *idealCharacteristics) {
     if (generation < maxGeneration) {
         if (generation == 0){ // initial generation
             imageHandler->recolorWhiteRectangle();
         }
         for(int i = 0; i >= 10; i++){
-            Individual individual(imageHandler);
-            searchSpace.push_back(individual);
+            //Individual individual(maxX, maxY, &colorList, idealCharacteristics);
+            //searchSpace.push_back(individual);
         }
     }
 }
 
-double Population::fitness(Individual individual) {
-    return 0;
-}
 
 void Population::selection(vector<Individual> searchSpace) {
 
@@ -49,6 +47,8 @@ void Population::setMaxGeneration(int maxGeneration) {
 int Population::getGeneration() const {
     return generation;
 }
+
+
 
 
 

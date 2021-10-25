@@ -11,17 +11,17 @@ class Population {
 private:
     vector<Individual> searchSpace;
     vector<ColorInfo> colorList;
+    int maxX = 0;
+    int maxY = 0;
     int generation = 0;
     int maxGeneration = 10;
     ImageHandler * imageHandler;
 
 public:
 
-    Population(ImageHandler * imageHandler);
+    Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics);
 
-    void createPopulation();
-
-    double fitness(Individual individual);
+    void createPopulation(ImageInfo *idealCharacteristics);
 
     void selection(vector<Individual> searchSpace);
 

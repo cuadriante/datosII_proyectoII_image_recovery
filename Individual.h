@@ -8,19 +8,26 @@
 
 #include "ColorInfo.h"
 #include "ImageHandler.h"
+#include "ImageInfo.h"
 
 using namespace std;
 
 class Individual {
 private:
     ImageHandler * imageHandler;
-    vector<ColorInfo> genome;
-    vector<double> colorPercentage;
-    double proximity= 0;
-    double fitness;
+    vector<ColorInfo> * colorList;
+    vector<Color> genome;
+    double frequencyFitnessParameter = 0;
+    double relationFitnessParameter = 0;
+    double fitness = 0;
+
+    int maxX = 0;
+    int maxY = 0;
+
 public:
-    Individual(ImageHandler * imageHandler);
-    void createIndividual();
+    Individual(int maxX, int maxY, vector<ColorInfo> * colorList, ImageInfo * idealCharacteristics);
+    void createIndividual(ImageInfo * idealCharacteristics);
+    void calculateFitness(ImageInfo *imageInfo, ImageInfo * idealCharacteristics);
 };
 
 

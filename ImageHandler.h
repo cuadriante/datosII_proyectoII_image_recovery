@@ -22,6 +22,7 @@ private:
     vector<int> newImage;
     vector<ColorInfo> whiteRectangle;
     vector<ColorInfo> colorList;
+    vector<Color> imageContent;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
     const int WHITE_MINIMUM = 195;
 
@@ -40,7 +41,7 @@ public:
 
     const vector<ColorInfo> &getWhiteRectangle() const;
 
-    const vector<ColorInfo> &getColorList();
+    vector<ColorInfo> &getColorList();
 
     const int *getWhiteRectangleCoordinates() const;
 

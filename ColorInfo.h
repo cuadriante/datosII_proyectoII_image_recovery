@@ -21,8 +21,6 @@ private:
     int nRed = 0;
     int nGreen = 0;
     int nBlue = 0;
-    int frequency = 0;
-    double percentage = 0.0;
     Color color;
 
     int normalize(int color);
@@ -52,13 +50,7 @@ public:
 
     bool isGrayScale();
 
-    int getFrequency();
 
-    void setFrequency(int frequency);
-
-    double getPercentage() const;
-
-    void setPercentage(double percentage);
 
 };
 
