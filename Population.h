@@ -10,7 +10,6 @@
 class Population {
 private:
     vector<Individual> searchSpace;
-    Individual solution;
     vector<ColorInfo> colorList;
     int generation = 0;
     int maxGeneration = 10;

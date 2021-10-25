@@ -6,7 +6,6 @@
 
 Population::Population(ImageHandler  * imageHandler) {
     this->imageHandler = imageHandler;
-    //colorList = this->imageHandler->getColorList();
     createPopulation();
 }
 
@@ -16,7 +15,10 @@ void Population::createPopulation() {
         if (generation == 0){ // initial generation
             imageHandler->recolorWhiteRectangle();
         }
-        //Todo: implement population generation
+        for(int i = 0; i >= 10; i++){
+            Individual individual(imageHandler);
+            searchSpace.push_back(individual);
+        }
     }
 }
 

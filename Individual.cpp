@@ -4,3 +4,9 @@
 
 #include "Individual.h"
 
+void Individual::createIndividual() {
+}
+
+Individual::Individual(ImageHandler *imageHandler) {
+    this->imageHandler = imageHandler;
+}
