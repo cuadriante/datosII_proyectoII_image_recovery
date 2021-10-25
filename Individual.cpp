@@ -16,7 +16,6 @@ void Individual::createIndividual(ImageInfo * idealCharacteristics) {
     for (int x = 0; x <= maxX; x++){
         for (int y = 0; y <= maxY; y++){
             int index = rand() % colorList->size();
-
             vector<ColorInfo>& cl = *colorList;
             Color newColor = cl[index].getColor();
             genome.push_back(newColor);
@@ -39,6 +38,10 @@ void Individual::calculateFitness(ImageInfo * imageInfo, ImageInfo * idealCharac
         }
     }
     fitness = frequencyFitnessParameter + relationFitnessParameter;
+}
+
+double Individual::getFitness() const {
+    return fitness;
 }
 
 

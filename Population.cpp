@@ -17,14 +17,25 @@ void Population::createPopulation(ImageInfo *idealCharacteristics) {
             imageHandler->recolorWhiteRectangle();
         }
         for(int i = 0; i >= 10; i++){
-            //Individual individual(maxX, maxY, &colorList, idealCharacteristics);
-            //searchSpace.push_back(individual);
+            Individual individual(maxX, maxY, &colorList, idealCharacteristics);
+            searchSpace.push_back(individual);
         }
     }
 }
 
 
 void Population::selection(vector<Individual> searchSpace) {
+    Individual parents[2] = {searchSpace[0], searchSpace[1]};
+    for (Individual candidate : searchSpace){
+        double candidateFitness = candidate.getFitness();
+        if (candidateFitness < parents[1].getFitness()){
+            if (candidateFitness < parents[0].getFitness()){
+                parents[0] = candidate;
+            } else {
+                parents[1] = candidate;
+            }
+        }
+    }
 
 }
 

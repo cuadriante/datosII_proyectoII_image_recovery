@@ -37,7 +37,7 @@ ImageHandler::ImageHandler(String imageName) {
                     cout << " G: " << colorAtImagePositionInfo.getGreen();
                     cout << " B: " << colorAtImagePositionInfo.getBlue() << endl;
                 } else {
-                    cout << "Color already exists:" << colorAtImagePosition.toInteger() << endl;
+                    //cout << "Color already exists:" << colorAtImagePosition.toInteger() << endl;
                 }
             } else {
                 image.setPixel(x, y, Color::White);
@@ -58,7 +58,7 @@ ImageHandler::ImageHandler(String imageName) {
     }
 
     saveChangesToImageFile();
-    //printContents();
+    printContents();
     ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
     Population population(this, &idealCharacteristics);
 }

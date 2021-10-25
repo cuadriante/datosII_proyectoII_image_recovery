@@ -28,6 +28,8 @@ public:
     Individual(int maxX, int maxY, vector<ColorInfo> * colorList, ImageInfo * idealCharacteristics);
     void createIndividual(ImageInfo * idealCharacteristics);
     void calculateFitness(ImageInfo *imageInfo, ImageInfo * idealCharacteristics);
+
+    double getFitness() const;
 };
 
 
