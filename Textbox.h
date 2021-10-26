@@ -17,16 +17,18 @@ public:
     Textbox() {}
 
     Textbox(int size, Color color, bool sel) {
-        background.setSize({800,20});
-        background.setFillColor(Color(189,195,199,255));
+//        background.setSize({800,20});
+//        background.setFillColor(Color(189,195,199,255));
+//        background.setPosition(100,600);
         textbox.setCharacterSize(size);
         textbox.setColor(color);
+        textbox.setCharacterSize(30);
         isSelected = sel;
 
         if (sel) {
             textbox.setString("_");
         } else {
-            textbox.setString("");
+            textbox.setString("Press Enter and write the image path");
         }
     }
 

@@ -7,6 +7,9 @@
 
 using namespace sf;
 
+Texture backgroundTexture;
+RectangleShape background, textbox;
+
 int main() {
 
 //    ImageHandler imageHandler("greenPattern.png");
@@ -16,14 +19,22 @@ int main() {
     //sfml window
     RenderWindow window (VideoMode(1000, 800), "Image Recovery");
 
+    backgroundTexture.loadFromFile("appMedia/images/Background.png");
+    background.setSize(Vector2f(1000,800));
+    background.setPosition(0,0);
+    background.setTexture(&backgroundTexture);
+
     Font arial;
     arial.loadFromFile("arial.ttf");
-    Textbox textbox1(15, Color::Black, true);
-    textbox1.setFont(arial);
-    textbox1.setPosition({100,100});
-//    textbox1.setLimit(true, 10);
+    Textbox userEntry(15, Color::Black, false);
+    userEntry.setFont(arial);
+    userEntry.setPosition({100, 600});
+    textbox.setSize({800,40});
+    textbox.setFillColor(Color(189,195,199,175));
+    textbox.setPosition(97,600);
+    userEntry.setLimit(true, 10);
 
-    Button btn1("Click me", {200, 50}, 20, Color(55,65,64,255), Color::White);
+    Button btn1("Click me", {200, 50}, 20, Color(55,65,64,255), Color::White, "appMedia/images/RecovButton.png");
     btn1.setPosition({680, 135});
     btn1.setFont(arial);
 
@@ -32,9 +43,9 @@ int main() {
         Event event;
 
         if (Keyboard::isKeyPressed(Keyboard::Return)) {
-            textbox1.setSelected(true);
+            userEntry.setSelected(true);
         } else if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-            textbox1.setSelected(false);
+            userEntry.setSelected(false);
         }
 
         while(window.pollEvent(event))
@@ -45,7 +56,7 @@ int main() {
                     window.close();
 
                 case Event::TextEntered:
-                    textbox1.typedOn(event);
+                    userEntry.typedOn(event);
                     break;
 
                 case Event::MouseMoved:
@@ -60,14 +71,16 @@ int main() {
 
                 case Event::MouseButtonPressed:
                     if (btn1.isMouseOver(window)) {
-//                        const char *userEntry = textbox1.getText();
-                        cout << textbox1.getText().compare(emptyText) << endl;
-//                        cout << textbox1.getText() + " holi\n";
+//                        const char *userEntry = userEntry.getText();
+                        cout << userEntry.getText() << endl;
+//                        cout << userEntry.getText() + " holi\n";
                     }
             }
         }
-        window.clear(Color(23,57,84,255));
-        textbox1.drawTo(window);
+        window.clear();
+        window.draw(background);
+        window.draw(textbox);
+        userEntry.drawTo(window);
         btn1.drawTo(window);
         window.display();
 //        imageHandler.storeImageAsPixels();

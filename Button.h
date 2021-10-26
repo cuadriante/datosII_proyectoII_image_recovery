@@ -11,10 +11,13 @@ class Button {
 public:
     Button() {}
 
-    Button(string t, Vector2f size, int charSize, Color bgColor, Color textColor) {
+    Button(string t, Vector2f size, int charSize, Color bgColor, Color textColor, string directory) {
         text.setString(t);
         text.setColor(textColor);
         text.setCharacterSize(charSize);
+
+        image.loadFromFile(directory);
+        button.setTexture(&image);
 
         button.setSize(size);
         button.setFillColor(bgColor);
@@ -66,6 +69,7 @@ public:
 private:
     RectangleShape button;
     Text text;
+    Texture image;
 };
 
 #endif
