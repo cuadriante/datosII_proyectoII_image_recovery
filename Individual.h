@@ -30,6 +30,12 @@ public:
     void calculateFitness(ImageInfo *imageInfo, ImageInfo * idealCharacteristics);
 
     double getFitness() const;
+
+    const vector<Color> &getGenome() const;
+
+    void setGenome(const vector<Color> &genome);
+
+    void setGene(int index, Color newGene);
 };
 
 

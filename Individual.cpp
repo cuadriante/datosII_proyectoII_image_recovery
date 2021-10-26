@@ -44,4 +44,16 @@ double Individual::getFitness() const {
     return fitness;
 }
 
+const vector<Color> &Individual::getGenome() const {
+    return genome;
+}
+
+void Individual::setGenome(const vector<Color> &genome) {
+    Individual::genome = genome;
+}
+
+void Individual::setGene(int index, Color newGene) {
+    genome[index] = newGene;
+}
+
 
