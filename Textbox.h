@@ -14,23 +14,29 @@ using namespace std;
 
 class Textbox {
 public:
-    Textbox() {}
+    Textbox() {
+        textbox.setCharacterSize(27);
+        textbox.setColor(Color::Black);
+        isSelected = false;
 
-    Textbox(int size, Color color, bool sel) {
+        textbox.setString("Press 'Enter' key and write the image path");
+    }
+
+//    Textbox(int size, Color color, bool sel) {
 //        background.setSize({800,20});
 //        background.setFillColor(Color(189,195,199,255));
 //        background.setPosition(100,600);
-        textbox.setCharacterSize(size);
-        textbox.setColor(color);
-        textbox.setCharacterSize(30);
-        isSelected = sel;
-
-        if (sel) {
-            textbox.setString("_");
-        } else {
-            textbox.setString("Press Enter and write the image path");
-        }
-    }
+//        textbox.setCharacterSize(size);
+//        textbox.setColor(color);
+//        textbox.setCharacterSize(27);
+//        isSelected = sel;
+//
+//        if (sel) {
+//            textbox.setString("_");
+//        } else {
+//            textbox.setString("Press 'Enter' key and write the image path");
+//        }
+//    }
 
     void setFont(Font &font) {
         textbox.setFont(font);
@@ -53,11 +59,11 @@ public:
     void setSelected(bool sel) {
         isSelected = sel;
         if (!sel) {
-            string t = text.str();
-            string newT = "";
-            for (int i = 0; i < t.length(); ++i) {
-                newT += t[i];
-            }
+//            string t = text.str();
+            string newT = "Press 'Enter' key and write the image path";
+//            for (int i = 0; i < t.length(); ++i) {
+//                newT += t[i];
+//            }
 
             textbox.setString(newT);
         }
