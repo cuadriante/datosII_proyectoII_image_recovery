@@ -6,29 +6,32 @@
 
 Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics) {
     this->imageHandler = imageHandler;
-    //colorList = imageHandler->getColorList();
-    maxX = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
-    maxY = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
-    Individual child1(maxX, maxY, colorList, idealCharacteristics);
-    Individual child2(maxX, maxY, colorList, idealCharacteristics);
+    this->idealCharacteristics = idealCharacteristics;
+    colorList = &imageHandler->getColorList();
+    width = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
+    height = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
+    Individual child1(width, height, colorList);
+    Individual child2(width, height, colorList);
     offspring[0] = &child1;
     offspring[1] = &child2;
-    createPopulation(idealCharacteristics);
+    //createPopulation();
 }
 
-void Population::createPopulation(ImageInfo *idealCharacteristics) {
+void Population::createPopulation() {
     if (generation < maxGeneration) {
         if (generation == 0){ // initial generation
             imageHandler->recolorInitialWhiteRectangle();
         }
         if (generation == 1){
-            for(int i = 0; i >= 10; i++){
-                Individual individual(maxX, maxY, colorList, idealCharacteristics);
+            for(int i = 0; i >= POPULATION_SIZE; i++){
+                Individual individual(width, height, colorList);
+                individual.updateFitness(idealCharacteristics);
                 searchSpace.push_back(individual);
             }
         } else {
-            for(int i = 0; i >= 8; i++) {
-                Individual individual(maxX, maxY, colorList, idealCharacteristics);
+            for(int i = 0; i >= POPULATION_SIZE - 2; i++) {
+                Individual individual(width, height, colorList);
+                individual.updateFitness(idealCharacteristics);
                 searchSpace.push_back(individual);
             }
         }
@@ -62,8 +65,8 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
         newGenome1[i] = parent2->getGenome()[i];
         newGenome2[i] = parent1->getGenome()[i];
     }
-    offspring[0]->setGenome(newGenome1);
-    offspring[1]->setGenome(newGenome2);
+    offspring[0]->setGenome(newGenome1, idealCharacteristics);
+    offspring[1]->setGenome(newGenome2, idealCharacteristics);
 
     if (mutate){
         mutation(offspring[0]);
@@ -73,33 +76,36 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
         inversion(offspring[0]);
     }
 
-    searchSpace[8] = *offspring[0];
-    searchSpace[9] = *offspring[1];
+    searchSpace[searchSpace.size() - 2] = *offspring[0];
+    searchSpace[searchSpace.size()- 1] = *offspring[1];
     // save to file
 }
 
 void Population::mutation(Individual *individual) {
+    srand((unsigned int)time(NULL));
     int geneIndex = rand() % individual->getGenome().size();
-    Color newGene = (colorList[rand() % colorList.size()])->getColor();
+    Color newGene = colorList->at(rand() % colorList->size()).getColor();
     individual->setGene(geneIndex, newGene);
 }
 
 void Population::inversion(Individual *individual) {
+    srand((unsigned int)time(NULL));
     int startPoint = rand() % individual->getGenome().size() - 100;
     int endPoint = startPoint + 100;
     for (int i = startPoint; i <= endPoint; i++){
         Color ogColor = individual->getGenome()[i];
         int ogIndex = 0;
-        for(ColorInfo * colorInfo : colorList){
-            if (colorInfo->getColor() == ogColor){
+        for(ColorInfo colorInfo : *colorList){
+            if (colorInfo.getColor() == ogColor){
                 break;
             }
             ogIndex++;
         }
-        int compIndex = colorList.size() - 1 - ogIndex;
-        Color newGene = colorList[compIndex]->getColor();
+        int compIndex = colorList->size() - 1 - ogIndex;
+        Color newGene = colorList->at(compIndex).getColor();;
         individual->setGene(i, newGene);
     }
+    solution(offspring[0]);
 
 }
 
@@ -112,7 +118,9 @@ int Population::getGeneration() const {
 }
 
 void Population::solution(Individual *individual) {
-
+    imageHandler->recolorWhiteRectangle(individual->getGenome());
+    generation ++;
+    createPopulation();
 }
 
 

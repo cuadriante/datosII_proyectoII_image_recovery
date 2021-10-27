@@ -78,7 +78,7 @@ const vector<vector<double>> &ImageInfo::getColorRelationsPercentage() const {
 void ImageInfo::debug(){
     int size = colorList->size();
     for(int c = 0; c < size; c++){
-        //cout << "fp: " << colorFrequencyPercentages[c] << endl;
+        cout << "fp: " << colorFrequencyPercentages[c] << endl;
         for(int c2 = 0; c2 < size; c2++){
             cout <<"rp: " << colorRelationsPercentage[c][c2] << endl;
         }

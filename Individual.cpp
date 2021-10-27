@@ -5,27 +5,29 @@
 #include "Individual.h"
 
 
-Individual::Individual(int maxX, int maxY, vector<ColorInfo *> colorList, ImageInfo * idealCharacteristics) {
+Individual::Individual(int width, int height, vector<ColorInfo> * colorList) {
     this->colorList = colorList;
-    this->maxX = maxX;
-    this->maxY = maxY;
-    createIndividual(idealCharacteristics);
+    this->width = width;
+    this->height = height;
+    createIndividual();
 }
 
-void Individual::createIndividual(ImageInfo * idealCharacteristics) {
-    for (int x = 0; x <= maxX; x++){
-        for (int y = 0; y <= maxY; y++){
-            int index = rand() % colorList.size();
+void Individual::createIndividual() {
+    for (int x = 0; x <= width; x++){
+        for (int y = 0; y <= height; y++){
+            srand((unsigned int)time(NULL));
+            int index = rand() % colorList->size();
             //vector<ColorInfo>& cl = colorList;
-            Color newColor = colorList[index]->getColor();
+            Color newColor = colorList->at(index).getColor();
             genome.push_back(newColor);
         }
     }
-    //ImageInfo imageInfo(genome, maxX, maxY, colorList);
-    //calculateFitness(&imageInfo, idealCharacteristics);
+    this->imageInfo = new ImageInfo(genome, width, height, colorList);
 }
 
-void Individual::calculateFitness(ImageInfo * imageInfo, ImageInfo * idealCharacteristics) {
+// return fitness in relation to idealCharacteristics
+void Individual::updateFitness(ImageInfo *idealCharacteristics) {
+
     for (int index = 0; index <= idealCharacteristics->getColorFrequencyPercentages().size(); index++){
         double colorDifference = abs(idealCharacteristics->getColorFrequencyPercentages()[index]-imageInfo->getColorFrequencyPercentages()[index]);
         frequencyFitnessParameter = frequencyFitnessParameter + colorDifference;
@@ -48,8 +50,9 @@ const vector<Color> &Individual::getGenome() const {
     return genome;
 }
 
-void Individual::setGenome(const vector<Color> &genome) {
+void Individual::setGenome(const vector<Color> &genome, ImageInfo *idealCharacteristics) {
     Individual::genome = genome;
+    //updateFitness(//);
 }
 
 void Individual::setGene(int index, Color newGene) {

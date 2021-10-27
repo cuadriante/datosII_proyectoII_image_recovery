@@ -14,26 +14,29 @@ using namespace std;
 
 class Individual {
 private:
-    ImageHandler * imageHandler;
-    vector<ColorInfo *> colorList;
+
+    vector<ColorInfo> * colorList;
     vector<Color> genome;
     double frequencyFitnessParameter = 0;
     double relationFitnessParameter = 0;
     double fitness = 0;
+    ImageInfo * imageInfo;
 
-    int maxX = 0;
-    int maxY = 0;
+    int width = 0;
+    int height = 0;
 
 public:
-    Individual(int maxX, int maxY, vector<ColorInfo *> colorList, ImageInfo * idealCharacteristics);
-    void createIndividual(ImageInfo * idealCharacteristics);
-    void calculateFitness(ImageInfo *imageInfo, ImageInfo * idealCharacteristics);
+    Individual(int width, int height, vector<ColorInfo> *colorList);
+
+    void createIndividual();
+
+    void updateFitness(ImageInfo *idealCharacteristics);
 
     double getFitness() const;
 
     const vector<Color> &getGenome() const;
 
-    void setGenome(const vector<Color> &genome);
+    void setGenome(const vector<Color> &genome, ImageInfo *idealCharacteristics);
 
     void setGene(int index, Color newGene);
 };

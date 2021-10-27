@@ -9,13 +9,15 @@
 
 class Population {
 private:
+    const int POPULATION_SIZE = 10;
     vector<Individual> searchSpace;
-    vector<ColorInfo *> colorList;
+    vector<ColorInfo> * colorList;
+    ImageInfo * idealCharacteristics;
     Individual * parents[2];
     Individual * offspring[2];
     const double CROSSOVER_POINT = 0.6;
-    int maxX = 0;
-    int maxY = 0;
+    int width = 0;
+    int height = 0;
     int generation = 0;
     int maxGeneration = 10;
     bool mutate = true;
@@ -26,7 +28,7 @@ public:
 
     Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics);
 
-    void createPopulation(ImageInfo *idealCharacteristics);
+    void createPopulation();
 
     void selection(vector<Individual> searchSpace);
 
