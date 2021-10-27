@@ -29,9 +29,9 @@ private:
 public:
     explicit ImageHandler(String imageName);
 
-    [[noreturn]] void storeImageAsPixels();
+    [[noreturn]] void analyzeImage();
 
-    void recolorWhiteRectangle();
+    void recolorInitialWhiteRectangle();
 
     void saveChangesToImageFile();
 
@@ -46,6 +46,8 @@ public:
     const int *getWhiteRectangleCoordinates() const;
 
     const Image &getImage() const;
+
+    void recolorWhiteRectangle(vector<Color> newPixelSet);
 };
 
 

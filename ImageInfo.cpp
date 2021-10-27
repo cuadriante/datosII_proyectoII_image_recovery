@@ -10,7 +10,7 @@ ImageInfo::ImageInfo(vector<Color> imageContent, int width, int height, vector<C
     this->height = height;
     this->colorList = colorList;
     initialize();
-    calculateColorDistribution();
+    calculateColorDistributionSum();
     calculateColorPercentages();
 }
 
@@ -25,7 +25,8 @@ void ImageInfo::initialize(){
     }
 }
 
-void ImageInfo::calculateColorDistribution(){
+void ImageInfo::calculateColorDistributionSum(){
+    pixelQuantity = 0;
     Color previousColor = imageContent[0];
     for(int x = 0; x <= width; x++){
         for(int y = 0; y <= height; y++){
@@ -33,6 +34,7 @@ void ImageInfo::calculateColorDistribution(){
             if (c != Color::White){
                 int colorIndex = findColor(c);
                 if(colorIndex != -1){
+                    pixelQuantity ++;
                     colorFrequencyPercentages[colorIndex]++;
                     int previousColorIndex = findColor(previousColor);
                     colorRelationsPercentage[colorIndex][previousColorIndex]++;
@@ -44,10 +46,11 @@ void ImageInfo::calculateColorDistribution(){
 }
 
 void ImageInfo::calculateColorPercentages(){
-    for(int c = 0; c <= colorList->size(); c++){
-        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/colorList->size()) * 100;
-        for(int c2 = 0; c2 <= colorList->size(); c2++){
-            colorRelationsPercentage[c][c2] = (colorRelationsPercentage[c][c2]/imageContent.size()) * 100;
+    int size = pixelQuantity;
+    for(int c = 0; c < colorList->size(); c++){
+        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/size) * 100;
+        for(int c2 = 0; c2 < colorList->size(); c2++){
+            colorRelationsPercentage[c][c2] = (colorRelationsPercentage[c][c2]/size) * 100;
         }
     }
 }
@@ -70,4 +73,14 @@ const vector<double> &ImageInfo::getColorFrequencyPercentages() const {
 
 const vector<vector<double>> &ImageInfo::getColorRelationsPercentage() const {
     return colorRelationsPercentage;
+}
+
+void ImageInfo::debug(){
+    int size = colorList->size();
+    for(int c = 0; c < size; c++){
+        //cout << "fp: " << colorFrequencyPercentages[c] << endl;
+        for(int c2 = 0; c2 < size; c2++){
+            cout <<"rp: " << colorRelationsPercentage[c][c2] << endl;
+        }
+    }
 }

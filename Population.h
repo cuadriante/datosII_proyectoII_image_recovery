@@ -10,9 +10,8 @@
 class Population {
 private:
     vector<Individual> searchSpace;
-    vector<ColorInfo> colorList;
+    vector<ColorInfo *> colorList;
     Individual * parents[2];
-    Individual * lowestCandidates[2];
     Individual * offspring[2];
     const double CROSSOVER_POINT = 0.6;
     int maxX = 0;
@@ -42,6 +41,8 @@ public:
     void setMaxGeneration(int maxGeneration);
 
     static bool compareFitness(Individual a, Individual b);
+
+    void solution(Individual * individual);
 };
 
 

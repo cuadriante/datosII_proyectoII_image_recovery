@@ -14,6 +14,7 @@ class ImageInfo {
 private:
     int width = 0;
     int height = 0;
+    int pixelQuantity = 0;
     vector<ColorInfo> * colorList;
     vector<double> colorFrequencyPercentages;
     vector<vector<double>> colorRelationsPercentage;
@@ -22,7 +23,7 @@ private:
 public:
     ImageInfo(vector<Color> imageContent, int width, int height, vector<ColorInfo> * colorList);
 
-    void calculateColorDistribution();
+    void calculateColorDistributionSum();
 
     int findColor(Color color);
 
@@ -33,6 +34,8 @@ public:
     const vector<double> &getColorFrequencyPercentages() const;
 
     const vector<vector<double>> &getColorRelationsPercentage() const;
+
+    void debug();
 };
 
 

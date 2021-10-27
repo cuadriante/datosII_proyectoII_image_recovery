@@ -6,10 +6,11 @@
 
 Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics) {
     this->imageHandler = imageHandler;
+    //colorList = imageHandler->getColorList();
     maxX = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
     maxY = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
-    Individual child1(maxX, maxY, &colorList, idealCharacteristics);
-    Individual child2(maxX, maxY, &colorList, idealCharacteristics);
+    Individual child1(maxX, maxY, colorList, idealCharacteristics);
+    Individual child2(maxX, maxY, colorList, idealCharacteristics);
     offspring[0] = &child1;
     offspring[1] = &child2;
     createPopulation(idealCharacteristics);
@@ -18,16 +19,16 @@ Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristi
 void Population::createPopulation(ImageInfo *idealCharacteristics) {
     if (generation < maxGeneration) {
         if (generation == 0){ // initial generation
-            imageHandler->recolorWhiteRectangle();
+            imageHandler->recolorInitialWhiteRectangle();
         }
         if (generation == 1){
             for(int i = 0; i >= 10; i++){
-                Individual individual(maxX, maxY, &colorList, idealCharacteristics);
+                Individual individual(maxX, maxY, colorList, idealCharacteristics);
                 searchSpace.push_back(individual);
             }
         } else {
             for(int i = 0; i >= 8; i++) {
-                Individual individual(maxX, maxY, &colorList, idealCharacteristics);
+                Individual individual(maxX, maxY, colorList, idealCharacteristics);
                 searchSpace.push_back(individual);
             }
         }
@@ -41,11 +42,6 @@ bool Population::compareFitness(Individual a, Individual b){
 
 
 void Population::selection(vector<Individual> searchSpace) {
-    vector<double> searchSpaceFitness;
-    for (Individual candidate : searchSpace){
-       double candidateFitness = candidate.getFitness();
-       searchSpaceFitness.push_back(candidateFitness);
-    }
 
     sort(searchSpace.begin(), searchSpace.end(), compareFitness);
 
@@ -84,7 +80,7 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
 
 void Population::mutation(Individual *individual) {
     int geneIndex = rand() % individual->getGenome().size();
-    Color newGene = colorList[rand() % colorList.size()].getColor();
+    Color newGene = (colorList[rand() % colorList.size()])->getColor();
     individual->setGene(geneIndex, newGene);
 }
 
@@ -94,14 +90,14 @@ void Population::inversion(Individual *individual) {
     for (int i = startPoint; i <= endPoint; i++){
         Color ogColor = individual->getGenome()[i];
         int ogIndex = 0;
-        for(ColorInfo colorInfo : colorList){
-            if (colorInfo.getColor() == ogColor){
+        for(ColorInfo * colorInfo : colorList){
+            if (colorInfo->getColor() == ogColor){
                 break;
             }
             ogIndex++;
         }
-        int compIndex = colorList.size() - ogIndex;
-        Color newGene = colorList[compIndex].getColor();
+        int compIndex = colorList.size() - 1 - ogIndex;
+        Color newGene = colorList[compIndex]->getColor();
         individual->setGene(i, newGene);
     }
 
@@ -113,6 +109,10 @@ void Population::setMaxGeneration(int maxGeneration) {
 
 int Population::getGeneration() const {
     return generation;
+}
+
+void Population::solution(Individual *individual) {
+
 }
 
 

@@ -15,7 +15,7 @@ using namespace std;
 class Individual {
 private:
     ImageHandler * imageHandler;
-    vector<ColorInfo> * colorList;
+    vector<ColorInfo *> colorList;
     vector<Color> genome;
     double frequencyFitnessParameter = 0;
     double relationFitnessParameter = 0;
@@ -25,7 +25,7 @@ private:
     int maxY = 0;
 
 public:
-    Individual(int maxX, int maxY, vector<ColorInfo> * colorList, ImageInfo * idealCharacteristics);
+    Individual(int maxX, int maxY, vector<ColorInfo *> colorList, ImageInfo * idealCharacteristics);
     void createIndividual(ImageInfo * idealCharacteristics);
     void calculateFitness(ImageInfo *imageInfo, ImageInfo * idealCharacteristics);
 
