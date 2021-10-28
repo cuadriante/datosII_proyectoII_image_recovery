@@ -4,38 +4,41 @@
 
 #include "Population.h"
 
-Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics) {
+Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics, vector<ColorInfo> * colorList) {
     this->imageHandler = imageHandler;
     this->idealCharacteristics = idealCharacteristics;
-    colorList = &imageHandler->getColorList();
+    this->colorList = colorList;
     width = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
     height = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
-    Individual child1(width, height, colorList);
-    Individual child2(width, height, colorList);
-    offspring[0] = &child1;
-    offspring[1] = &child2;
+    Individual * child1 = new Individual(width, height, colorList);
+    Individual * child2 = new Individual(width, height, colorList);
+    offspring[0] = child1;
+    offspring[1] = child2;
     //createPopulation();
 }
 
 void Population::createPopulation() {
+    cout << "Gen: " << generation << endl;
     if (generation < maxGeneration) {
         if (generation == 0){ // initial generation
             imageHandler->recolorInitialWhiteRectangle();
+            generation++;
+            createPopulation();
         }
         if (generation == 1){
-            for(int i = 0; i >= POPULATION_SIZE; i++){
+            for(int i = 0; i < POPULATION_SIZE; i++){
                 Individual individual(width, height, colorList);
                 individual.updateFitness(idealCharacteristics);
                 searchSpace.push_back(individual);
             }
         } else {
-            for(int i = 0; i >= POPULATION_SIZE - 2; i++) {
+            for(int i = 0; i <= POPULATION_SIZE - 2; i++) {
                 Individual individual(width, height, colorList);
                 individual.updateFitness(idealCharacteristics);
-                searchSpace.push_back(individual);
+                searchSpace.at(i) = individual;
             }
         }
-        selection(searchSpace);
+        selection();
     }
 }
 
@@ -44,7 +47,7 @@ bool Population::compareFitness(Individual a, Individual b){
 }
 
 
-void Population::selection(vector<Individual> searchSpace) {
+void Population::selection() {
 
     sort(searchSpace.begin(), searchSpace.end(), compareFitness);
 
@@ -58,34 +61,33 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
     vector<Color> newGenome1;
     vector<Color> newGenome2;
     for (int i = 0; i <= crossoverPoint; i++){
-        newGenome1[i] = parent1->getGenome()[i];
-        newGenome2[i] = parent2->getGenome()[i];
+        newGenome1.push_back(parent1->getGenome()[i]);
+        newGenome2.push_back(parent2->getGenome()[i]);
     }
-    for (int i = crossoverPoint + 1; i <= parent1->getGenome().size(); i++){
-        newGenome1[i] = parent2->getGenome()[i];
-        newGenome2[i] = parent1->getGenome()[i];
+    for (int i = crossoverPoint + 1; i < parent1->getGenome().size(); i++){
+        newGenome1.push_back(parent2->getGenome()[i]);
+        newGenome2.push_back(parent1->getGenome()[i]);
     }
-    offspring[0]->setGenome(newGenome1, idealCharacteristics);
-    offspring[1]->setGenome(newGenome2, idealCharacteristics);
+    offspring[0]->setGenome(&newGenome1, idealCharacteristics);
+    //offspring[1]->setGenome(newGenome2, idealCharacteristics);
 
     if (mutate){
-        mutation(offspring[0]);
+      //  mutation(offspring[0]);
     }
 
     if (invert){
-        inversion(offspring[0]);
+       // inversion(offspring[0]);
     }
 
-    searchSpace[searchSpace.size() - 2] = *offspring[0];
-    searchSpace[searchSpace.size()- 1] = *offspring[1];
-    // save to file
+    //searchSpace[searchSpace.size() - 2] = *offspring[0];
+    //searchSpace[searchSpace.size()- 1] = *offspring[1];
 }
 
 void Population::mutation(Individual *individual) {
     srand((unsigned int)time(NULL));
     int geneIndex = rand() % individual->getGenome().size();
     Color newGene = colorList->at(rand() % colorList->size()).getColor();
-    individual->setGene(geneIndex, newGene);
+    //individual->setGene(geneIndex, newGene);
 }
 
 void Population::inversion(Individual *individual) {

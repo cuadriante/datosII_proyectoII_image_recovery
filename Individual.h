@@ -36,7 +36,7 @@ public:
 
     const vector<Color> &getGenome() const;
 
-    void setGenome(const vector<Color> &genome, ImageInfo *idealCharacteristics);
+    void setGenome(const vector<Color> *newGenome, ImageInfo *idealCharacteristics);
 
     void setGene(int index, Color newGene);
 };

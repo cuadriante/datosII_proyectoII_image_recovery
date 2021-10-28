@@ -7,6 +7,7 @@
 
 #include<SFML/Graphics.hpp>
 #include <iostream>
+#include <random>
 #include "ColorInfo.h"
 
 using namespace sf;

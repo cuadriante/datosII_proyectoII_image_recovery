@@ -15,10 +15,10 @@ ImageInfo::ImageInfo(vector<Color> imageContent, int width, int height, vector<C
 }
 
 void ImageInfo::initialize(){
-    for(int c = 0; c <= colorList->size(); c++){
+    for(int c = 0; c < colorList->size(); c++){
         colorFrequencyPercentages.push_back(0);
         vector<double> v;
-        for(int c2 = 0; c2 <= colorList->size(); c2++){
+        for(int c2 = 0; c2 < colorList->size(); c2++){
             v.push_back(0);
         }
         colorRelationsPercentage.push_back(v);

@@ -26,11 +26,11 @@ private:
 
 public:
 
-    Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics);
+    Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics, vector<ColorInfo> * colorList);
 
     void createPopulation();
 
-    void selection(vector<Individual> searchSpace);
+    void selection();
 
     void crossover(Individual * parent1, Individual * parent2);
 

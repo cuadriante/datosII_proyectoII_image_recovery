@@ -64,8 +64,8 @@ ImageHandler::ImageHandler(String imageName) {
     //recolorInitialWhiteRectangle();
     ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
     //idealCharacteristics.debug();
-    Population population(this, &idealCharacteristics);
-    population.setMaxGeneration(10);
+    Population population(this, &idealCharacteristics, &colorList);
+    population.setMaxGeneration(100);
     population.createPopulation();
 }
 
@@ -90,10 +90,10 @@ void ImageHandler::printContents() {
 }
 
 void ImageHandler::recolorInitialWhiteRectangle() {
-
+    srand((unsigned int)time(NULL));
     for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
         for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
-            srand((unsigned int)time(NULL));
+
             int index = rand() % colorList.size() ;
             Color newColor = colorList[index].getColor();
             image.setPixel(x, y, newColor);
