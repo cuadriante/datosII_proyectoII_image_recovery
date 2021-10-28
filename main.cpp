@@ -10,7 +10,7 @@ Texture backgroundTexture;
 RectangleShape background, textbox;
 string emptyText = "";
 int interface = 1;
-string chosenImage = "";
+string userEntry = "";
 
 int main() {
 
@@ -69,7 +69,10 @@ int main() {
                         if (displayer.getText().compare(emptyText) == 0) {
                             cout << "Gotta write a path, u dumb :v \n";
                         } else {
-                            chosenImage = displayer.getText();
+                            userEntry = displayer.getText();
+                            if (interface == 1) {
+                                displayer.setImage(userEntry);
+                            }
                             interface += 1;
                             displayer.setScreen(interface);
                             displayer.setDisplay(window);

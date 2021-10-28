@@ -22,22 +22,6 @@ public:
         textbox.setString("Press 'Enter' key and write the image path");
     }
 
-//    Textbox(int size, Color color, bool sel) {
-//        background.setSize({800,20});
-//        background.setFillColor(Color(189,195,199,255));
-//        background.setPosition(100,600);
-//        textbox.setCharacterSize(size);
-//        textbox.setColor(color);
-//        textbox.setCharacterSize(27);
-//        isSelected = sel;
-//
-//        if (sel) {
-//            textbox.setString("_");
-//        } else {
-//            textbox.setString("Press 'Enter' key and write the image path");
-//        }
-//    }
-
     void setFont(Font &font) {
         textbox.setFont(font);
     }
@@ -47,31 +31,26 @@ public:
         textbox.setPosition(pos);
     }
 
-    void setLimit(bool ToF) {
-        hasLimit = ToF;
-    }
-
-    void setLimit(bool ToF, int lim) {
-        hasLimit = ToF;
-        limit = lim - 1;
-    }
+//    void setLimit(bool ToF) {
+//        hasLimit = ToF;
+//    }
+//
+//    void setLimit(bool ToF, int lim) {
+//        hasLimit = ToF;
+//        limit = lim - 1;
+//    }
 
     void setSelected(bool sel, int screen) {
         isSelected = sel;
         if (!sel) {
-//            string t = text.str();
             string newT;
             if (screen == 1) {
                 newT = "Press 'Enter' key and write the image path";
             } else if (screen == 2) {
                 newT = "Press 'Enter' key and write the number of generations";
             }
-
-//            for (int i = 0; i < t.length(); ++i) {
-//                newT += t[i];
-//            }
-
             textbox.setString(newT);
+
         } else {
             textbox.setString("");
         }

@@ -27,7 +27,6 @@ public:
     }
 
     void setDisplay(RenderWindow &window) {
-//        window.clear(Color::Black);
         if (screen == 1) {
             pathEntry.setFont(GistLight);
             pathEntry.setPosition({110, 430});
@@ -44,6 +43,8 @@ public:
             generationsEntry.setFont(GistLight);
             generationsEntry.setSelected(false, screen);
             setBackground("appMedia/images/generation background.png", Vector2f(1000,800));
+            image.setSize({550,550});
+            image.setPosition(0,0);
             generationsEntry.setPosition({110, 430});
             textbox.setSize({808,40});
             textbox.setFillColor(Color(189,195,199,100));
@@ -57,7 +58,6 @@ public:
         if (screen == 1) {
             pathEntry.setSelected(sel, screen);
         } else if (screen == 2) {
-//            cout << "555" << endl;
             generationsEntry.setSelected(sel, screen);
         }
     }
@@ -78,6 +78,11 @@ public:
         btn.setImage(location);
     }
 
+    void setImage(string path) {
+        imageTexture.loadFromFile(path);
+        image.setTexture(&imageTexture);
+    }
+
     void drawTo(RenderWindow &window) {
         if (screen == 1){
             window.draw(background);
@@ -90,9 +95,8 @@ public:
             window.draw(textbox);
             generationsEntry.drawTo(window);
             btn.drawTo(window);
+            window.draw(image);
         }
-//        window.clear(Color::Black);
-
     }
 
     string getText() {
@@ -108,8 +112,8 @@ public:
     }
 
 private:
-    Texture backgroundTexture, titleTexture;
-    RectangleShape background, textbox, title;
+    Texture backgroundTexture, titleTexture, imageTexture;
+    RectangleShape background, textbox, title, image;
     Textbox pathEntry, generationsEntry;
     int screen;
     Font GistLight;
