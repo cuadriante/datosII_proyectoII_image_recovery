@@ -28,9 +28,9 @@ public:
 
     void setDisplay(RenderWindow &window) {
 //        window.clear(Color::Black);
-        userEntry.setFont(GistLight);
         if (screen == 1) {
-            userEntry.setPosition({110,430});
+            pathEntry.setFont(GistLight);
+            pathEntry.setPosition({110, 430});
             textbox.setSize({800,40});
             textbox.setFillColor(Color(189,195,199,100));
             textbox.setPosition(97,430);
@@ -41,10 +41,11 @@ public:
             title.setPosition({100,200});
             title.setSize({800,229});
         } else if (screen = 2) {
-            userEntry.setSelected(false);
+            generationsEntry.setFont(GistLight);
+            generationsEntry.setSelected(false, screen);
             setBackground("appMedia/images/generation background.png", Vector2f(1000,800));
-            userEntry.setPosition({110,430});
-            textbox.setSize({800,40});
+            generationsEntry.setPosition({110, 430});
+            textbox.setSize({808,40});
             textbox.setFillColor(Color(189,195,199,100));
             textbox.setPosition(97,430);
             btn.setPosition({655,480});
@@ -53,11 +54,20 @@ public:
     }
 
     void setSelected(bool sel) {
-        userEntry.setSelected(sel);
+        if (screen == 1) {
+            pathEntry.setSelected(sel, screen);
+        } else if (screen == 2) {
+//            cout << "555" << endl;
+            generationsEntry.setSelected(sel, screen);
+        }
     }
 
     void typedOn(Event input) {
-        userEntry.typedOn(input);
+        if (screen == 1) {
+            pathEntry.typedOn(input);
+        } else if (screen == 2) {
+            generationsEntry.typedOn(input);
+        }
     }
 
     bool isMouseOver(RenderWindow &window) {
@@ -72,13 +82,13 @@ public:
         if (screen == 1){
             window.draw(background);
             window.draw(textbox);
-            userEntry.drawTo(window);
+            pathEntry.drawTo(window);
             btn.drawTo(window);
             window.draw(title);
         } else if (screen == 2) {
             window.draw(background);
             window.draw(textbox);
-            userEntry.drawTo(window);
+            generationsEntry.drawTo(window);
             btn.drawTo(window);
         }
 //        window.clear(Color::Black);
@@ -86,7 +96,11 @@ public:
     }
 
     string getText() {
-        return userEntry.getText();
+        if (screen == 1) {
+            return pathEntry.getText();
+        } else if (screen == 2) {
+            return generationsEntry.getText();
+        }
     }
 
     void setScreen(int interface) {
@@ -96,7 +110,7 @@ public:
 private:
     Texture backgroundTexture, titleTexture;
     RectangleShape background, textbox, title;
-    Textbox userEntry;
+    Textbox pathEntry, generationsEntry;
     int screen;
     Font GistLight;
     Button btn;

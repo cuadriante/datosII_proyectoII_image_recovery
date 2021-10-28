@@ -56,16 +56,24 @@ public:
         limit = lim - 1;
     }
 
-    void setSelected(bool sel) {
+    void setSelected(bool sel, int screen) {
         isSelected = sel;
         if (!sel) {
 //            string t = text.str();
-            string newT = "Press 'Enter' key and write the image path";
+            string newT;
+            if (screen == 1) {
+                newT = "Press 'Enter' key and write the image path";
+            } else if (screen == 2) {
+                newT = "Press 'Enter' key and write the number of generations";
+            }
+
 //            for (int i = 0; i < t.length(); ++i) {
 //                newT += t[i];
 //            }
 
             textbox.setString(newT);
+        } else {
+            textbox.setString("");
         }
     }
 
