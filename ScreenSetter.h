@@ -43,8 +43,8 @@ public:
             generationsEntry.setFont(GistLight);
             generationsEntry.setSelected(false, screen);
             setBackground("appMedia/images/generation background.png", Vector2f(1000,800));
-            image.setSize({550,550});
-            image.setPosition(0,0);
+            image.setSize({250,250});
+            image.setPosition(110,490);
             generationsEntry.setPosition({110, 430});
             textbox.setSize({808,40});
             textbox.setFillColor(Color(189,195,199,100));
