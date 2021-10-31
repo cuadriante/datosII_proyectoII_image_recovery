@@ -28,20 +28,25 @@ void Individual::createIndividual() {
 
 // return fitness in relation to idealCharacteristics
 void Individual::updateFitness(ImageInfo *idealCharacteristics) {
+    int colorFrequenceAcum = 0;
     frequencyFitnessParameter = 0;
     relationFitnessParameter = 0;
     fitness = 0;
     for (int index = 0; index <= idealCharacteristics->getColorFrequencyPercentages().size(); index++){
-        double colorDifference = abs(idealCharacteristics->getColorFrequencyPercentages()[index]-imageInfo->getColorFrequencyPercentages()[index]);
+        double colorDifference = sqrt(abs(idealCharacteristics->getColorFrequencyPercentages()[index]-imageInfo->getColorFrequencyPercentages()[index]));
         frequencyFitnessParameter = frequencyFitnessParameter + colorDifference;
-        imageInfo->debug();
+        //imageInfo->debug();
     }
     for (int index = 0; index < idealCharacteristics->getColorRelationsPercentage().size(); index++){
         for (int index2 = 0; index2 < idealCharacteristics->getColorRelationsPercentage()[index].size(); index2++){
-            double colorDifference = abs(idealCharacteristics->getColorRelationsPercentage()[index][index2] - imageInfo->getColorRelationsPercentage()[index][index2]);
+            double colorDifference = sqrt(abs(idealCharacteristics->getColorRelationsPercentage()[index][index2] - imageInfo->getColorRelationsPercentage()[index][index2]));
             relationFitnessParameter = relationFitnessParameter + colorDifference;
         }
     }
+
+    int size = colorList->size();
+    frequencyFitnessParameter = frequencyFitnessParameter/size;
+    relationFitnessParameter = relationFitnessParameter/(size^2);
     fitness = frequencyFitnessParameter + relationFitnessParameter;
 }
 

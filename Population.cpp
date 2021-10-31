@@ -18,45 +18,58 @@ Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristi
 }
 
 void Population::createPopulation() {
-    cout << "Gen: " << generation << endl;
-    if (generation < maxGeneration) {
-        if (generation == 0){ // initial generation
-            imageHandler->recolorInitialWhiteRectangle();
-            generation++;
-            createPopulation();
-        }
-        if (generation == 1){
-            for(int i = 0; i < POPULATION_SIZE; i++){
-                Individual individual(width, height, colorList);
-                individual.updateFitness(idealCharacteristics);
-                searchSpace.push_back(individual);
-            }
-        } else {
-            for(int i = 0; i <= POPULATION_SIZE - 2; i++) {
-                Individual individual(width, height, colorList);
-                individual.updateFitness(idealCharacteristics);
-                searchSpace.at(i) = individual;
-            }
-        }
-        selection();
+    while(searchSpace.size() < POPULATION_SIZE){
+        Individual * individual = new Individual(width, height, colorList);
+        individual->updateFitness(idealCharacteristics);
+        searchSpace.push_back(individual);
     }
+    selection();
+
+//    if (generation < maxGeneration) {
+////        if (generation == 0){ // initial generation
+////            imageHandler->recolorInitialWhiteRectangle();
+////            generation++;
+////            createPopulation();
+////        }
+//        if (generation == 0){
+//            for(int i = 0; i < POPULATION_SIZE; i++){
+//                Individual individual(width, height, colorList);
+//                individual.updateFitness(idealCharacteristics);
+//                searchSpace.push_back(individual);
+//            }
+//        } else {
+//            for(int i = 0; i < POPULATION_SIZE - 2; i++) {
+//                Individual individual(width, height, colorList);
+//                individual.updateFitness(idealCharacteristics);
+//                searchSpace.at(i) = individual;
+//            }
+//        }
+//        cout << "Gen: " << generation << endl;
+//        selection();
+//    } else {
+//        cout << "Process finished." << endl;
+//    }
 }
 
-bool Population::compareFitness(Individual a, Individual b){
-    return a.getFitness() < b.getFitness();
+bool Population::compareFitness(Individual *a, Individual *b){
+    return a->getFitness() < b->getFitness();
 }
 
 
 void Population::selection() {
-
     sort(searchSpace.begin(), searchSpace.end(), compareFitness);
-
-    parents[0] = &searchSpace[0];
-    parents[1] = &searchSpace[1];
-    crossover(parents[0], parents[1]);
+    crossover();
 }
 
-void Population::crossover(Individual * parent1, Individual * parent2) {
+void Population::crossover() {
+    Individual * parent1 = searchSpace[0];
+    Individual * parent2 = searchSpace[1];
+
+    while(searchSpace.size() > 2){
+        delete searchSpace[searchSpace.size() - 1];
+        searchSpace.pop_back();
+    }
+
     int crossoverPoint = parent1->getGenome().size()/2;
     vector<Color> newGenome1;
     vector<Color> newGenome2;
@@ -68,8 +81,10 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
         newGenome1.push_back(parent2->getGenome()[i]);
         newGenome2.push_back(parent1->getGenome()[i]);
     }
-    offspring[0]->setGenome(&newGenome1, idealCharacteristics);
-    //offspring[1]->setGenome(newGenome2, idealCharacteristics);
+    Individual * child1 = new Individual(width, height, colorList);
+    Individual * child2 = new Individual(width, height, colorList);
+    child1->setGenome(&newGenome1, idealCharacteristics);
+    child2->setGenome(&newGenome2, idealCharacteristics);
 
     if (mutate){
       //  mutation(offspring[0]);
@@ -79,8 +94,18 @@ void Population::crossover(Individual * parent1, Individual * parent2) {
        // inversion(offspring[0]);
     }
 
-    //searchSpace[searchSpace.size() - 2] = *offspring[0];
-    //searchSpace[searchSpace.size()- 1] = *offspring[1];
+    searchSpace.push_back(child1);
+    searchSpace.push_back(child2);
+
+    while(searchSpace.size() < POPULATION_SIZE){
+        Individual * individual = new Individual(width, height, colorList);
+        individual->updateFitness(idealCharacteristics);
+        searchSpace.push_back(individual);
+    }
+
+    sort(searchSpace.begin(), searchSpace.end(), compareFitness);
+
+    solution(searchSpace[0]);
 }
 
 void Population::mutation(Individual *individual) {
@@ -107,7 +132,6 @@ void Population::inversion(Individual *individual) {
         Color newGene = colorList->at(compIndex).getColor();;
         individual->setGene(i, newGene);
     }
-    solution(offspring[0]);
 
 }
 
@@ -120,9 +144,18 @@ int Population::getGeneration() const {
 }
 
 void Population::solution(Individual *individual) {
-    imageHandler->recolorWhiteRectangle(individual->getGenome());
+    //sleep(1.0);
+    if (generation % 100 == 0) {
+        cout << "Gen: " << generation << endl;
+        cout << "fitness: " << individual->getFitness() << endl;
+        imageHandler->recolorWhiteRectangle(individual->getGenome());
+    }
     generation ++;
-    createPopulation();
+    if (generation <= maxGeneration){
+        createPopulation();
+    } else {
+        cout << "Process finished." << endl;
+    }
 }
 
 

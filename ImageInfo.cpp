@@ -48,9 +48,9 @@ void ImageInfo::calculateColorDistributionSum(){
 void ImageInfo::calculateColorPercentages(){
     int size = pixelQuantity;
     for(int c = 0; c < colorList->size(); c++){
-        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/size) * 100;
+        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/size); //* 100;
         for(int c2 = 0; c2 < colorList->size(); c2++){
-            colorRelationsPercentage[c][c2] = (colorRelationsPercentage[c][c2]/size) * 100;
+            colorRelationsPercentage[c][c2] = (colorRelationsPercentage[c][c2]/size);// * 100;
         }
     }
 }

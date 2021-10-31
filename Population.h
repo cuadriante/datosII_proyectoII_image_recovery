@@ -6,14 +6,14 @@
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H
 #include "Individual.h"
 #include "ImageHandler.h"
+#include <unistd.h>
 
 class Population {
 private:
     const int POPULATION_SIZE = 10;
-    vector<Individual> searchSpace;
+    vector<Individual *> searchSpace;
     vector<ColorInfo> * colorList;
     ImageInfo * idealCharacteristics;
-    Individual * parents[2];
     Individual * offspring[2];
     const double CROSSOVER_POINT = 0.6;
     int width = 0;
@@ -32,7 +32,7 @@ public:
 
     void selection();
 
-    void crossover(Individual * parent1, Individual * parent2);
+    void crossover();
 
     void mutation(Individual *individual);
 
@@ -42,7 +42,7 @@ public:
 
     void setMaxGeneration(int maxGeneration);
 
-    static bool compareFitness(Individual a, Individual b);
+    static bool compareFitness(Individual * a, Individual *b);
 
     void solution(Individual * individual);
 };
