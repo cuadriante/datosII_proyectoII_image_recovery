@@ -23,7 +23,7 @@ private:
     vector<int> newImage;
     vector<ColorInfo> whiteRectangle;
     vector<ColorInfo> colorList;
-    vector<Color> imageContent;
+    vector<char> imageContent;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
     const int WHITE_MINIMUM = 195;
 
@@ -48,7 +48,7 @@ public:
 
     const Image &getImage() const;
 
-    void recolorWhiteRectangle(vector<Color> * newPixelSet, int width, int height);
+    void recolorWhiteRectangle(vector<char> *newPixelSetIndex, int width, int height);
 
     void startGeneticAlgorithm();
 };

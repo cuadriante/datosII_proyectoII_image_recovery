@@ -14,14 +14,14 @@ class ImageInfo {
 private:
     int width = 0;
     int height = 0;
-    int pixelQuantity = 0;
+    int validPixelQuantity = 0;
     vector<ColorInfo> * colorList;
     vector<double> colorFrequencyPercentages;
     vector<double> colorRelationsPercentage;
-    vector<Color> * imageContent;
+    vector<char> * imageContent;
 
 public:
-    ImageInfo(vector<Color> *imageContent, int width, int height, vector<ColorInfo> * colorList);
+    ImageInfo(vector<char> *imageContent, int width, int height, vector<ColorInfo> * colorList);
 
     void calculateColorDistributionSum();
 

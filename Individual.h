@@ -16,7 +16,7 @@ class Individual {
 private:
 
     vector<ColorInfo> * colorList;
-    vector<Color> * genome;
+    vector<char> * genome;
     double frequencyFitnessParameter = 0;
     double relationFitnessParameter = 0;
     double fitness = 0;
@@ -37,11 +37,11 @@ public:
 
     double getFitness() const;
 
-    vector<Color> *getGenome() const;
+    vector<char> * getGenome() const;
 
-    void setGenome(const vector<Color> *newGenome, ImageInfo *idealCharacteristics);
+    void setGenome(const vector<char> *newGenome, ImageInfo *idealCharacteristics);
 
-    void setGene(int index, Color newGene);
+    void setGene(int index, char newGene);
 
 
 };

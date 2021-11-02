@@ -16,6 +16,9 @@ ImageHandler::ImageHandler(String imageName) {
 
     int x;
     int y;
+
+    imageContent.clear();
+    imageContent.reserve(image.getSize().x*image.getSize().y);
     // processes every pixel and analyzes
     for (x = 0; x < image.getSize().x; x++) {
         for (y = 0; y < image.getSize().y; y++) {
@@ -26,14 +29,17 @@ ImageHandler::ImageHandler(String imageName) {
                 bool exists = false;
                 for(int i = 0; i < colorList.size(); i++){
                     ColorInfo ci = colorList[i];
+
                     if (ci.isSimilar(&colorAtImagePositionInfo)) {
                         exists = true;
+                        imageContent.push_back(i);
                         colorAtImagePositionInfo.setColor(ci.getColor());
                         break;
                     }
                 }
                 if (!exists) {
                     colorList.push_back(colorAtImagePositionInfo);
+                    imageContent.push_back(colorList.size() - 1);
                     cout << "R: " << colorAtImagePositionInfo.getRed();
                     cout << " G: " << colorAtImagePositionInfo.getGreen();
                     cout << " B: " << colorAtImagePositionInfo.getBlue() << endl;
@@ -44,8 +50,9 @@ ImageHandler::ImageHandler(String imageName) {
             } else {
                 image.setPixel(x, y, Color::White);
                 colorAtImagePosition = Color::White;
+                imageContent.push_back(-1);
             }
-            imageContent.push_back(colorAtImagePosition);
+            //imageContent.push_back(colorAtImagePosition);
             if (colorAtImagePosition == Color::White) {
                 if (whiteRectangleCoordinates[0] == 0 && whiteRectangleCoordinates[1] == 0) {
                     whiteRectangleCoordinates[0] = x;
@@ -109,20 +116,13 @@ void ImageHandler::recolorInitialWhiteRectangle() {
     saveChangesToImageFile();
 }
 
-void ImageHandler::recolorWhiteRectangle(vector<Color> * newPixelSet, int width, int height) {
+void ImageHandler::recolorWhiteRectangle(vector<char> *newPixelSetIndex, int width, int height) {
     for (int x = 0; x < width; x++){
         for(int y = 0; y < height; y++){
-            Color newColor = newPixelSet->at(x + y*width);
+            Color newColor = colorList[newPixelSetIndex->at(x + y * width)].getColor();
             image.setPixel(x+whiteRectangleCoordinates[0], y+whiteRectangleCoordinates[1], newColor);
         }
     }
-//    for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
-//        for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
-//            int index = x + y*(whiteRectangleCoordinates[2]-whiteRectangleCoordinates[0]) ;
-//            Color newColor = newPixelSet[index];
-//            image.setPixel(x, y, newColor);
-//        }
-//    }
     saveChangesToImageFile();
 }
 

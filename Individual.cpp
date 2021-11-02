@@ -16,17 +16,19 @@ Individual::Individual(int width, int height, vector<ColorInfo> *colorList, bool
 }
 
 void Individual::createIndividual(bool randomize) {
-    genome = new vector<Color>;
+    int capacity = width*height;
+    genome = new vector<char>;
+    genome->reserve(capacity);
     srand((unsigned int)time(NULL));
     for (int x = 0; x <= width; x++){
         for (int y = 0; y <= height; y++){
             if (randomize){
                 int index = rand() % colorList->size();
                 //vector<ColorInfo>& cl = colorList;
-                Color newColor = colorList->at(index).getColor();
-                genome->push_back(newColor);
+                //Color newColor = colorList->at(index).getColor();
+                genome->push_back(index);
             } else {
-                genome->push_back(Color::White);
+                genome->push_back(-1);
             }
         }
     }
@@ -67,9 +69,13 @@ double Individual::getFitness() const {
 }
 
 
-void Individual::setGenome(const vector<Color> * newGenome, ImageInfo *idealCharacteristics) {
+void Individual::setGenome(const vector<char> *newGenome, ImageInfo *idealCharacteristics) {
 
+    //delete genome;
     genome->clear();
+    genome->reserve(newGenome->size());
+    //std::copy(genome->begin(), genome->end(), back_inserter(newGenome);
+
     for(int i = 0; i < newGenome->size(); i++){
         genome->push_back(newGenome->at(i));
     }
@@ -78,12 +84,12 @@ void Individual::setGenome(const vector<Color> * newGenome, ImageInfo *idealChar
 
 }
 
-void Individual::setGene(int index, Color newGene) {
+void Individual::setGene(int index, char newGene) {
     genome->at(index) = newGene;
 
 }
 
-vector<Color> *Individual::getGenome() const {
+vector<char> * Individual::getGenome() const {
     return genome;
 }
 

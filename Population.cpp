@@ -31,7 +31,7 @@ void Population::selection() {
     while(searchSpace.size() > 2){
         Individual * x = searchSpace.at(searchSpace.size()-1);
         searchSpace.pop_back();
-        delete x;
+        //delete x;
     }
 }
 
@@ -40,8 +40,10 @@ void Population::crossover() {
     Individual * parent2 = searchSpace[1];
 
     int crossoverPoint = parent1->getGenome()->size()/2;
-    vector<Color> * newGenome1 = new vector<Color>;
-    vector<Color> * newGenome2 = new vector<Color>;
+    vector<char> * newGenome1 = new vector<char>;
+    newGenome1->reserve(parent1->getGenome()->size());
+    vector<char> * newGenome2 = new vector<char>;
+    newGenome2->reserve(parent1->getGenome()->size());
 
     for (int i = 0; i < parent1->getGenome()->size(); i++){
         if (i % 2 == 0){
@@ -110,8 +112,8 @@ void Population::mutation(Individual *individual) {
     int mutations = rand() % individual->getGenome()->size();
     while(mutations > 0){
         int geneIndex = rand() % individual->getGenome()->size();
-        Color newColor = colorList->at(rand() % colorList->size()).getColor();
-        individual->setGene(geneIndex, newColor);
+        char newColorIndex = rand() % colorList->size();
+        individual->setGene(geneIndex, newColorIndex);
         mutations--;
     }
 }
@@ -121,16 +123,7 @@ void Population::inversion(Individual *individual) {
     int startPoint = rand() % (individual->getGenome()->size() - 101);
     int endPoint = startPoint + 100;
     for (int i = startPoint; i <= endPoint; i++){
-        Color ogColor = individual->getGenome()->at(i);
-        int ogIndex = 0;
-        for(ColorInfo colorInfo : *colorList){
-            if (colorInfo.getColor() == ogColor){
-                break;
-            }
-            ogIndex++;
-        }
-        int compIndex = (colorList->size() + ogIndex) % colorList->size();
-        Color newGene = colorList->at(compIndex).getColor();;
+        char newGene = (colorList->size() + i) % colorList->size();
         individual->setGene(i, newGene);
     }
 
@@ -169,9 +162,9 @@ void Population::swapping(Individual *individual) {
     srand((unsigned int)time(NULL));
     int p1 = rand() % individual->getGenome()->size();
     int p2 = rand() % individual->getGenome()->size();
-    Color temp1 = individual->getGenome()->at(p1);
-    individual->getGenome()->at(p1) = individual->getGenome()->at(p2);
-    individual->getGenome()->at(p2) = temp1;
+   // Color temp1 = individual->getGenome()->at(p1);
+  //  individual->getGenome()->at(p1) = individual->getGenome()->at(p2);
+   // individual->getGenome()->at(p2) = temp1;
 }
 
 
