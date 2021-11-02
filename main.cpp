@@ -10,7 +10,7 @@ using namespace sf;
 int main() {
 
     // Load test image
-    ImageHandler imageHandler("brownPattern.png");
+    ImageHandler imageHandler("stripesPattern.png");
 
     //sfml window
     RenderWindow window (VideoMode(1000, 800), "Image Recovery");

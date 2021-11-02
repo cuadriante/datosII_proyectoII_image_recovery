@@ -61,12 +61,19 @@ ImageHandler::ImageHandler(String imageName) {
 
     saveChangesToImageFile();
     printContents();
-    //recolorInitialWhiteRectangle();
-    ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
+    startGeneticAlgorithm();
+}
+
+void ImageHandler::startGeneticAlgorithm() {
+    ImageInfo idealCharacteristics(&imageContent, image.getSize().x, image.getSize().y, &colorList);
     //idealCharacteristics.debug();
     Population population(this, &idealCharacteristics, &colorList);
-    population.setMaxGeneration(1000);
-    population.createPopulation();
+    population.setMaxGeneration(10000);
+    population.createInitialPopulation();
+    while (population.getGeneration() < population.getMaxGeneration()){
+        population.selection();
+        population.crossover();
+    }
 }
 
 void ImageHandler::printContents() {
@@ -102,14 +109,20 @@ void ImageHandler::recolorInitialWhiteRectangle() {
     saveChangesToImageFile();
 }
 
-void ImageHandler::recolorWhiteRectangle(vector<Color> newPixelSet) {
-    for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
-        for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
-            int index = x*(whiteRectangleCoordinates[2]-whiteRectangleCoordinates[0]) + y;
-            Color newColor = newPixelSet[index];
-            image.setPixel(x, y, newColor);
+void ImageHandler::recolorWhiteRectangle(vector<Color> * newPixelSet, int width, int height) {
+    for (int x = 0; x < width; x++){
+        for(int y = 0; y < height; y++){
+            Color newColor = newPixelSet->at(x + y*width);
+            image.setPixel(x+whiteRectangleCoordinates[0], y+whiteRectangleCoordinates[1], newColor);
         }
     }
+//    for (int x = whiteRectangleCoordinates[0]; x <= whiteRectangleCoordinates[2]; x++) {
+//        for (int y = whiteRectangleCoordinates[1]; y <= whiteRectangleCoordinates[3]; y++) {
+//            int index = x + y*(whiteRectangleCoordinates[2]-whiteRectangleCoordinates[0]) ;
+//            Color newColor = newPixelSet[index];
+//            image.setPixel(x, y, newColor);
+//        }
+//    }
     saveChangesToImageFile();
 }
 

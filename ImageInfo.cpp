@@ -4,7 +4,7 @@
 
 #include "ImageInfo.h"
 
-ImageInfo::ImageInfo(vector<Color> imageContent, int width, int height, vector<ColorInfo> * colorList) {
+ImageInfo::ImageInfo(vector<Color> *imageContent, int width, int height, vector<ColorInfo> * colorList) {
     this->imageContent = imageContent;
     this->width = width;
     this->height = height;
@@ -15,29 +15,31 @@ ImageInfo::ImageInfo(vector<Color> imageContent, int width, int height, vector<C
 }
 
 void ImageInfo::initialize(){
+    colorFrequencyPercentages.clear();
+    colorRelationsPercentage.clear();
     for(int c = 0; c < colorList->size(); c++){
         colorFrequencyPercentages.push_back(0);
-        vector<double> v;
         for(int c2 = 0; c2 < colorList->size(); c2++){
-            v.push_back(0);
+            colorRelationsPercentage.push_back(0);
         }
-        colorRelationsPercentage.push_back(v);
     }
 }
 
+
+
 void ImageInfo::calculateColorDistributionSum(){
     pixelQuantity = 0;
-    Color previousColor = imageContent[0];
-    for(int x = 0; x <= width; x++){
-        for(int y = 0; y <= height; y++){
-            Color c = imageContent[x + y*width];
+    Color previousColor = imageContent->at(0);
+    for(int x = 0; x < width; x++){
+        for(int y = 0; y < height; y++){
+            Color c = imageContent->at(x + y*width);
             if (c != Color::White){
                 int colorIndex = findColor(c);
                 if(colorIndex != -1){
                     pixelQuantity ++;
                     colorFrequencyPercentages[colorIndex]++;
                     int previousColorIndex = findColor(previousColor);
-                    colorRelationsPercentage[colorIndex][previousColorIndex]++;
+                    colorRelationsPercentage[colorIndex + previousColorIndex*colorList->size()]++;
                     previousColor = c;
                 }
             }
@@ -48,9 +50,10 @@ void ImageInfo::calculateColorDistributionSum(){
 void ImageInfo::calculateColorPercentages(){
     int size = pixelQuantity;
     for(int c = 0; c < colorList->size(); c++){
-        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/size); //* 100;
+        colorFrequencyPercentages[c] = (colorFrequencyPercentages[c]/size)* 100;
         for(int c2 = 0; c2 < colorList->size(); c2++){
-            colorRelationsPercentage[c][c2] = (colorRelationsPercentage[c][c2]/size);// * 100;
+            setColorRelationsPercentage(c, c2, (getColorRelationsPercentage(c,c2)/size)* 100);
+            //colorRelationsPercentage[] = (colorRelationsPercentage[c][c2]/size);// * 100;
         }
     }
 }
@@ -71,8 +74,8 @@ const vector<double> &ImageInfo::getColorFrequencyPercentages() const {
     return colorFrequencyPercentages;
 }
 
-const vector<vector<double>> &ImageInfo::getColorRelationsPercentage() const {
-    return colorRelationsPercentage;
+double ImageInfo::getColorRelationsPercentage(int x, int y) const {
+    return colorRelationsPercentage[x + y*colorList->size()];
 }
 
 void ImageInfo::debug(){
@@ -80,7 +83,11 @@ void ImageInfo::debug(){
     for(int c = 0; c < size; c++){
         cout << "fp: " << colorFrequencyPercentages[c] << endl;
         for(int c2 = 0; c2 < size; c2++){
-            cout <<"rp: " << colorRelationsPercentage[c][c2] << endl;
+            cout <<"rp: " << getColorRelationsPercentage(c, c2) << endl;
         }
     }
+}
+
+void ImageInfo::setColorRelationsPercentage(int x, int y, double percentage) {
+    colorRelationsPercentage[x+y*colorList->size()] = percentage;
 }

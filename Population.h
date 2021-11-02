@@ -10,7 +10,7 @@
 
 class Population {
 private:
-    const int POPULATION_SIZE = 10;
+    const int POPULATION_SIZE = 100;
     vector<Individual *> searchSpace;
     vector<ColorInfo> * colorList;
     ImageInfo * idealCharacteristics;
@@ -23,12 +23,13 @@ private:
     bool mutate = true;
     bool invert = true;
     ImageHandler * imageHandler;
+    double bestFitness = -1;
 
 public:
 
     Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics, vector<ColorInfo> * colorList);
 
-    void createPopulation();
+    void createInitialPopulation();
 
     void selection();
 
@@ -38,6 +39,8 @@ public:
 
     void inversion(Individual *individual);
 
+    void swapping(Individual * individual);
+
     int getGeneration() const;
 
     void setMaxGeneration(int maxGeneration);
@@ -45,6 +48,8 @@ public:
     static bool compareFitness(Individual * a, Individual *b);
 
     void solution(Individual * individual);
+
+    int getMaxGeneration() const;
 };
 
 

@@ -48,7 +48,9 @@ public:
 
     const Image &getImage() const;
 
-    void recolorWhiteRectangle(vector<Color> newPixelSet);
+    void recolorWhiteRectangle(vector<Color> * newPixelSet, int width, int height);
+
+    void startGeneticAlgorithm();
 };
 
 
