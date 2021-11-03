@@ -2,7 +2,6 @@
 #include<SFML/Graphics.hpp>
 #include <valarray>
 #include "ImageHandler.h"
-#include "StrategyTest.h"
 
 using namespace sf;
 

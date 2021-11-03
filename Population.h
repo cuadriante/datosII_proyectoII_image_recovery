@@ -6,11 +6,12 @@
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H
 #include "Individual.h"
 #include "ImageHandler.h"
+#include "XMLConfig.h"
 #include <unistd.h>
 
 class Population {
 private:
-    const int POPULATION_SIZE = 1000;
+    const int POPULATION_SIZE = 100;
     vector<Individual *> searchSpace;
     vector<ColorInfo> * colorList;
     ImageInfo * idealCharacteristics;
@@ -27,6 +28,7 @@ private:
     double bestFitness = -1;
     int startPointX = 0;
     int startPointY = 0;
+    XMLConfig * XMLFile;
 
 public:
 
@@ -42,7 +44,9 @@ public:
 
     void inversion(Individual *individual);
 
-    void swapping(Individual * individual);
+    void solution(Individual * individual);
+
+    void CreateXMLFile();
 
     int getGeneration() const;
 
@@ -50,9 +54,12 @@ public:
 
     static bool compareFitness(Individual * a, Individual *b);
 
-    void solution(Individual * individual);
+
 
     int getMaxGeneration() const;
+
+
+
 };
 
 

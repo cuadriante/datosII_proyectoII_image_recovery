@@ -61,37 +61,22 @@ void Population::crossover() {
 
     }
 
-//    for (int i = 0; i < crossoverPoint; i++){
-//        newGenome1->push_back(parent1->getGenome()->at(i));
-//        newGenome2->push_back(parent2->getGenome()->at(i));
-//    }
-//    for (int i = crossoverPoint; i < parent1->getGenome()->size(); i++){
-//        newGenome1->push_back(parent2->getGenome()->at(i));
-//        newGenome2->push_back(parent1->getGenome()->at(i));
-//    }
-
-
     Individual * child1 = new Individual(width, height, colorList, false, startPointX, startPointY);
     Individual * child2 = new Individual(width, height, colorList, false, startPointX, startPointY);
     child1->setGenome(newGenome1, idealCharacteristics);
     child2->setGenome(newGenome2, idealCharacteristics);
-
-    //delete newGenome1;
-    //delete newGenome2;
 
     searchSpace.push_back(child1);
     searchSpace.push_back(child2);
 
     while(searchSpace.size() < POPULATION_SIZE){
         Individual * individual = new Individual(width, height, colorList, false, startPointX, startPointY);
-        //individual->updateFitness(idealCharacteristics);
         individual->setGenome(parent1->getGenome(), idealCharacteristics);
         searchSpace.push_back(individual);
     }
 
     if (mutate){
         for(int i = 3; i < searchSpace.size(); i++){
-            //swapping(searchSpace.at(i));
             mutation(searchSpace.at(i));
         }
 
@@ -102,12 +87,13 @@ void Population::crossover() {
         }
     }
 
-
     for(Individual * individual : searchSpace){
         individual->updateFitness(idealCharacteristics);
     }
 
     sort(searchSpace.begin(), searchSpace.end(), compareFitness);
+
+    CreateXMLFile();
 
     solution(searchSpace.at(0));
 }
@@ -128,7 +114,6 @@ void Population::inversion(Individual *individual) {
     int startPoint = rand() % (genomeSize - 101);
     int endPoint = startPoint + 100;
     for (int i = startPoint; i <= endPoint; i++){
-        //int in = rand() % (colorList->size() - 1);
         char newGene = rand() % (colorList->size() - 1);
         //char newGene = (colorList->size() + i) % colorList->size();
         //char newGene = (colorList->size() + i) % colorList->size();
@@ -146,9 +131,6 @@ int Population::getGeneration() const {
 }
 
 void Population::solution(Individual *individual) {
-    //cout << "Gen: " << generation << endl;
-    //cout << "fitness: " << individual->getFitness() << endl;
-    //sleep(1.0);
     if (bestFitness < 0 || individual->getFitness() < bestFitness){
         bestFitness = individual->getFitness();
         cout << "Gen: " << generation << endl;
@@ -156,25 +138,18 @@ void Population::solution(Individual *individual) {
         imageHandler->recolorWhiteRectangle(individual->getGenome(), width, height);
     }
     generation ++;
-    if (generation <= maxGeneration){
-       // createInitialPopulation();
-    } else {
-        cout << "Process finished." << endl;
-    }
+    //XMLFile->clearFile();
+
 }
 
 int Population::getMaxGeneration() const {
     return maxGeneration;
 }
 
-void Population::swapping(Individual *individual) {
-    srand((unsigned int)time(NULL));
-    int p1 = rand() % individual->getGenome().size();
-    int p2 = rand() % individual->getGenome().size();
-   // Color temp1 = individual->getGenome()->at(p1);
-  //  individual->getGenome()->at(p1) = individual->getGenome()->at(p2);
-   // individual->getGenome()->at(p2) = temp1;
+void Population::CreateXMLFile() {
+    XMLFile = new XMLConfig(searchSpace, genomeSize, generation);
 }
+
 
 
 
