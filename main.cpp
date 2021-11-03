@@ -100,6 +100,9 @@ int main() {
                                 displayer.setImagePosition({245,165});
                                 displayer.setImageSize({500,500});
 
+                                // Coloque el procesamiento de la imagen aquí, porque la siguiente línea ya necesita una
+                                // "imagen resultado" para mostrarla en pantalla
+
                                 // A este setImage hay que configurarle bien el path de las imagenes de salida
                                 displayer.setImage("out" + to_string(imageGenerations) + ".png");
                                 generationIndex = imageGenerations;
