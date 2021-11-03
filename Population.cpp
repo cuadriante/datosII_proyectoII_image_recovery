@@ -119,7 +119,6 @@ void Population::inversion(Individual *individual) {
         //char newGene = (colorList->size() + i) % colorList->size();
         individual->setGene(i, newGene);
     }
-
 }
 
 void Population::setMaxGeneration(int maxGeneration) {

@@ -101,7 +101,7 @@ void ImageHandler::startGeneticAlgorithm() {
     ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
     //ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
     //idealCharacteristics.debug();
-    //recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
+ //   recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
     Population population(this, &idealCharacteristics, &colorList);
     population.setMaxGeneration(100000);
     population.createInitialPopulation();
@@ -110,8 +110,6 @@ void ImageHandler::startGeneticAlgorithm() {
         population.crossover();
     }
 }
-
-
 
 void ImageHandler::printContents() {
     cout << "white rectangle coordinates: ";
@@ -157,7 +155,7 @@ void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, i
 }
 
 void ImageHandler::saveChangesToImageFile() {
-    image.saveToFile("out.png");
+    image.saveToFile("output/out.png");
 }
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {
