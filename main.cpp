@@ -78,9 +78,12 @@ int main() {
                                 displayer.setImage(imagepath);
                             } else if (interface == 2) {
                                 stringImgGenerations = displayer.getText();
-                                imageGenerations = stoi(stringImgGenerations) - 1;
+                                imageGenerations = stoi(stringImgGenerations);
+                                displayer.setImagePosition({245,165});
+                                displayer.setImageSize({500,500});
                                 displayer.setImage("out" + to_string(imageGenerations) + ".png");
                                 generationIndex = imageGenerations;
+                                displayer.setIndex(generationIndex);
                             }
                             interface += 1;
                             displayer.setScreen(interface);
@@ -99,6 +102,8 @@ int main() {
                     } else {
                         generationIndex -= 1;
                     }
+                    displayer.setIndex(generationIndex);
+
                     cout << generationIndex << endl;
                     displayer.setImage("out" + to_string(generationIndex) + ".png");
                 }
@@ -110,8 +115,11 @@ int main() {
                     } else {
                         generationIndex += 1;
                     }
+                    displayer.setIndex(generationIndex);
+
                     cout << generationIndex << endl;
                     displayer.setImage("out" + to_string(generationIndex) + ".png");
+
                 }
             }
         }

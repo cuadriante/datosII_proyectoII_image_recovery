@@ -48,12 +48,18 @@ public:
                 newT = "Press 'Enter' key and write the image path";
             } else if (screen == 2) {
                 newT = "Press 'Enter' key and write the number of generations";
+            } else if (screen == 3) {
+                newT = generationIndex;
             }
             textbox.setString(newT);
 
         } else {
             textbox.setString("");
         }
+    }
+
+    void setIndex(string index) {
+        generationIndex = index;
     }
 
     string getText() {
@@ -94,6 +100,7 @@ private:
     bool isSelected = false;
     bool hasLimit = false;
     int limit;
+    string generationIndex;
 
     void inputLogic(int charTyped) {
         if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY) {

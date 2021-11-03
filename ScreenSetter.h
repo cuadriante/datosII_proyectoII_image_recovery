@@ -53,12 +53,9 @@ public:
             btn.setImage("appMedia/images/choose.png");
         } else if (screen == 3) {
             setBackground("appMedia/images/generation display.png", Vector2f(1000,800));
-            leftBtn.setPosition({100,350});
-            leftBtn.setImage("appMedia/images/Left Btn.png");
-            leftBtn.SetSize({90,138});
-            rightBtn.setPosition({800,350});
-            rightBtn.SetSize({90,138});
-            rightBtn.setImage("appMedia/images/Right Btn.png");
+            label.setFont(GistLight);
+            label.setPosition({600,800});
+            setSelected(false);
         }
     }
 
@@ -67,16 +64,15 @@ public:
             pathEntry.setSelected(sel, screen);
         } else if (screen == 2) {
             generationsEntry.setSelected(sel, screen);
+        } else if (screen == 3) {
+            label.setSelected(false,screen);
+            label.setIndex(to_string(generationIndex));
         }
     }
 
-    void setGenerations(int gen) {
-        totalGenerations = gen;
-        generationIndex = 0;
-    }
-
-    void setIndex(int i) {
-        generationIndex = i;
+    void setIndex(int index) {
+        generationIndex = index;
+        setSelected(false);
     }
 
     void typedOn(Event input) {
@@ -100,6 +96,14 @@ public:
         image.setTexture(&imageTexture);
     }
 
+    void setImageSize(Vector2f size) {
+        image.setSize(size);
+    }
+
+    void setImagePosition(Vector2f pos) {
+        image.setPosition(pos);
+    }
+
     void drawTo(RenderWindow &window) {
         if (screen == 1){
             window.draw(background);
@@ -116,6 +120,7 @@ public:
         } else if (screen == 3) {
             window.draw(background);
             window.draw(image);
+            label.drawTo(window);
         }
     }
 
@@ -134,10 +139,10 @@ public:
 private:
     Texture backgroundTexture, titleTexture, imageTexture;
     RectangleShape background, textbox, title, image;
-    Textbox pathEntry, generationsEntry;
-    int screen, totalGenerations, generationIndex;
+    Textbox pathEntry, generationsEntry, label;
+    int screen, generationIndex;
     Font GistLight;
-    Button btn, leftBtn, rightBtn;
+    Button btn;
 };
 
 #endif
