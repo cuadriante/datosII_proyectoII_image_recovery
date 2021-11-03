@@ -16,7 +16,7 @@ class Individual {
 private:
 
     vector<ColorInfo> * colorList;
-    vector<char> * genome;
+    vector<char> genome;
     double frequencyFitnessParameter = 0;
     double relationFitnessParameter = 0;
     double fitness = 0;
@@ -24,25 +24,30 @@ private:
 
     int width = 0;
     int height = 0;
-    int startPoint = 0;
-    int endPoint = 0;
+    int startPointX = 0;
+    int startPointY = 0;
 
 public:
-    Individual(int width, int height, vector<ColorInfo> *colorList, bool randomize, int startPoint,
-               int endPoint);
+    Individual(int width, int height, vector<ColorInfo> *colorList, bool randomize, int startPointX,
+               int startPointY);
 
     void createIndividual(bool randomize);
+
+    void updateFitness3(ImageInfo * idealCharacteristics);
+
+    void updateFitness2(ImageInfo * idealCharacteristics);
 
     void updateFitness(ImageInfo *idealCharacteristics);
 
     double getFitness() const;
 
-    vector<char> * getGenome() const;
+    vector<char> getGenome() const;
 
-    void setGenome(const vector<char> *newGenome, ImageInfo *idealCharacteristics);
+    void setGenome(const vector<char> & newGenome, ImageInfo *idealCharacteristics);
 
     void setGene(int index, char newGene);
 
+    char getGene(int index);
 
 };
 

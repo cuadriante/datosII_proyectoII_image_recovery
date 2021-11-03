@@ -18,10 +18,10 @@ private:
     vector<ColorInfo> * colorList;
     vector<double> colorFrequencyPercentages;
     vector<double> colorRelationsPercentage;
-    vector<char> * imageContent;
+    vector<char> imageContent;
 
 public:
-    ImageInfo(vector<char> *imageContent, int width, int height, vector<ColorInfo> * colorList);
+    ImageInfo(const vector<char> &imageContent, int width, int height, vector<ColorInfo> * colorList);
 
     void calculateColorDistributionSum();
 
@@ -38,6 +38,10 @@ public:
     void setColorRelationsPercentage(int x, int y, double percentage);
 
     void debug();
+
+    vector<char> getImageContent();
+
+    char getImageContentElement(int index);
 };
 
 

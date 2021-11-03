@@ -58,8 +58,8 @@ ImageHandler::ImageHandler(String imageName) {
                     whiteRectangleCoordinates[0] = x;
                     whiteRectangleCoordinates[1] = y;
                 } else {
-                    whiteRectangleCoordinates[2] = x + 1;
-                    whiteRectangleCoordinates[3] = y + 1;
+                    whiteRectangleCoordinates[2] = x;
+                    whiteRectangleCoordinates[3] = y;
                 }
                 whiteRectangle.push_back(colorAtImagePositionInfo);
             }
@@ -71,17 +71,47 @@ ImageHandler::ImageHandler(String imageName) {
     startGeneticAlgorithm();
 }
 
+vector<char> ImageHandler::createIdealGenome() {
+    whiteRectangleWidth = whiteRectangleCoordinates[2] - whiteRectangleCoordinates[0];
+    whiteRectangleHeight = whiteRectangleCoordinates[3] - whiteRectangleCoordinates[1];
+    vector<char> idealGenome;
+
+    for (int x = 0; x <= whiteRectangleWidth; x++) {
+        for (int y = 0; y <= whiteRectangleHeight; y++) {
+            Color colorAtImagePosition = image.getPixel(x, y);
+            ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
+
+            for(int i = 0; i < colorList.size(); i++){
+                ColorInfo ci = colorList[i];
+                if (ci.isSimilar(&colorAtImagePositionInfo)) {
+                    idealGenome.push_back(i);
+                    break;
+                }
+            }
+
+        }
+    }
+    //ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
+    return idealGenome;
+}
+
 void ImageHandler::startGeneticAlgorithm() {
-    ImageInfo idealCharacteristics(&imageContent, image.getSize().x, image.getSize().y, &colorList);
+    vector<char> idealGenome = createIdealGenome();
+    //createIdealGenome();
+    ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
+    //ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
     //idealCharacteristics.debug();
+    //recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
     Population population(this, &idealCharacteristics, &colorList);
-    population.setMaxGeneration(10000);
+    population.setMaxGeneration(100000);
     population.createInitialPopulation();
     while (population.getGeneration() < population.getMaxGeneration()){
         population.selection();
         population.crossover();
     }
 }
+
+
 
 void ImageHandler::printContents() {
     cout << "white rectangle coordinates: ";
@@ -116,10 +146,10 @@ void ImageHandler::recolorInitialWhiteRectangle() {
     saveChangesToImageFile();
 }
 
-void ImageHandler::recolorWhiteRectangle(vector<char> *newPixelSetIndex, int width, int height) {
+void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height) {
     for (int x = 0; x < width; x++){
         for(int y = 0; y < height; y++){
-            Color newColor = colorList[newPixelSetIndex->at(x + y * width)].getColor();
+            Color newColor = colorList[newPixelSetIndex.at(y + x * height)].getColor();
             image.setPixel(x+whiteRectangleCoordinates[0], y+whiteRectangleCoordinates[1], newColor);
         }
     }

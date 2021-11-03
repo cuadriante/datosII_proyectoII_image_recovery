@@ -9,6 +9,7 @@
 #include <iostream>
 #include <random>
 #include "ColorInfo.h"
+#include "ImageInfo.h"
 
 using namespace sf;
 using namespace std;
@@ -25,6 +26,8 @@ private:
     vector<ColorInfo> colorList;
     vector<char> imageContent;
     int whiteRectangleCoordinates [4] = {0, 0, 0, 0}; //x1 y1 x2 y2
+    int whiteRectangleWidth = 0;
+    int whiteRectangleHeight = 0;
     const int WHITE_MINIMUM = 195;
 
 public:
@@ -48,9 +51,11 @@ public:
 
     const Image &getImage() const;
 
-    void recolorWhiteRectangle(vector<char> *newPixelSetIndex, int width, int height);
+    void recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height);
 
     void startGeneticAlgorithm();
+
+    vector<char> createIdealGenome();
 };
 
 

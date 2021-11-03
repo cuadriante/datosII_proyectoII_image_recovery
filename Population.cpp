@@ -8,14 +8,17 @@ Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristi
     this->imageHandler = imageHandler;
     this->idealCharacteristics = idealCharacteristics;
     this->colorList = colorList;
-    width = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0];
-    height = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1];
+    width = imageHandler->getWhiteRectangleCoordinates()[2] - imageHandler->getWhiteRectangleCoordinates()[0] + 1;
+    height = imageHandler->getWhiteRectangleCoordinates()[3] - imageHandler->getWhiteRectangleCoordinates()[1] + 1;
+    startPointX = imageHandler->getWhiteRectangleCoordinates()[0];
+    startPointY = imageHandler->getWhiteRectangleCoordinates()[1];
+    genomeSize = width*height;
     //createInitialPopulation();
 }
 
 void Population::createInitialPopulation() {
     while(searchSpace.size() < POPULATION_SIZE){
-        Individual * individual = new Individual(width, height, colorList, true, 0, 0);
+        Individual * individual = new Individual(width, height, colorList, true, startPointX, startPointY);
         individual->updateFitness(idealCharacteristics);
         searchSpace.push_back(individual);
     }
@@ -39,19 +42,21 @@ void Population::crossover() {
     Individual * parent1 = searchSpace[0];
     Individual * parent2 = searchSpace[1];
 
-    int crossoverPoint = parent1->getGenome()->size()/2;
-    vector<char> * newGenome1 = new vector<char>;
-    newGenome1->reserve(parent1->getGenome()->size());
-    vector<char> * newGenome2 = new vector<char>;
-    newGenome2->reserve(parent1->getGenome()->size());
 
-    for (int i = 0; i < parent1->getGenome()->size(); i++){
+
+    //int crossoverPoint = parent1->getGenome().size()/2;
+    vector<char> newGenome1; // = new vector<char>;
+    newGenome1.reserve(genomeSize);
+    vector<char> newGenome2; // = new vector<char>;
+    newGenome2.reserve(genomeSize);
+
+    for (int i = 0; i < genomeSize; i++){
         if (i % 2 == 0){
-            newGenome1->push_back(parent1->getGenome()->at(i));
-            newGenome2->push_back(parent2->getGenome()->at(i));
+            newGenome1.push_back(parent1->getGene(i));
+            newGenome2.push_back(parent2->getGene(i));
         } else {
-            newGenome1->push_back(parent2->getGenome()->at(i));
-            newGenome2->push_back(parent1->getGenome()->at(i));
+            newGenome1.push_back(parent2->getGene(i));
+            newGenome2.push_back(parent1->getGene(i));
         }
 
     }
@@ -66,19 +71,19 @@ void Population::crossover() {
 //    }
 
 
-    Individual * child1 = new Individual(width, height, colorList, false, 0, 0);
-    Individual * child2 = new Individual(width, height, colorList, false, 0, 0);
+    Individual * child1 = new Individual(width, height, colorList, false, startPointX, startPointY);
+    Individual * child2 = new Individual(width, height, colorList, false, startPointX, startPointY);
     child1->setGenome(newGenome1, idealCharacteristics);
     child2->setGenome(newGenome2, idealCharacteristics);
 
-    delete newGenome1;
-    delete newGenome2;
+    //delete newGenome1;
+    //delete newGenome2;
 
     searchSpace.push_back(child1);
     searchSpace.push_back(child2);
 
     while(searchSpace.size() < POPULATION_SIZE){
-        Individual * individual = new Individual(width, height, colorList, false, 0, 0);
+        Individual * individual = new Individual(width, height, colorList, false, startPointX, startPointY);
         //individual->updateFitness(idealCharacteristics);
         individual->setGenome(parent1->getGenome(), idealCharacteristics);
         searchSpace.push_back(individual);
@@ -86,8 +91,8 @@ void Population::crossover() {
 
     if (mutate){
         for(int i = 3; i < searchSpace.size(); i++){
-            swapping(searchSpace.at(i));
-            //mutation(searchSpace.at(i));
+            //swapping(searchSpace.at(i));
+            mutation(searchSpace.at(i));
         }
 
     }
@@ -109,9 +114,9 @@ void Population::crossover() {
 
 void Population::mutation(Individual *individual) {
     srand((unsigned int)time(NULL));
-    int mutations = rand() % individual->getGenome()->size();
+    int mutations = rand() % (int)(genomeSize*0.1);
     while(mutations > 0){
-        int geneIndex = rand() % individual->getGenome()->size();
+        int geneIndex = rand() % genomeSize;
         char newColorIndex = rand() % colorList->size();
         individual->setGene(geneIndex, newColorIndex);
         mutations--;
@@ -120,10 +125,13 @@ void Population::mutation(Individual *individual) {
 
 void Population::inversion(Individual *individual) {
     srand((unsigned int)time(NULL));
-    int startPoint = rand() % (individual->getGenome()->size() - 101);
+    int startPoint = rand() % (genomeSize - 101);
     int endPoint = startPoint + 100;
     for (int i = startPoint; i <= endPoint; i++){
-        char newGene = (colorList->size() + i) % colorList->size();
+        //int in = rand() % (colorList->size() - 1);
+        char newGene = rand() % (colorList->size() - 1);
+        //char newGene = (colorList->size() + i) % colorList->size();
+        //char newGene = (colorList->size() + i) % colorList->size();
         individual->setGene(i, newGene);
     }
 
@@ -138,7 +146,8 @@ int Population::getGeneration() const {
 }
 
 void Population::solution(Individual *individual) {
-
+    //cout << "Gen: " << generation << endl;
+    //cout << "fitness: " << individual->getFitness() << endl;
     //sleep(1.0);
     if (bestFitness < 0 || individual->getFitness() < bestFitness){
         bestFitness = individual->getFitness();
@@ -160,8 +169,8 @@ int Population::getMaxGeneration() const {
 
 void Population::swapping(Individual *individual) {
     srand((unsigned int)time(NULL));
-    int p1 = rand() % individual->getGenome()->size();
-    int p2 = rand() % individual->getGenome()->size();
+    int p1 = rand() % individual->getGenome().size();
+    int p2 = rand() % individual->getGenome().size();
    // Color temp1 = individual->getGenome()->at(p1);
   //  individual->getGenome()->at(p1) = individual->getGenome()->at(p2);
    // individual->getGenome()->at(p2) = temp1;

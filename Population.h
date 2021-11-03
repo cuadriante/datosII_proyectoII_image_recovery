@@ -10,7 +10,7 @@
 
 class Population {
 private:
-    const int POPULATION_SIZE = 100;
+    const int POPULATION_SIZE = 1000;
     vector<Individual *> searchSpace;
     vector<ColorInfo> * colorList;
     ImageInfo * idealCharacteristics;
@@ -18,12 +18,15 @@ private:
     const double CROSSOVER_POINT = 0.6;
     int width = 0;
     int height = 0;
+    int genomeSize = 0;
     int generation = 0;
     int maxGeneration = 10;
     bool mutate = true;
     bool invert = true;
     ImageHandler * imageHandler;
     double bestFitness = -1;
+    int startPointX = 0;
+    int startPointY = 0;
 
 public:
 

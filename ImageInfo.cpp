@@ -4,14 +4,19 @@
 
 #include "ImageInfo.h"
 
-ImageInfo::ImageInfo(vector<char> *imageContent, int width, int height, vector<ColorInfo> * colorList) {
-    this->imageContent = imageContent;
+ImageInfo::ImageInfo(const vector<char> &imageContent, int width, int height, vector<ColorInfo> * colorList) {
+    this->imageContent.clear();
+    this->imageContent.reserve(imageContent.size());
+    for(char i : imageContent){
+        this->imageContent.push_back(i);
+    }
+    //this->imageContent = imageContent;
     this->width = width;
     this->height = height;
     this->colorList = colorList;
     initialize();
-    calculateColorDistributionSum();
-    calculateColorPercentages();
+    //calculateColorDistributionSum();
+    //calculateColorPercentages();
 }
 
 void ImageInfo::initialize(){
@@ -23,7 +28,7 @@ void ImageInfo::initialize(){
     for(int c = 0; c < colorList->size(); c++){
         colorFrequencyPercentages.push_back(0);
         for(int c2 = 0; c2 < colorList->size(); c2++){
-            colorRelationsPercentage.push_back(0);
+           // colorRelationsPercentage.push_back(0);
         }
     }
 }
@@ -36,12 +41,12 @@ void ImageInfo::calculateColorDistributionSum(){
     //Color previousColorIndex = imageContent->at(0);
     for(int x = 0; x < width; x++){
         for(int y = 0; y < height; y++){
-            char colorIndex = imageContent->at(x + y * width);
+            char colorIndex = imageContent.at(x + y * width);
             if (colorIndex >= 0){
                 //int colorIndex = findColor(colorIndex);
                 validPixelQuantity ++;
                 colorFrequencyPercentages[colorIndex]++;
-                colorRelationsPercentage[colorIndex + previousColorIndex * colorList->size()]++;
+                //colorRelationsPercentage[colorIndex + previousColorIndex * colorList->size()]++;
                 previousColorIndex = colorIndex;
             }
         }
@@ -91,4 +96,12 @@ void ImageInfo::debug(){
 
 void ImageInfo::setColorRelationsPercentage(int x, int y, double percentage) {
     colorRelationsPercentage[x+y*colorList->size()] = percentage;
+}
+
+vector<char> ImageInfo::getImageContent() {
+    return imageContent;
+}
+
+char ImageInfo::getImageContentElement(int index) {
+    return imageContent.at(index);
 }
