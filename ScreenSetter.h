@@ -39,7 +39,7 @@ public:
             title.setTexture(&titleTexture);
             title.setPosition({100,200});
             title.setSize({800,229});
-        } else if (screen = 2) {
+        } else if (screen == 2) {
             generationsEntry.setFont(GistLight);
             generationsEntry.setSelected(false, screen);
             setBackground("appMedia/images/generation background.png", Vector2f(1000,800));
@@ -51,6 +51,14 @@ public:
             textbox.setPosition(97,430);
             btn.setPosition({655,480});
             btn.setImage("appMedia/images/choose.png");
+        } else if (screen == 3) {
+            setBackground("appMedia/images/generation display.png", Vector2f(1000,800));
+            leftBtn.setPosition({100,350});
+            leftBtn.setImage("appMedia/images/Left Btn.png");
+            leftBtn.SetSize({90,138});
+            rightBtn.setPosition({800,350});
+            rightBtn.SetSize({90,138});
+            rightBtn.setImage("appMedia/images/Right Btn.png");
         }
     }
 
@@ -60,6 +68,15 @@ public:
         } else if (screen == 2) {
             generationsEntry.setSelected(sel, screen);
         }
+    }
+
+    void setGenerations(int gen) {
+        totalGenerations = gen;
+        generationIndex = 0;
+    }
+
+    void setIndex(int i) {
+        generationIndex = i;
     }
 
     void typedOn(Event input) {
@@ -96,6 +113,9 @@ public:
             generationsEntry.drawTo(window);
             btn.drawTo(window);
             window.draw(image);
+        } else if (screen == 3) {
+            window.draw(background);
+            window.draw(image);
         }
     }
 
@@ -115,9 +135,9 @@ private:
     Texture backgroundTexture, titleTexture, imageTexture;
     RectangleShape background, textbox, title, image;
     Textbox pathEntry, generationsEntry;
-    int screen;
+    int screen, totalGenerations, generationIndex;
     Font GistLight;
-    Button btn;
+    Button btn, leftBtn, rightBtn;
 };
 
 #endif

@@ -13,6 +13,8 @@ int interface = 1;
 string imagepath = "";
 string stringImgGenerations = "";
 int imageGenerations = 0;
+int generationIndex = 0;
+//int totalGenerations = 0;
 
 int main() {
 
@@ -68,7 +70,7 @@ int main() {
 
                 case Event::MouseButtonPressed:
                     if (displayer.isMouseOver(window)) {
-                        if (displayer.getText().compare(emptyText) == 0) {
+                        if (displayer.getText().compare(emptyText) == 0 && interface < 3) {
                             cout << "Gotta write a path, u dumb :v \n";
                         } else {
                             if (interface == 1) {
@@ -76,7 +78,9 @@ int main() {
                                 displayer.setImage(imagepath);
                             } else if (interface == 2) {
                                 stringImgGenerations = displayer.getText();
-                                imageGenerations = stoi(stringImgGenerations);
+                                imageGenerations = stoi(stringImgGenerations) - 1;
+                                displayer.setImage("out" + to_string(imageGenerations) + ".png");
+                                generationIndex = imageGenerations;
                             }
                             interface += 1;
                             displayer.setScreen(interface);
@@ -84,6 +88,31 @@ int main() {
 
                         }
                     }
+
+            }
+
+
+            if (Keyboard::isKeyPressed(Keyboard::Left)) {
+                if (interface == 3) {
+                    if (generationIndex == 0) {
+                        generationIndex = imageGenerations;
+                    } else {
+                        generationIndex -= 1;
+                    }
+                    cout << generationIndex << endl;
+                    displayer.setImage("out" + to_string(generationIndex) + ".png");
+                }
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Right)) {
+                if (interface == 3) {
+                    if (generationIndex == imageGenerations) {
+                        generationIndex = 0;
+                    } else {
+                        generationIndex += 1;
+                    }
+                    cout << generationIndex << endl;
+                    displayer.setImage("out" + to_string(generationIndex) + ".png");
+                }
             }
         }
         window.clear(Color::Black);

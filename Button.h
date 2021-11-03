@@ -26,6 +26,10 @@ public:
 //
 //    }
 
+    void SetSize(Vector2f size) {
+        button.setSize(size);
+    }
+
     void setFont(Font &font) {
         text.setFont(font);
     }
