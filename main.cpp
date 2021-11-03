@@ -16,6 +16,12 @@ int generationIndex = 0;
 
 int main() {
 
+    // #####################################################################################
+
+    // Agregar TODA la carpeta "appMedia" al cmake para que le cargue las imagenes de la GUI
+
+    // #####################################################################################
+
     // Load test image
     //ImageHandler imageHandler("verticalStripesPattern.png");
     string emptyText = "";
@@ -69,16 +75,32 @@ int main() {
                 case Event::MouseButtonPressed:
                     if (displayer.isMouseOver(window)) {
                         if (displayer.getText().compare(emptyText) == 0 && interface < 3) {
-                            cout << "Gotta write a path, u dumb :v \n";
+                            cout << "Input string cannot be empty!!\n";
                         } else {
                             if (interface == 1) {
                                 imagepath = displayer.getText();
                                 displayer.setImage(imagepath);
+                                // #####################################################################################
+
+                                // La variable image path tiene la ubicación de la imagen que ingresó el usuario
+                                // Elimine estos comentarios y cargue aquí la la imagen para su programa
+
+                                // #####################################################################################
+
                             } else if (interface == 2) {
                                 stringImgGenerations = displayer.getText();
                                 imageGenerations = stoi(stringImgGenerations);
+
+                                // #####################################################################################
+
+                                // la variable imageGenerations es un int de la cantidad de generaciones que quiere el usuario
+                                // Indique aquí la cantidad de generaciones de su programa con esa variable
+
+                                // #####################################################################################
                                 displayer.setImagePosition({245,165});
                                 displayer.setImageSize({500,500});
+
+                                // A este setImage hay que configurarle bien el path de las imagenes de salida
                                 displayer.setImage("out" + to_string(imageGenerations) + ".png");
                                 generationIndex = imageGenerations;
                                 displayer.setIndex(generationIndex);
@@ -102,7 +124,7 @@ int main() {
                     }
                     displayer.setIndex(generationIndex);
 
-                    cout << generationIndex << endl;
+                    //Aquí también tiene que cambiar el path
                     displayer.setImage("out" + to_string(generationIndex) + ".png");
                 }
             }
@@ -115,7 +137,7 @@ int main() {
                     }
                     displayer.setIndex(generationIndex);
 
-                    cout << generationIndex << endl;
+                    // Aquí también tiene que cambiar el path
                     displayer.setImage("out" + to_string(generationIndex) + ".png");
 
                 }
