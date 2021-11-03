@@ -17,6 +17,10 @@ public:
     ScreenSetter(int interface) {
         screen = interface;
         GistLight.loadFromFile("GistLight.otf");
+        index.setFont(GistLight);
+        index.setCharacterSize(45);
+        index.setColor(Color(39,137,179,255));
+        index.setPosition({625,716});
     }
 
     void setBackground (string location, Vector2f size) {
@@ -53,9 +57,6 @@ public:
             btn.setImage("appMedia/images/choose.png");
         } else if (screen == 3) {
             setBackground("appMedia/images/generation display.png", Vector2f(1000,800));
-            label.setFont(GistLight);
-            label.setPosition({600,800});
-            setSelected(false);
         }
     }
 
@@ -64,15 +65,12 @@ public:
             pathEntry.setSelected(sel, screen);
         } else if (screen == 2) {
             generationsEntry.setSelected(sel, screen);
-        } else if (screen == 3) {
-            label.setSelected(false,screen);
-            label.setIndex(to_string(generationIndex));
         }
     }
 
-    void setIndex(int index) {
-        generationIndex = index;
-        setSelected(false);
+    void setIndex(int indx) {
+        generationIndex = indx;
+        index.setString(to_string(generationIndex + 1));
     }
 
     void typedOn(Event input) {
@@ -120,7 +118,7 @@ public:
         } else if (screen == 3) {
             window.draw(background);
             window.draw(image);
-            label.drawTo(window);
+            window.draw(index);
         }
     }
 
@@ -139,10 +137,11 @@ public:
 private:
     Texture backgroundTexture, titleTexture, imageTexture;
     RectangleShape background, textbox, title, image;
-    Textbox pathEntry, generationsEntry, label;
+    Textbox pathEntry, generationsEntry;
     int screen, generationIndex;
     Font GistLight;
     Button btn;
+    Text index;
 };
 
 #endif

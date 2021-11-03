@@ -6,15 +6,12 @@
 
 using namespace sf;
 
-Texture backgroundTexture;
-RectangleShape background, textbox;
 string emptyText = "";
 int interface = 1;
 string imagepath = "";
 string stringImgGenerations = "";
 int imageGenerations = 0;
 int generationIndex = 0;
-//int totalGenerations = 0;
 
 int main() {
 

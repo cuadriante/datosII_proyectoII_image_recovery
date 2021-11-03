@@ -31,15 +31,6 @@ public:
         textbox.setPosition(pos);
     }
 
-//    void setLimit(bool ToF) {
-//        hasLimit = ToF;
-//    }
-//
-//    void setLimit(bool ToF, int lim) {
-//        hasLimit = ToF;
-//        limit = lim - 1;
-//    }
-
     void setSelected(bool sel, int screen) {
         isSelected = sel;
         if (!sel) {
@@ -48,18 +39,13 @@ public:
                 newT = "Press 'Enter' key and write the image path";
             } else if (screen == 2) {
                 newT = "Press 'Enter' key and write the number of generations";
-            } else if (screen == 3) {
-                newT = generationIndex;
             }
+
             textbox.setString(newT);
 
         } else {
             textbox.setString("");
         }
-    }
-
-    void setIndex(string index) {
-        generationIndex = index;
     }
 
     string getText() {
