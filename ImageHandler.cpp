@@ -72,28 +72,47 @@ ImageHandler::ImageHandler(String imageName) {
 
     saveChangesToImageFile(0);
     printContents();
+   // startGeneticAlgorithm(10000);
 }
 
 vector<char> ImageHandler::createIdealGenome() {
-    whiteRectangleWidth = whiteRectangleCoordinates[2] - whiteRectangleCoordinates[0];
-    whiteRectangleHeight = whiteRectangleCoordinates[3] - whiteRectangleCoordinates[1];
+    whiteRectangleWidth = whiteRectangleCoordinates[2] - whiteRectangleCoordinates[0] + 1;
+    whiteRectangleHeight = whiteRectangleCoordinates[3] - whiteRectangleCoordinates[1] + 1;
     vector<char> idealGenome;
 
-    for (int x = 0; x <= whiteRectangleWidth; x++) {
-        for (int y = 0; y <= whiteRectangleHeight; y++) {
-            Color colorAtImagePosition = image.getPixel(x, y);
+    int startPointX = whiteRectangleCoordinates[0] - whiteRectangleWidth + 1;
+    int startPointY =  whiteRectangleCoordinates[3] + 1;
+
+    for (int x = 0; x < whiteRectangleWidth; x++) {
+        for (int y = 0; y < whiteRectangleHeight; y++) {
+            Color colorAtImagePosition = image.getPixel(whiteRectangleCoordinates[0] - whiteRectangleWidth + x, whiteRectangleCoordinates[3] + y);
             ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
 
-            for(int i = 0; i < colorList.size(); i++){
+            for (int i = 0; i < colorList.size(); i++) {
                 ColorInfo ci = colorList[i];
-                if (ci.isSimilar(&colorAtImagePositionInfo)) {
+                if (ci.getColor() == colorAtImagePositionInfo.getColor()) {
                     idealGenome.push_back(i);
                     break;
                 }
             }
-
         }
-    }
+        }
+
+//    for (int x = startPointX; x < (startPointX + whiteRectangleWidth); x++) {
+//        for (int y = startPointY; y < (startPointY + whiteRectangleHeight); y++) {
+//            Color colorAtImagePosition = image.getPixel(x, y);
+//            ColorInfo colorAtImagePositionInfo(colorAtImagePosition);
+//
+//            for(int i = 0; i < colorList.size(); i++){
+//                ColorInfo ci = colorList[i];
+//                if (ci.isSimilar(&colorAtImagePositionInfo)) {
+//                    idealGenome.push_back(i);
+//                    break;
+//                }
+//            }
+//
+//        }
+//    }
     //ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
     return idealGenome;
 }
@@ -101,17 +120,19 @@ vector<char> ImageHandler::createIdealGenome() {
 void ImageHandler::startGeneticAlgorithm(int maxGeneration) {
     vector<char> idealGenome = createIdealGenome();
     //createIdealGenome();
-    ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
-    //ImageInfo idealCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
-    //idealCharacteristics.debug();
- //   recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
-    Population population(this, &idealCharacteristics, &colorList);
+    ImageInfo idealRectangleCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
+
+    //ImageInfo imageCharacteristics(imageContent, image.getSize().x, image.getSize().y, &colorList);
+    //idealRectangleCharacteristics.debug();
+   // recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
+    Population population(this, &idealRectangleCharacteristics, &colorList);
     population.setMaxGeneration(maxGeneration);
     population.createInitialPopulation();
     while (population.getGeneration() < population.getMaxGeneration()){
         population.selection();
         population.crossover();
     }
+   //recolorWhiteRectangle(idealRectangleCharacteristics.getImageContent(), whiteRectangleWidth, whiteRectangleHeight, 1);
 }
 
 void ImageHandler::printContents() {
@@ -158,7 +179,8 @@ void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, i
 }
 
 void ImageHandler::saveChangesToImageFile(int generation) {
-    image.saveToFile("output/out" + to_string(generation) + ".png");
+    image.saveToFile("output/out.png");
+    //image.saveToFile("output/out" + to_string(generation) + ".png");
 }
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {

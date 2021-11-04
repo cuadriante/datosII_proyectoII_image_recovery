@@ -38,17 +38,26 @@ void Individual::createIndividual(bool randomize) {
 
 
 void Individual::updateFitness(ImageInfo *idealCharacteristics) {
-    imageInfo = new ImageInfo(genome, width, height, colorList);
+    //imageInfo = new ImageInfo(genome, width, height, colorList);
     frequencyFitnessParameter = 0;
     fitness = 0;
 
-    for(int x = 0; x < width; x++){
-        for(int y = 0; y < height; y++){
-            if (genome.at(y + x * height) != idealCharacteristics->getImageContentElement(y + x * height)){
+    for(int i = 0; i < width*height; i++){
+        if (genome.at(i) != idealCharacteristics->getImageContentElement(i)){
                 fitness++;
             }
-        }
     }
+
+//    for(int x = 0; x < width; x++){
+//        for(int y = 0; y < height; y++){
+////            if (genome.at(y + x * height) != idealCharacteristics->getImageContentElement(y + x * height)){
+////                fitness++;
+////            }
+//            if (genome.at(x + y * width) != idealCharacteristics->getImageContentElement(x + y * width)){
+//                fitness++;
+//            }
+//        }
+//    }
 }
 
 void Individual::updateFitness3(ImageInfo *idealCharacteristics) {

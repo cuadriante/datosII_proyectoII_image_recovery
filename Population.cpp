@@ -42,8 +42,6 @@ void Population::crossover() {
     Individual * parent1 = searchSpace[0];
     Individual * parent2 = searchSpace[1];
 
-
-
     //int crossoverPoint = parent1->getGenome().size()/2;
     vector<char> newGenome1; // = new vector<char>;
     newGenome1.reserve(genomeSize);
@@ -75,16 +73,12 @@ void Population::crossover() {
         searchSpace.push_back(individual);
     }
 
-    if (mutate){
-        for(int i = 3; i < searchSpace.size(); i++){
-            mutation(searchSpace.at(i));
-        }
-
+    for(int i = 3; i < searchSpace.size(); i++){
+        mutation(searchSpace.at(i));
     }
-    if (invert){
-        for(int i = 3; i < searchSpace.size(); i++){
-            inversion(searchSpace.at(i));
-        }
+
+    for(int i = 3; i < searchSpace.size(); i++){
+        inversion(searchSpace.at(i));
     }
 
     for(Individual * individual : searchSpace){
@@ -100,24 +94,37 @@ void Population::crossover() {
 
 void Population::mutation(Individual *individual) {
     srand((unsigned int)time(NULL));
-    int mutations = rand() % (int)(genomeSize*0.1);
-    while(mutations > 0){
-        int geneIndex = rand() % genomeSize;
-        char newColorIndex = rand() % colorList->size();
-        individual->setGene(geneIndex, newColorIndex);
-        mutations--;
+    srand((unsigned int)time(NULL));
+    bool mutate = (rand()% 1) == 0;
+    if (mutate) {
+        int mutations = rand() % (int) (genomeSize * 0.1);
+        while (mutations > 0) {
+            int geneIndex = rand() % genomeSize;
+            char newColorIndex = rand() % colorList->size();
+            individual->setGene(geneIndex, newColorIndex);
+            mutations--;
+        }
     }
 }
 
 void Population::inversion(Individual *individual) {
     srand((unsigned int)time(NULL));
-    int startPoint = rand() % (genomeSize - 101);
-    int endPoint = startPoint + 100;
-    for (int i = startPoint; i <= endPoint; i++){
-        char newGene = rand() % (colorList->size() - 1);
-        //char newGene = (colorList->size() + i) % colorList->size();
-        //char newGene = (colorList->size() + i) % colorList->size();
-        individual->setGene(i, newGene);
+    bool invert = (rand()% 10) == 0;
+    if (invert){
+        int y = rand()% height;
+        for (int x = 0; x < width; x++){
+            char ogGene = individual->getGene(y + x*height);
+            char newGene = (ogGene + 1) % (colorList->size() - 1);
+            individual->setGene(y + x*height, newGene);
+        }
+//        int startPoint = rand() % (genomeSize - 101);
+//        int endPoint = startPoint + 100;
+//        for (int i = startPoint; i <= endPoint; i++){
+//            char newGene = rand() % (colorList->size() - 1);
+//            //char newGene = (colorList->size() + i) % colorList->size();
+//            //char newGene = (colorList->size() + i) % colorList->size();
+//            individual->setGene(i, newGene);
+//        }
     }
 }
 

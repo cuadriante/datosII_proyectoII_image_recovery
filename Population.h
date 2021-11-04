@@ -22,8 +22,6 @@ private:
     int genomeSize = 0;
     int generation = 0;
     int maxGeneration = 10;
-    bool mutate = true;
-    bool invert = true;
     ImageHandler * imageHandler;
     double bestFitness = -1;
     int startPointX = 0;

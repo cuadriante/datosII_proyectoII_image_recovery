@@ -15,7 +15,7 @@ int imageGenerations = 0;
 int generationIndex = 0;
 ImageHandler imageHandler;
 
-int main() {
+int startUI() {
 
     // Load test image
     //ImageHandler imageHandler("verticalStripesPattern.png");
@@ -152,4 +152,15 @@ int main() {
         //imageHandler.analyzeImage();
     }
     return 0;
+}
+
+int test(){
+    imageHandler.analyzeImage("diagonalStripesPattern.png");
+    //imageHandler.startGeneticAlgorithm(10);
+}
+
+
+int main(){
+    startUI();
+    //test();
 }
