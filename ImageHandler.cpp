@@ -12,7 +12,11 @@ ImageHandler::ImageHandler(String imageName) {
     }
 }
 
-[[noreturn]] void ImageHandler::analyzeImage() {
+[[noreturn]] void ImageHandler::analyzeImage(String imageName) {
+
+    if (!image.loadFromFile(imageName)) {
+        cout << "Error: Could not load image." << endl;
+    }
 
     int x;
     int y;
@@ -66,9 +70,8 @@ ImageHandler::ImageHandler(String imageName) {
         }
     }
 
-    saveChangesToImageFile();
+    saveChangesToImageFile(0);
     printContents();
-    startGeneticAlgorithm();
 }
 
 vector<char> ImageHandler::createIdealGenome() {
@@ -95,7 +98,7 @@ vector<char> ImageHandler::createIdealGenome() {
     return idealGenome;
 }
 
-void ImageHandler::startGeneticAlgorithm() {
+void ImageHandler::startGeneticAlgorithm(int maxGeneration) {
     vector<char> idealGenome = createIdealGenome();
     //createIdealGenome();
     ImageInfo idealCharacteristics(idealGenome, whiteRectangleWidth, whiteRectangleHeight, &colorList);
@@ -103,7 +106,7 @@ void ImageHandler::startGeneticAlgorithm() {
     //idealCharacteristics.debug();
  //   recolorWhiteRectangle(idealGenome, whiteRectangleWidth + 1, whiteRectangleHeight + 1);
     Population population(this, &idealCharacteristics, &colorList);
-    population.setMaxGeneration(100000);
+    population.setMaxGeneration(maxGeneration);
     population.createInitialPopulation();
     while (population.getGeneration() < population.getMaxGeneration()){
         population.selection();
@@ -141,21 +144,21 @@ void ImageHandler::recolorInitialWhiteRectangle() {
         }
     }
 
-    saveChangesToImageFile();
+    saveChangesToImageFile(0);
 }
 
-void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height) {
+void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height, int generation) {
     for (int x = 0; x < width; x++){
         for(int y = 0; y < height; y++){
             Color newColor = colorList[newPixelSetIndex.at(y + x * height)].getColor();
             image.setPixel(x+whiteRectangleCoordinates[0], y+whiteRectangleCoordinates[1], newColor);
         }
     }
-    saveChangesToImageFile();
+    saveChangesToImageFile(generation);
 }
 
-void ImageHandler::saveChangesToImageFile() {
-    image.saveToFile("output/out.png");
+void ImageHandler::saveChangesToImageFile(int generation) {
+    image.saveToFile("output/out" + to_string(generation) + ".png");
 }
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {
@@ -172,5 +175,9 @@ const int *ImageHandler::getWhiteRectangleCoordinates() const {
 
 const Image &ImageHandler::getImage() const {
     return image;
+}
+
+ImageHandler::ImageHandler() {
+
 }
 

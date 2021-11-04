@@ -33,11 +33,11 @@ private:
 public:
     explicit ImageHandler(String imageName);
 
-    [[noreturn]] void analyzeImage();
+    [[noreturn]] void analyzeImage(String imageName);
 
     void recolorInitialWhiteRectangle();
 
-    void saveChangesToImageFile();
+    void saveChangesToImageFile(int generation);
 
     void calculateColorPercentages();
 
@@ -51,11 +51,13 @@ public:
 
     const Image &getImage() const;
 
-    void recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height);
+    void recolorWhiteRectangle(const vector<char> &newPixelSetIndex, int width, int height, int generation);
 
-    void startGeneticAlgorithm();
+    void startGeneticAlgorithm(int maxGeneration);
 
     vector<char> createIdealGenome();
+
+    ImageHandler();
 };
 
 

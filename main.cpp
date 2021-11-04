@@ -13,14 +13,9 @@ string imagepath = "";
 string stringImgGenerations = "";
 int imageGenerations = 0;
 int generationIndex = 0;
+ImageHandler imageHandler;
 
 int main() {
-
-    // #####################################################################################
-
-    // Agregar TODA la carpeta "appMedia" al cmake para que le cargue las imagenes de la GUI
-
-    // #####################################################################################
 
     // Load test image
     //ImageHandler imageHandler("verticalStripesPattern.png");
@@ -80,6 +75,7 @@ int main() {
                             if (interface == 1) {
                                 imagepath = displayer.getText();
                                 displayer.setImage(imagepath);
+                                imageHandler.analyzeImage(imagepath);
                                 // #####################################################################################
 
                                 // La variable image path tiene la ubicación de la imagen que ingresó el usuario
@@ -90,6 +86,8 @@ int main() {
                             } else if (interface == 2) {
                                 stringImgGenerations = displayer.getText();
                                 imageGenerations = stoi(stringImgGenerations);
+                                imageHandler.startGeneticAlgorithm(imageGenerations);
+
 
                                 // #####################################################################################
 

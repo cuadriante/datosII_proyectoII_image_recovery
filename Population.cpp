@@ -134,8 +134,8 @@ void Population::solution(Individual *individual) {
         bestFitness = individual->getFitness();
         cout << "Gen: " << generation << endl;
         cout << "fitness: " << individual->getFitness() << endl;
-        imageHandler->recolorWhiteRectangle(individual->getGenome(), width, height);
     }
+    imageHandler->recolorWhiteRectangle(individual->getGenome(), width, height, generation);
     generation ++;
     //XMLFile->clearFile();
 
