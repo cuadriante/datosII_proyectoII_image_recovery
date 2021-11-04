@@ -72,7 +72,7 @@ ImageHandler::ImageHandler(String imageName) {
 
     saveChangesToImageFile(0);
     printContents();
-   // startGeneticAlgorithm(10000);
+    //startGeneticAlgorithm(10000);
 }
 
 vector<char> ImageHandler::createIdealGenome() {

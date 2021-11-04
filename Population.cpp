@@ -17,6 +17,15 @@ Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristi
 }
 
 void Population::createInitialPopulation() {
+//    for (char colorIndex = 0; colorIndex < colorList->size(); colorIndex++){
+//        Individual * individual = new Individual(width, height, colorList, false, startPointX, startPointY);
+//        for(int i = 0; i < height*width; i++){
+//            individual->setGene(i, colorIndex);
+//        }
+//        individual->updateFitness(idealCharacteristics);
+//        searchSpace.push_back(individual);
+//    }
+
     while(searchSpace.size() < POPULATION_SIZE){
         Individual * individual = new Individual(width, height, colorList, true, startPointX, startPointY);
         individual->updateFitness(idealCharacteristics);
@@ -73,11 +82,11 @@ void Population::crossover() {
         searchSpace.push_back(individual);
     }
 
-    for(int i = 3; i < searchSpace.size(); i++){
+    for(int i = 4; i < searchSpace.size(); i++){
         mutation(searchSpace.at(i));
     }
 
-    for(int i = 3; i < searchSpace.size(); i++){
+    for(int i = 4; i < searchSpace.size(); i++){
         inversion(searchSpace.at(i));
     }
 
@@ -97,13 +106,26 @@ void Population::mutation(Individual *individual) {
     srand((unsigned int)time(NULL));
     bool mutate = (rand()% 1) == 0;
     if (mutate) {
-        int mutations = rand() % (int) (genomeSize * 0.1);
-        while (mutations > 0) {
+        bool mutated = false;
+        int tries = 100;
+        while(!mutated && tries > 0){
             int geneIndex = rand() % genomeSize;
-            char newColorIndex = rand() % colorList->size();
-            individual->setGene(geneIndex, newColorIndex);
-            mutations--;
+            char ogGene = individual->getGene(geneIndex);
+            if (idealCharacteristics->getImageContentElement(geneIndex) != ogGene){
+                char newColorIndex = (ogGene + 1) % colorList->size();
+                individual->setGene(geneIndex, newColorIndex);
+                mutated = true;
+            }
+            tries--;
         }
+        //int mutations = rand() % (int) (genomeSize * 0.1);
+        //while (mutations > 0) {
+//            int geneIndex = rand() % genomeSize;
+//            char ogGene = individual->getGene(geneIndex);
+//            char newColorIndex = (ogGene + 1) % colorList->size();
+//            individual->setGene(geneIndex, newColorIndex);
+         //   mutations--;
+       // }
     }
 }
 

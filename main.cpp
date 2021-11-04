@@ -155,7 +155,7 @@ int startUI() {
 }
 
 int test(){
-    imageHandler.analyzeImage("diagonalStripesPattern.png");
+    //imageHandler.analyzeImage("horizontalStripesPattern.png");
     //imageHandler.startGeneticAlgorithm(10);
 }
 
