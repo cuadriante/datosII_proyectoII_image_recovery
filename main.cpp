@@ -102,7 +102,7 @@ int main() {
                                 // "imagen resultado" para mostrarla en pantalla
 
                                 // A este setImage hay que configurarle bien el path de las imagenes de salida
-                                displayer.setImage("out" + to_string(imageGenerations) + ".png");
+                                displayer.setImage("output/out" + to_string(imageGenerations) + ".png");
                                 generationIndex = imageGenerations;
                                 displayer.setIndex(generationIndex);
                             }
@@ -126,7 +126,7 @@ int main() {
                     displayer.setIndex(generationIndex);
 
                     //Aquí también tiene que cambiar el path
-                    displayer.setImage("out" + to_string(generationIndex) + ".png");
+                    displayer.setImage("output/out" + to_string(generationIndex) + ".png");
                 }
             }
             if (Keyboard::isKeyPressed(Keyboard::Right)) {
@@ -139,7 +139,7 @@ int main() {
                     displayer.setIndex(generationIndex);
 
                     // Aquí también tiene que cambiar el path
-                    displayer.setImage("out" + to_string(generationIndex) + ".png");
+                    displayer.setImage("output/out" + to_string(generationIndex) + ".png");
 
                 }
             }
