@@ -17,14 +17,6 @@ Population::Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristi
 }
 
 void Population::createInitialPopulation() {
-//    for (char colorIndex = 0; colorIndex < colorList->size(); colorIndex++){
-//        Individual * individual = new Individual(width, height, colorList, false, startPointX, startPointY);
-//        for(int i = 0; i < height*width; i++){
-//            individual->setGene(i, colorIndex);
-//        }
-//        individual->updateFitness(idealCharacteristics);
-//        searchSpace.push_back(individual);
-//    }
 
     while(searchSpace.size() < POPULATION_SIZE){
         Individual * individual = new Individual(width, height, colorList, true, startPointX, startPointY);
