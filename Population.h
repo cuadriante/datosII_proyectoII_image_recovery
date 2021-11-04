@@ -26,7 +26,7 @@ private:
     double bestFitness = -1;
     int startPointX = 0;
     int startPointY = 0;
-    XMLConfig * XMLFile;
+//    XMLConfig * XMLFile;
 
 public:
 

@@ -153,7 +153,7 @@ int Population::getMaxGeneration() const {
 }
 
 void Population::CreateXMLFile() {
-    XMLFile = new XMLConfig(searchSpace, genomeSize, generation);
+//    XMLFile = new XMLConfig(searchSpace, genomeSize, generation);
 }
 
 

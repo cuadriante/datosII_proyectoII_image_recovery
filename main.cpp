@@ -102,9 +102,9 @@ int startUI() {
                                 // "imagen resultado" para mostrarla en pantalla
 
                                 // A este setImage hay que configurarle bien el path de las imagenes de salida
-                                displayer.setImage("output/out" + to_string(imageGenerations) + ".png");
-                                generationIndex = imageGenerations;
-                                displayer.setIndex(generationIndex);
+                                displayer.setImage("output/out" + to_string(imageGenerations - 2) + ".png");
+                                generationIndex = imageGenerations - 2;
+                                displayer.setIndex(generationIndex + 1);
                             }
                             interface += 1;
                             displayer.setScreen(interface);
@@ -118,12 +118,12 @@ int startUI() {
 
             if (Keyboard::isKeyPressed(Keyboard::Left)) {
                 if (interface == 3) {
-                    if (generationIndex == 0) {
-                        generationIndex = imageGenerations;
+                    if (generationIndex == -1) {
+                        generationIndex = imageGenerations - 2;
                     } else {
                         generationIndex -= 1;
                     }
-                    displayer.setIndex(generationIndex);
+                    displayer.setIndex(generationIndex + 1);
 
                     //Aquí también tiene que cambiar el path
                     displayer.setImage("output/out" + to_string(generationIndex) + ".png");
@@ -131,12 +131,12 @@ int startUI() {
             }
             if (Keyboard::isKeyPressed(Keyboard::Right)) {
                 if (interface == 3) {
-                    if (generationIndex == imageGenerations) {
-                        generationIndex = 0;
+                    if (generationIndex == imageGenerations - 2) {
+                        generationIndex = -1;
                     } else {
                         generationIndex += 1;
                     }
-                    displayer.setIndex(generationIndex);
+                    displayer.setIndex(generationIndex + 1);
 
                     // Aquí también tiene que cambiar el path
                     displayer.setImage("output/out" + to_string(generationIndex) + ".png");

@@ -179,8 +179,8 @@ void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, i
 }
 
 void ImageHandler::saveChangesToImageFile(int generation) {
-    image.saveToFile("output/out.png");
-    //image.saveToFile("output/out" + to_string(generation) + ".png");
+//    image.saveToFile("output/out.png");
+    image.saveToFile("output/out" + to_string(generation - 1) + ".png");
 }
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {
