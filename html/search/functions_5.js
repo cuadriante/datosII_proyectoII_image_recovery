@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['getblue_149',['getBlue',['../class_color_info.html#a588ad373727225adf69a06a8ea235d38',1,'ColorInfo']]],
+  ['getcolor_150',['getColor',['../class_color_info.html#a1b6f3c546dad831a4af4c10fff471044',1,'ColorInfo']]],
+  ['getcolorfrequencypercentages_151',['getColorFrequencyPercentages',['../class_image_info.html#a9728dd8b379c8132d4ea4074d4830d46',1,'ImageInfo']]],
+  ['getcolorlist_152',['getColorList',['../class_image_handler.html#a6f13cae59b885a6cd43851a8ca39a71b',1,'ImageHandler']]],
+  ['getcolorrelationspercentage_153',['getColorRelationsPercentage',['../class_image_info.html#a35a0d2c0f9ad7bf95d64ee6935e42251',1,'ImageInfo']]],
+  ['getfitness_154',['getFitness',['../class_individual.html#a9bba01cc9f36661b818923906540fd74',1,'Individual']]],
+  ['getgene_155',['getGene',['../class_individual.html#acf72181ed8048fe4286d76b33368123e',1,'Individual']]],
+  ['getgeneration_156',['getGeneration',['../class_population.html#a31ab19db6499f43227af6be12b45afcc',1,'Population']]],
+  ['getgenome_157',['getGenome',['../class_individual.html#a5e7cb940c36b282cd916448d2a76bd5b',1,'Individual']]],
+  ['getgreen_158',['getGreen',['../class_color_info.html#acf75a73cfeeecfb83d01bf5690ccced9',1,'ColorInfo']]],
+  ['getimage_159',['getImage',['../class_image_handler.html#a0ff8cba9246a443e29329992aaacc61b',1,'ImageHandler']]],
+  ['getimagecontent_160',['getImageContent',['../class_image_info.html#a81a9e812c8d59dead07b1345620290e0',1,'ImageInfo']]],
+  ['getimagecontentelement_161',['getImageContentElement',['../class_image_info.html#acf5a330b4c0ef9accc835eeb9079ae6d',1,'ImageInfo']]],
+  ['getmaxgeneration_162',['getMaxGeneration',['../class_population.html#a2f530a9ac08669efca1e906f127b4714',1,'Population']]],
+  ['getnblue_163',['getNBlue',['../class_color_info.html#a352c04766d1b2d8d35a58410a9166bce',1,'ColorInfo']]],
+  ['getngreen_164',['getNGreen',['../class_color_info.html#a30113cc930db4249e7b1dc014c90946d',1,'ColorInfo']]],
+  ['getnred_165',['getNRed',['../class_color_info.html#a29936d73259a789a043008743cee4b1f',1,'ColorInfo']]],
+  ['getred_166',['getRed',['../class_color_info.html#a0a077834d239502b42134377c348ac74',1,'ColorInfo']]],
+  ['gettext_167',['getText',['../class_screen_setter.html#a2d4115d0827d9c26c2e7c171b0fc71ce',1,'ScreenSetter::getText()'],['../class_textbox.html#a378f90095c77fd91d1494b1d774acf22',1,'Textbox::getText()']]],
+  ['getwhiterectangle_168',['getWhiteRectangle',['../class_image_handler.html#a891e8b07dabd877093bba1e21a118dfd',1,'ImageHandler']]],
+  ['getwhiterectanglecoordinates_169',['getWhiteRectangleCoordinates',['../class_image_handler.html#aaf70393093c94502dff28e99882b5389',1,'ImageHandler']]]
+];

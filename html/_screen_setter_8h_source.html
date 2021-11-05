@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Image Recovery: Fichero Fuente ScreenSetter.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Image Recovery
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Recuperación de imágenes</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ScreenSetter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_screen_setter_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_SCREENSETTER_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define DATOSII_PROYECTOII_IMAGE_RECOVERY_SCREENSETTER_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_textbox_8h.html">Textbox.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_button_8h.html">Button.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using namespace </span>sf;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_screen_setter.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_screen_setter.html">ScreenSetter</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_screen_setter.html#ab3f0359eb46db7919514daa0e7feaab4">   23</a></span>&#160;    <a class="code" href="class_screen_setter.html#ab3f0359eb46db7919514daa0e7feaab4">ScreenSetter</a>() {}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_screen_setter.html#aa0f74f2429d9dd630b79dfceab8d8b41">   29</a></span>&#160;    <a class="code" href="class_screen_setter.html#aa0f74f2429d9dd630b79dfceab8d8b41">ScreenSetter</a>(<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a856cc94d4393781f491048ace52a3037">interface</a>) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        screen = <a class="code" href="main_8cpp.html#a856cc94d4393781f491048ace52a3037">interface</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        GistLight.loadFromFile(<span class="stringliteral">&quot;GistLight.otf&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        index.setFont(GistLight);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        index.setCharacterSize(45);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        index.setColor(Color(39,137,179,255));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        index.setPosition({625,716});</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_screen_setter.html#ac94a6d8989f903758d273a9a32d456fe">   43</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#ac94a6d8989f903758d273a9a32d456fe">setBackground</a> (<span class="keywordtype">string</span> location, Vector2f size) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        backgroundTexture.loadFromFile(location);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        background.setSize(size);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        background.setPosition({0,0});</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        background.setTexture(&amp;backgroundTexture);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_screen_setter.html#ae283340be8441083851eec5f9e233483">   54</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#ae283340be8441083851eec5f9e233483">setDisplay</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (screen == 1) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            pathEntry.setFont(GistLight);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            pathEntry.setPosition({110, 430});</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            textbox.setSize({800,40});</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            textbox.setFillColor(Color(189,195,199,100));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            textbox.setPosition(97,430);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            btn.setPosition({655,480});</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            btn.setImage(<span class="stringliteral">&quot;appMedia/images/RecovButton.png&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            titleTexture.loadFromFile(<span class="stringliteral">&quot;appMedia/images/Name.png&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            title.setTexture(&amp;titleTexture);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            title.setPosition({100,200});</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            title.setSize({800,229});</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            generationsEntry.setFont(GistLight);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            generationsEntry.setSelected(<span class="keyword">false</span>, screen);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            setBackground(<span class="stringliteral">&quot;appMedia/images/generation background.png&quot;</span>, Vector2f(1000,800));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            image.setSize({250,250});</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            image.setPosition(110,490);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            generationsEntry.setPosition({110, 430});</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            textbox.setSize({808,40});</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            textbox.setFillColor(Color(189,195,199,100));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            textbox.setPosition(97,430);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            btn.setPosition({655,480});</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            btn.setImage(<span class="stringliteral">&quot;appMedia/images/choose.png&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 3) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            setBackground(<span class="stringliteral">&quot;appMedia/images/generation display.png&quot;</span>, Vector2f(1000,800));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a9abe099ba39d54b6c549a05b801fc935">   88</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a9abe099ba39d54b6c549a05b801fc935">setSelected</a>(<span class="keywordtype">bool</span> sel) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (screen == 1) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            pathEntry.setSelected(sel, screen);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            generationsEntry.setSelected(sel, screen);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_screen_setter.html#ae44cba49d2d5e519bac21a5112bf09c1">  100</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#ae44cba49d2d5e519bac21a5112bf09c1">setIndex</a>(<span class="keywordtype">int</span> indx) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a> = indx;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        index.setString(to_string(<a class="code" href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a> + 1));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a2935b85fc18c0e07dc25cf3b114be56e">  109</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a2935b85fc18c0e07dc25cf3b114be56e">typedOn</a>(Event input) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (screen == 1) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            pathEntry.typedOn(input);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            generationsEntry.typedOn(input);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a284db2e01f38535ae8e5637b0dff7f73">  122</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_screen_setter.html#a284db2e01f38535ae8e5637b0dff7f73">isMouseOver</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        btn.isMouseOver(window);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a3dbe02cbc41feb13f0fcddd13379ee78">  130</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a3dbe02cbc41feb13f0fcddd13379ee78">setBtnImage</a>(<span class="keywordtype">string</span> location) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        btn.setImage(location);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="class_screen_setter.html#aa1e06b3eecb9a5a1aca3b2020c5ee8a1">  138</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#aa1e06b3eecb9a5a1aca3b2020c5ee8a1">setImage</a>(<span class="keywordtype">string</span> path) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        imageTexture.loadFromFile(path);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        image.setTexture(&amp;imageTexture);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a197ede1c5da071bd6e26c031025c2c18">  147</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a197ede1c5da071bd6e26c031025c2c18">setImageSize</a>(Vector2f size) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        image.setSize(size);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a6bf410cd64c466727cd7a38307bafd74">  155</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a6bf410cd64c466727cd7a38307bafd74">setImagePosition</a>(Vector2f pos) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        image.setPosition(pos);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a3a1e5a51b4354be7283a6d80b3ff4523">  163</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a3a1e5a51b4354be7283a6d80b3ff4523">drawTo</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">if</span> (screen == 1){</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            window.draw(background);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            window.draw(textbox);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            pathEntry.drawTo(window);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            btn.drawTo(window);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            window.draw(title);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            window.draw(background);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            window.draw(textbox);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            generationsEntry.drawTo(window);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            btn.drawTo(window);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            window.draw(image);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 3) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            window.draw(background);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            window.draw(image);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            window.draw(index);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a2d4115d0827d9c26c2e7c171b0fc71ce">  187</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="class_screen_setter.html#a2d4115d0827d9c26c2e7c171b0fc71ce">getText</a>() {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">if</span> (screen == 1) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">return</span> pathEntry.getText();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> generationsEntry.getText();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_screen_setter.html#a30b042db71d9fddc083afe1c3cd7ebbd">  199</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_screen_setter.html#a30b042db71d9fddc083afe1c3cd7ebbd">setScreen</a>(<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a856cc94d4393781f491048ace52a3037">interface</a>) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        screen = <a class="code" href="main_8cpp.html#a856cc94d4393781f491048ace52a3037">interface</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    Texture backgroundTexture, titleTexture, imageTexture;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    RectangleShape background, textbox, title, image;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="class_textbox.html">Textbox</a> pathEntry, generationsEntry;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">int</span> screen, <a class="code" href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    Font GistLight;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="class_button.html">Button</a> btn;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    Text index;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;};</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_screen_setter_html"><div class="ttname"><a href="class_screen_setter.html">ScreenSetter</a></div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:21</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a2d4115d0827d9c26c2e7c171b0fc71ce"><div class="ttname"><a href="class_screen_setter.html#a2d4115d0827d9c26c2e7c171b0fc71ce">ScreenSetter::getText</a></div><div class="ttdeci">string getText()</div><div class="ttdoc">Llama al método getText de la clases Textbox.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:187</div></div>
+<div class="ttc" id="aclass_screen_setter_html_aa1e06b3eecb9a5a1aca3b2020c5ee8a1"><div class="ttname"><a href="class_screen_setter.html#aa1e06b3eecb9a5a1aca3b2020c5ee8a1">ScreenSetter::setImage</a></div><div class="ttdeci">void setImage(string path)</div><div class="ttdoc">Establce la imagen que se muestra mediante la variable image.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:138</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a3dbe02cbc41feb13f0fcddd13379ee78"><div class="ttname"><a href="class_screen_setter.html#a3dbe02cbc41feb13f0fcddd13379ee78">ScreenSetter::setBtnImage</a></div><div class="ttdeci">void setBtnImage(string location)</div><div class="ttdoc">Llama al método setImage de la clase Button.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:130</div></div>
+<div class="ttc" id="a_button_8h_html"><div class="ttname"><a href="_button_8h.html">Button.h</a></div><div class="ttdoc">Crea botones solicitados por la clase ScreenSetter.</div></div>
+<div class="ttc" id="a_textbox_8h_html"><div class="ttname"><a href="_textbox_8h.html">Textbox.h</a></div></div>
+<div class="ttc" id="aclass_screen_setter_html_ab3f0359eb46db7919514daa0e7feaab4"><div class="ttname"><a href="class_screen_setter.html#ab3f0359eb46db7919514daa0e7feaab4">ScreenSetter::ScreenSetter</a></div><div class="ttdeci">ScreenSetter()</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:23</div></div>
+<div class="ttc" id="amain_8cpp_html_a856cc94d4393781f491048ace52a3037"><div class="ttname"><a href="main_8cpp.html#a856cc94d4393781f491048ace52a3037">interface</a></div><div class="ttdeci">int interface</div><div class="ttdef"><b>Definition:</b> main.cpp:11</div></div>
+<div class="ttc" id="aclass_textbox_html"><div class="ttname"><a href="class_textbox.html">Textbox</a></div><div class="ttdef"><b>Definition:</b> Textbox.h:23</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a197ede1c5da071bd6e26c031025c2c18"><div class="ttname"><a href="class_screen_setter.html#a197ede1c5da071bd6e26c031025c2c18">ScreenSetter::setImageSize</a></div><div class="ttdeci">void setImageSize(Vector2f size)</div><div class="ttdoc">Establece el tamaño de la imagen.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:147</div></div>
+<div class="ttc" id="amain_8cpp_html_a2a4c8b0dbad6ed12ea19b49c048ce062"><div class="ttname"><a href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a></div><div class="ttdeci">int generationIndex</div><div class="ttdef"><b>Definition:</b> main.cpp:15</div></div>
+<div class="ttc" id="aclass_screen_setter_html_ac94a6d8989f903758d273a9a32d456fe"><div class="ttname"><a href="class_screen_setter.html#ac94a6d8989f903758d273a9a32d456fe">ScreenSetter::setBackground</a></div><div class="ttdeci">void setBackground(string location, Vector2f size)</div><div class="ttdoc">Almacena la imagen que se coloca en el fondo.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:43</div></div>
+<div class="ttc" id="aclass_button_html"><div class="ttname"><a href="class_button.html">Button</a></div><div class="ttdef"><b>Definition:</b> Button.h:19</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a3a1e5a51b4354be7283a6d80b3ff4523"><div class="ttname"><a href="class_screen_setter.html#a3a1e5a51b4354be7283a6d80b3ff4523">ScreenSetter::drawTo</a></div><div class="ttdeci">void drawTo(RenderWindow &amp;window)</div><div class="ttdoc">Dibuja todos los elementos de acuerdo a la pantalla actual.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:163</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a9abe099ba39d54b6c549a05b801fc935"><div class="ttname"><a href="class_screen_setter.html#a9abe099ba39d54b6c549a05b801fc935">ScreenSetter::setSelected</a></div><div class="ttdeci">void setSelected(bool sel)</div><div class="ttdoc">Activa y desactiva la entrada de texto del usuario.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:88</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a284db2e01f38535ae8e5637b0dff7f73"><div class="ttname"><a href="class_screen_setter.html#a284db2e01f38535ae8e5637b0dff7f73">ScreenSetter::isMouseOver</a></div><div class="ttdeci">bool isMouseOver(RenderWindow &amp;window)</div><div class="ttdoc">Consulta a la clase Button si el mouse está posicionado sobre el botón.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:122</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a2935b85fc18c0e07dc25cf3b114be56e"><div class="ttname"><a href="class_screen_setter.html#a2935b85fc18c0e07dc25cf3b114be56e">ScreenSetter::typedOn</a></div><div class="ttdeci">void typedOn(Event input)</div><div class="ttdoc">Ingresa los caracteres seleccionados por el usuario.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:109</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a6bf410cd64c466727cd7a38307bafd74"><div class="ttname"><a href="class_screen_setter.html#a6bf410cd64c466727cd7a38307bafd74">ScreenSetter::setImagePosition</a></div><div class="ttdeci">void setImagePosition(Vector2f pos)</div><div class="ttdoc">Establece la posición de la imagen en pantalla.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:155</div></div>
+<div class="ttc" id="aclass_screen_setter_html_a30b042db71d9fddc083afe1c3cd7ebbd"><div class="ttname"><a href="class_screen_setter.html#a30b042db71d9fddc083afe1c3cd7ebbd">ScreenSetter::setScreen</a></div><div class="ttdeci">void setScreen(int interface)</div><div class="ttdoc">Establece el nivel de pantalla actual.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:199</div></div>
+<div class="ttc" id="aclass_screen_setter_html_aa0f74f2429d9dd630b79dfceab8d8b41"><div class="ttname"><a href="class_screen_setter.html#aa0f74f2429d9dd630b79dfceab8d8b41">ScreenSetter::ScreenSetter</a></div><div class="ttdeci">ScreenSetter(int interface)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:29</div></div>
+<div class="ttc" id="aclass_screen_setter_html_ae44cba49d2d5e519bac21a5112bf09c1"><div class="ttname"><a href="class_screen_setter.html#ae44cba49d2d5e519bac21a5112bf09c1">ScreenSetter::setIndex</a></div><div class="ttdeci">void setIndex(int indx)</div><div class="ttdoc">Indica cuál es la generación mostrada en pantalla.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:100</div></div>
+<div class="ttc" id="aclass_screen_setter_html_ae283340be8441083851eec5f9e233483"><div class="ttname"><a href="class_screen_setter.html#ae283340be8441083851eec5f9e233483">ScreenSetter::setDisplay</a></div><div class="ttdeci">void setDisplay(RenderWindow &amp;window)</div><div class="ttdoc">Ordena todos los elementos en pantalla de acuerdo al nivel de progreso.</div><div class="ttdef"><b>Definition:</b> ScreenSetter.h:54</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

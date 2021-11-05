@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['savechangestoimagefile_184',['saveChangesToImageFile',['../class_image_handler.html#af8510e832185590459d2b046cadfc9c7',1,'ImageHandler']]],
+  ['screensetter_185',['ScreenSetter',['../class_screen_setter.html#ab3f0359eb46db7919514daa0e7feaab4',1,'ScreenSetter::ScreenSetter()'],['../class_screen_setter.html#aa0f74f2429d9dd630b79dfceab8d8b41',1,'ScreenSetter::ScreenSetter(int interface)']]],
+  ['selection_186',['selection',['../class_population.html#a8c769badc84e23bd31a3ce0120abf054',1,'Population']]],
+  ['setbackground_187',['setBackground',['../class_screen_setter.html#ac94a6d8989f903758d273a9a32d456fe',1,'ScreenSetter']]],
+  ['setbtnimage_188',['setBtnImage',['../class_screen_setter.html#a3dbe02cbc41feb13f0fcddd13379ee78',1,'ScreenSetter']]],
+  ['setcolor_189',['setColor',['../class_color_info.html#a5659a3b6081881abcd18d183a57ac450',1,'ColorInfo']]],
+  ['setcolorrelationspercentage_190',['setColorRelationsPercentage',['../class_image_info.html#ab4a6d8468c91626a5f1790f58b89ac25',1,'ImageInfo']]],
+  ['setdisplay_191',['setDisplay',['../class_screen_setter.html#ae283340be8441083851eec5f9e233483',1,'ScreenSetter']]],
+  ['setfont_192',['setFont',['../class_textbox.html#adfe898ea27692045b32eb40091eb68bb',1,'Textbox']]],
+  ['setgene_193',['setGene',['../class_individual.html#a625bc0599dceb609e9ad432a0d2d4d63',1,'Individual']]],
+  ['setgenome_194',['setGenome',['../class_individual.html#a3e08f828520f6cd315d3152bed39ad37',1,'Individual']]],
+  ['setimage_195',['setImage',['../class_button.html#a90e31a0ecc2e6412d6b544b76fc4b4cd',1,'Button::setImage()'],['../class_screen_setter.html#aa1e06b3eecb9a5a1aca3b2020c5ee8a1',1,'ScreenSetter::setImage()']]],
+  ['setimageposition_196',['setImagePosition',['../class_screen_setter.html#a6bf410cd64c466727cd7a38307bafd74',1,'ScreenSetter']]],
+  ['setimagesize_197',['setImageSize',['../class_screen_setter.html#a197ede1c5da071bd6e26c031025c2c18',1,'ScreenSetter']]],
+  ['setindex_198',['setIndex',['../class_screen_setter.html#ae44cba49d2d5e519bac21a5112bf09c1',1,'ScreenSetter']]],
+  ['setmaxgeneration_199',['setMaxGeneration',['../class_population.html#ae6f49bf5b7edeaa594bfd192485de50b',1,'Population']]],
+  ['setposition_200',['setPosition',['../class_button.html#ae53e456cf424eddbaf004633fbf91dd4',1,'Button::setPosition()'],['../class_textbox.html#a24ecd21fffef86eb4da360440b6de9a4',1,'Textbox::setPosition()']]],
+  ['setscreen_201',['setScreen',['../class_screen_setter.html#a30b042db71d9fddc083afe1c3cd7ebbd',1,'ScreenSetter']]],
+  ['setselected_202',['setSelected',['../class_screen_setter.html#a9abe099ba39d54b6c549a05b801fc935',1,'ScreenSetter::setSelected()'],['../class_textbox.html#a5f3799c253c6de02e5cbbb18b8ed2cfe',1,'Textbox::setSelected()']]],
+  ['solution_203',['solution',['../class_population.html#a52b401b6e2ffa71ca482bc399dc64c4c',1,'Population']]],
+  ['startgeneticalgorithm_204',['startGeneticAlgorithm',['../class_image_handler.html#aefa1400e2f60616e4b449236f19b3871',1,'ImageHandler']]],
+  ['startui_205',['startUI',['../main_8cpp.html#a57de20e7e200a29bf3767e902799b03a',1,'main.cpp']]]
+];

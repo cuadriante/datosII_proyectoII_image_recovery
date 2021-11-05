@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Image Recovery: Fichero Fuente Button.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Image Recovery
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Recuperación de imágenes</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Button.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_button_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>sf;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_button.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_button.html">Button</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_button.html#a3b36df1ae23c58aedb9e15a713159459">   25</a></span>&#160;    <a class="code" href="class_button.html#a3b36df1ae23c58aedb9e15a713159459">Button</a>() {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        button.setSize({230, 59});</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_button.html#a90e31a0ecc2e6412d6b544b76fc4b4cd">   33</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_button.html#a90e31a0ecc2e6412d6b544b76fc4b4cd">setImage</a>(<span class="keywordtype">string</span> directory) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        image.loadFromFile(directory);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        button.setTexture(&amp;image);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_button.html#ae53e456cf424eddbaf004633fbf91dd4">   42</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_button.html#ae53e456cf424eddbaf004633fbf91dd4">setPosition</a>(Vector2f pos) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        button.setPosition(pos);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_button.html#aada41ddb92c6c4e6f10ec953b3b1ce8a">   50</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_button.html#aada41ddb92c6c4e6f10ec953b3b1ce8a">drawTo</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        window.draw(button);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_button.html#a9b9218525378f299c5a04c73f2ce2b01">   59</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_button.html#a9b9218525378f299c5a04c73f2ce2b01">isMouseOver</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">float</span> mouseX = Mouse::getPosition(window).x;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">float</span> mouseY = Mouse::getPosition(window).y;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">float</span> btnPosX = button.getPosition().x;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">float</span> btnPosY = button.getPosition().y;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">float</span> btnxPosWidth = button.getPosition().x + button.getLocalBounds().width;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">float</span> btnyPosHeight = button.getPosition().y + button.getLocalBounds().height;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span>(mouseX &lt; btnxPosWidth &amp;&amp; mouseX &gt; btnPosX &amp;&amp; mouseY &lt; btnyPosHeight &amp;&amp; mouseY &gt; btnPosY) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    RectangleShape button;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    Texture image;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_button_html_a3b36df1ae23c58aedb9e15a713159459"><div class="ttname"><a href="class_button.html#a3b36df1ae23c58aedb9e15a713159459">Button::Button</a></div><div class="ttdeci">Button()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Button.h:25</div></div>
+<div class="ttc" id="aclass_button_html_ae53e456cf424eddbaf004633fbf91dd4"><div class="ttname"><a href="class_button.html#ae53e456cf424eddbaf004633fbf91dd4">Button::setPosition</a></div><div class="ttdeci">void setPosition(Vector2f pos)</div><div class="ttdoc">Establece la posición en pantalla.</div><div class="ttdef"><b>Definition:</b> Button.h:42</div></div>
+<div class="ttc" id="aclass_button_html_a90e31a0ecc2e6412d6b544b76fc4b4cd"><div class="ttname"><a href="class_button.html#a90e31a0ecc2e6412d6b544b76fc4b4cd">Button::setImage</a></div><div class="ttdeci">void setImage(string directory)</div><div class="ttdoc">Establece la imagen mostrada sobre el botón.</div><div class="ttdef"><b>Definition:</b> Button.h:33</div></div>
+<div class="ttc" id="aclass_button_html"><div class="ttname"><a href="class_button.html">Button</a></div><div class="ttdef"><b>Definition:</b> Button.h:19</div></div>
+<div class="ttc" id="aclass_button_html_aada41ddb92c6c4e6f10ec953b3b1ce8a"><div class="ttname"><a href="class_button.html#aada41ddb92c6c4e6f10ec953b3b1ce8a">Button::drawTo</a></div><div class="ttdeci">void drawTo(RenderWindow &amp;window)</div><div class="ttdoc">Dibuja el botón en la pantalla.</div><div class="ttdef"><b>Definition:</b> Button.h:50</div></div>
+<div class="ttc" id="aclass_button_html_a9b9218525378f299c5a04c73f2ce2b01"><div class="ttname"><a href="class_button.html#a9b9218525378f299c5a04c73f2ce2b01">Button::isMouseOver</a></div><div class="ttdeci">bool isMouseOver(RenderWindow &amp;window)</div><div class="ttdoc">Detecta la posición del mouse para determinar si este se encuentra sobre el botón.</div><div class="ttdef"><b>Definition:</b> Button.h:59</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

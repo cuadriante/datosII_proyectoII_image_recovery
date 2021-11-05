@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Image Recovery: Fichero Fuente Population.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Image Recovery
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Recuperación de imágenes</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Population.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_population_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_individual_8h.html">Individual.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_image_handler_8h.html">ImageHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_x_m_l_config_8h.html">XMLConfig.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_population.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_population.html">Population</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> POPULATION_SIZE = 100;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    vector&lt;Individual *&gt; searchSpace;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    vector&lt;ColorInfo&gt; * colorList;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_image_info.html">ImageInfo</a> * idealCharacteristics;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_individual.html">Individual</a> * offspring[2];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> CROSSOVER_POINT = 0.6;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> width = 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> height = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">int</span> genomeSize = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> generation = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> maxGeneration = 10;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_image_handler.html">ImageHandler</a> * imageHandler;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> bestFitness = -1;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> startPointX = 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> startPointY = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_x_m_l_config.html">XMLConfig</a> * XMLFile;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_population.html#a21be2a49e92ce9b47ff190ba51817ac4">Population</a>(<a class="code" href="class_image_handler.html">ImageHandler</a> * <a class="code" href="main_8cpp.html#a71a71acc2c175824e4826f4145be1267">imageHandler</a>, <a class="code" href="class_image_info.html">ImageInfo</a> * idealCharacteristics, vector&lt;ColorInfo&gt; * colorList);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a058f75589e2a2459a03c7905ed61e891">createInitialPopulation</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a8c769badc84e23bd31a3ce0120abf054">selection</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a4eec039650114260d7b434ff174b4716">crossover</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a62d56cc97269ee7e5969a9340a7a4beb">mutation</a>(<a class="code" href="class_individual.html">Individual</a> *individual);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a959878a10443c8e2470f5b7b6ef7b526">inversion</a>(<a class="code" href="class_individual.html">Individual</a> *individual);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#a52b401b6e2ffa71ca482bc399dc64c4c">solution</a>(<a class="code" href="class_individual.html">Individual</a> * individual);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#aeb7ea9c311f852d6dba06e622fc8bf78">CreateXMLFile</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_population.html#a31ab19db6499f43227af6be12b45afcc">getGeneration</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_population.html#ae6f49bf5b7edeaa594bfd192485de50b">setMaxGeneration</a>(<span class="keywordtype">int</span> maxGeneration);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_population.html#ad7ce801961aedd60abbb16d35704743a">compareFitness</a>(<a class="code" href="class_individual.html">Individual</a> * a, <a class="code" href="class_individual.html">Individual</a> *b);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_population.html#a2f530a9ac08669efca1e906f127b4714">getMaxGeneration</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif //DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_population_html_aeb7ea9c311f852d6dba06e622fc8bf78"><div class="ttname"><a href="class_population.html#aeb7ea9c311f852d6dba06e622fc8bf78">Population::CreateXMLFile</a></div><div class="ttdeci">void CreateXMLFile()</div><div class="ttdoc">Crea archivo XML de la generacion actual.</div><div class="ttdef"><b>Definition:</b> Population.cpp:169</div></div>
+<div class="ttc" id="aclass_population_html_ae6f49bf5b7edeaa594bfd192485de50b"><div class="ttname"><a href="class_population.html#ae6f49bf5b7edeaa594bfd192485de50b">Population::setMaxGeneration</a></div><div class="ttdeci">void setMaxGeneration(int maxGeneration)</div><div class="ttdoc">ACtualiza la maxima generacion.</div><div class="ttdef"><b>Definition:</b> Population.cpp:145</div></div>
+<div class="ttc" id="aclass_population_html_a52b401b6e2ffa71ca482bc399dc64c4c"><div class="ttname"><a href="class_population.html#a52b401b6e2ffa71ca482bc399dc64c4c">Population::solution</a></div><div class="ttdeci">void solution(Individual *individual)</div><div class="ttdoc">Despliega la solucion final en la imagen.</div><div class="ttdef"><b>Definition:</b> Population.cpp:153</div></div>
+<div class="ttc" id="aclass_population_html_a31ab19db6499f43227af6be12b45afcc"><div class="ttname"><a href="class_population.html#a31ab19db6499f43227af6be12b45afcc">Population::getGeneration</a></div><div class="ttdeci">int getGeneration() const</div><div class="ttdoc">Obtiene la generacion.</div><div class="ttdef"><b>Definition:</b> Population.cpp:149</div></div>
+<div class="ttc" id="aclass_population_html_a058f75589e2a2459a03c7905ed61e891"><div class="ttname"><a href="class_population.html#a058f75589e2a2459a03c7905ed61e891">Population::createInitialPopulation</a></div><div class="ttdeci">void createInitialPopulation()</div><div class="ttdoc">Crea poblacion inicial.</div><div class="ttdef"><b>Definition:</b> Population.cpp:19</div></div>
+<div class="ttc" id="aclass_population_html_a4eec039650114260d7b434ff174b4716"><div class="ttname"><a href="class_population.html#a4eec039650114260d7b434ff174b4716">Population::crossover</a></div><div class="ttdeci">void crossover()</div><div class="ttdoc">Combina genoma de dos individuos padres para formar hijos, aplica inversion y mutacion.</div><div class="ttdef"><b>Definition:</b> Population.cpp:42</div></div>
+<div class="ttc" id="aclass_image_info_html"><div class="ttname"><a href="class_image_info.html">ImageInfo</a></div><div class="ttdef"><b>Definition:</b> ImageInfo.h:17</div></div>
+<div class="ttc" id="aclass_population_html_a8c769badc84e23bd31a3ce0120abf054"><div class="ttname"><a href="class_population.html#a8c769badc84e23bd31a3ce0120abf054">Population::selection</a></div><div class="ttdeci">void selection()</div><div class="ttdoc">Selecciona mejores individuos segun fitness.</div><div class="ttdef"><b>Definition:</b> Population.cpp:33</div></div>
+<div class="ttc" id="aclass_x_m_l_config_html"><div class="ttname"><a href="class_x_m_l_config.html">XMLConfig</a></div><div class="ttdef"><b>Definition:</b> XMLConfig.h:21</div></div>
+<div class="ttc" id="aclass_population_html_a2f530a9ac08669efca1e906f127b4714"><div class="ttname"><a href="class_population.html#a2f530a9ac08669efca1e906f127b4714">Population::getMaxGeneration</a></div><div class="ttdeci">int getMaxGeneration() const</div><div class="ttdoc">obtiene la maxima generacion</div><div class="ttdef"><b>Definition:</b> Population.cpp:165</div></div>
+<div class="ttc" id="aclass_population_html_a62d56cc97269ee7e5969a9340a7a4beb"><div class="ttname"><a href="class_population.html#a62d56cc97269ee7e5969a9340a7a4beb">Population::mutation</a></div><div class="ttdeci">void mutation(Individual *individual)</div><div class="ttdoc">Cambia ciertos pixeles de ciertos individuos por el siguiente color en la lista.</div><div class="ttdef"><b>Definition:</b> Population.cpp:96</div></div>
+<div class="ttc" id="aclass_image_handler_html"><div class="ttname"><a href="class_image_handler.html">ImageHandler</a></div><div class="ttdef"><b>Definition:</b> ImageHandler.h:23</div></div>
+<div class="ttc" id="aclass_individual_html"><div class="ttname"><a href="class_individual.html">Individual</a></div><div class="ttdef"><b>Definition:</b> Individual.h:19</div></div>
+<div class="ttc" id="a_image_handler_8h_html"><div class="ttname"><a href="_image_handler_8h.html">ImageHandler.h</a></div></div>
+<div class="ttc" id="a_individual_8h_html"><div class="ttname"><a href="_individual_8h.html">Individual.h</a></div></div>
+<div class="ttc" id="aclass_population_html"><div class="ttname"><a href="class_population.html">Population</a></div><div class="ttdef"><b>Definition:</b> Population.h:16</div></div>
+<div class="ttc" id="amain_8cpp_html_a71a71acc2c175824e4826f4145be1267"><div class="ttname"><a href="main_8cpp.html#a71a71acc2c175824e4826f4145be1267">imageHandler</a></div><div class="ttdeci">ImageHandler imageHandler</div><div class="ttdef"><b>Definition:</b> main.cpp:16</div></div>
+<div class="ttc" id="aclass_population_html_a21be2a49e92ce9b47ff190ba51817ac4"><div class="ttname"><a href="class_population.html#a21be2a49e92ce9b47ff190ba51817ac4">Population::Population</a></div><div class="ttdeci">Population(ImageHandler *imageHandler, ImageInfo *idealCharacteristics, vector&lt; ColorInfo &gt; *colorList)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Population.cpp:7</div></div>
+<div class="ttc" id="aclass_population_html_ad7ce801961aedd60abbb16d35704743a"><div class="ttname"><a href="class_population.html#ad7ce801961aedd60abbb16d35704743a">Population::compareFitness</a></div><div class="ttdeci">static bool compareFitness(Individual *a, Individual *b)</div><div class="ttdoc">Compara dos individuos segun su fitness.</div><div class="ttdef"><b>Definition:</b> Population.cpp:28</div></div>
+<div class="ttc" id="aclass_population_html_a959878a10443c8e2470f5b7b6ef7b526"><div class="ttname"><a href="class_population.html#a959878a10443c8e2470f5b7b6ef7b526">Population::inversion</a></div><div class="ttdeci">void inversion(Individual *individual)</div><div class="ttdoc">Cambia una fila de pixeles de ciertos individuos por diferentes colores en la lista.</div><div class="ttdef"><b>Definition:</b> Population.cpp:124</div></div>
+<div class="ttc" id="a_x_m_l_config_8h_html"><div class="ttname"><a href="_x_m_l_config_8h.html">XMLConfig.h</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

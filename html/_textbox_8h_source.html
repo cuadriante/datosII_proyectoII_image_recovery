@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Image Recovery: Fichero Fuente Textbox.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Image Recovery
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Recuperación de imágenes</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Textbox.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_textbox_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_TEXTBOX_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define DATOSII_PROYECTOII_IMAGE_RECOVERY_TEXTBOX_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="_textbox_8h.html#a5a6b2a4537cccad5a1b8568904a5ee1e">   11</a></span>&#160;<span class="preprocessor">#define DELETE_KEY 8</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="_textbox_8h.html#afba17fd121bcd7abc852f1ae1f3abb58">   12</a></span>&#160;<span class="preprocessor">#define ENTER_KEY 13</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="_textbox_8h.html#a4c2609b38a3373c688d3888fd50808a6">   13</a></span>&#160;<span class="preprocessor">#define ESCAPE_KEY 27</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span>sf;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_textbox.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_textbox.html">Textbox</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_textbox.html#a72ae249fb4c23d134f7bc91296de0942">   29</a></span>&#160;    <a class="code" href="class_textbox.html#a72ae249fb4c23d134f7bc91296de0942">Textbox</a>() {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        textbox.setCharacterSize(27);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        textbox.setColor(Color::Black);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        isSelected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        textbox.setString(<span class="stringliteral">&quot;Press &#39;Enter&#39; key and write the image path&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_textbox.html#adfe898ea27692045b32eb40091eb68bb">   41</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_textbox.html#adfe898ea27692045b32eb40091eb68bb">setFont</a>(Font &amp;font) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        textbox.setFont(font);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_textbox.html#a24ecd21fffef86eb4da360440b6de9a4">   49</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_textbox.html#a24ecd21fffef86eb4da360440b6de9a4">setPosition</a>(Vector2f pos) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        background.setPosition(95,100);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        textbox.setPosition(pos);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_textbox.html#a5f3799c253c6de02e5cbbb18b8ed2cfe">   59</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_textbox.html#a5f3799c253c6de02e5cbbb18b8ed2cfe">setSelected</a>(<span class="keywordtype">bool</span> sel, <span class="keywordtype">int</span> screen) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        isSelected = sel;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (!sel) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordtype">string</span> newT;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (screen == 1) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                newT = <span class="stringliteral">&quot;Press &#39;Enter&#39; key and write the image path&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (screen == 2) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                newT = <span class="stringliteral">&quot;Press &#39;Enter&#39; key and write the number of generations&quot;</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            textbox.setString(newT);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            textbox.setString(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_textbox.html#a378f90095c77fd91d1494b1d774acf22">   80</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="class_textbox.html#a378f90095c77fd91d1494b1d774acf22">getText</a>() {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> text.str();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_textbox.html#a938fba0e927b6dd587b4be1be4f5991d">   88</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_textbox.html#a938fba0e927b6dd587b4be1be4f5991d">drawTo</a>(RenderWindow &amp;window) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        window.draw(background);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        window.draw(textbox);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_textbox.html#a892bca073c6e664d0ef560f824362cda">   97</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_textbox.html#a892bca073c6e664d0ef560f824362cda">typedOn</a>(Event input) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (isSelected) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">int</span> charTyped = input.text.unicode;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">if</span> (charTyped &lt; 128) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">if</span> (hasLimit) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    <span class="keywordflow">if</span> (text.str().length() &lt;= limit) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        inputLogic(charTyped);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (text.str().length() &gt;= limit &amp;&amp; charTyped == <a class="code" href="_textbox_8h.html#a5a6b2a4537cccad5a1b8568904a5ee1e">DELETE_KEY</a>) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        deleteLastChar();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    inputLogic(charTyped);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    RectangleShape background;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    Text textbox;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    ostringstream text;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">bool</span> isSelected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">bool</span> hasLimit = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> limit;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">string</span> <a class="code" href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">void</span> inputLogic(<span class="keywordtype">int</span> charTyped) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span> (charTyped != <a class="code" href="_textbox_8h.html#a5a6b2a4537cccad5a1b8568904a5ee1e">DELETE_KEY</a> &amp;&amp; charTyped != <a class="code" href="_textbox_8h.html#afba17fd121bcd7abc852f1ae1f3abb58">ENTER_KEY</a> &amp;&amp; charTyped != <a class="code" href="_textbox_8h.html#a4c2609b38a3373c688d3888fd50808a6">ESCAPE_KEY</a>) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            text &lt;&lt; static_cast&lt;char&gt;(charTyped);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (charTyped == <a class="code" href="_textbox_8h.html#a5a6b2a4537cccad5a1b8568904a5ee1e">DELETE_KEY</a>) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">if</span> (text.str().length() &gt; 0) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                deleteLastChar();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        textbox.setString(text.str() + <span class="stringliteral">&quot;_&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> deleteLastChar() {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordtype">string</span> t = text.str();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordtype">string</span> newT = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; t.length() - 1; ++i) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            newT += t[i];</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        text.str(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        text &lt;&lt; newT;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        textbox.setString(text.str());</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;};</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_textbox_html_a5f3799c253c6de02e5cbbb18b8ed2cfe"><div class="ttname"><a href="class_textbox.html#a5f3799c253c6de02e5cbbb18b8ed2cfe">Textbox::setSelected</a></div><div class="ttdeci">void setSelected(bool sel, int screen)</div><div class="ttdoc">Establece si el usuario puede escribir o no.</div><div class="ttdef"><b>Definition:</b> Textbox.h:59</div></div>
+<div class="ttc" id="aclass_textbox_html"><div class="ttname"><a href="class_textbox.html">Textbox</a></div><div class="ttdef"><b>Definition:</b> Textbox.h:23</div></div>
+<div class="ttc" id="amain_8cpp_html_a2a4c8b0dbad6ed12ea19b49c048ce062"><div class="ttname"><a href="main_8cpp.html#a2a4c8b0dbad6ed12ea19b49c048ce062">generationIndex</a></div><div class="ttdeci">int generationIndex</div><div class="ttdef"><b>Definition:</b> main.cpp:15</div></div>
+<div class="ttc" id="a_textbox_8h_html_a5a6b2a4537cccad5a1b8568904a5ee1e"><div class="ttname"><a href="_textbox_8h.html#a5a6b2a4537cccad5a1b8568904a5ee1e">DELETE_KEY</a></div><div class="ttdeci">#define DELETE_KEY</div><div class="ttdef"><b>Definition:</b> Textbox.h:11</div></div>
+<div class="ttc" id="aclass_textbox_html_a72ae249fb4c23d134f7bc91296de0942"><div class="ttname"><a href="class_textbox.html#a72ae249fb4c23d134f7bc91296de0942">Textbox::Textbox</a></div><div class="ttdeci">Textbox()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> Textbox.h:29</div></div>
+<div class="ttc" id="a_textbox_8h_html_a4c2609b38a3373c688d3888fd50808a6"><div class="ttname"><a href="_textbox_8h.html#a4c2609b38a3373c688d3888fd50808a6">ESCAPE_KEY</a></div><div class="ttdeci">#define ESCAPE_KEY</div><div class="ttdef"><b>Definition:</b> Textbox.h:13</div></div>
+<div class="ttc" id="aclass_textbox_html_a24ecd21fffef86eb4da360440b6de9a4"><div class="ttname"><a href="class_textbox.html#a24ecd21fffef86eb4da360440b6de9a4">Textbox::setPosition</a></div><div class="ttdeci">void setPosition(Vector2f pos)</div><div class="ttdoc">Establece la posición de la entrada de texto en la pantalla.</div><div class="ttdef"><b>Definition:</b> Textbox.h:49</div></div>
+<div class="ttc" id="aclass_textbox_html_a378f90095c77fd91d1494b1d774acf22"><div class="ttname"><a href="class_textbox.html#a378f90095c77fd91d1494b1d774acf22">Textbox::getText</a></div><div class="ttdeci">string getText()</div><div class="ttdoc">Obtiene la entrada de texto del usuario.</div><div class="ttdef"><b>Definition:</b> Textbox.h:80</div></div>
+<div class="ttc" id="aclass_textbox_html_adfe898ea27692045b32eb40091eb68bb"><div class="ttname"><a href="class_textbox.html#adfe898ea27692045b32eb40091eb68bb">Textbox::setFont</a></div><div class="ttdeci">void setFont(Font &amp;font)</div><div class="ttdoc">Establece la fuente de texto a utilizar.</div><div class="ttdef"><b>Definition:</b> Textbox.h:41</div></div>
+<div class="ttc" id="aclass_textbox_html_a938fba0e927b6dd587b4be1be4f5991d"><div class="ttname"><a href="class_textbox.html#a938fba0e927b6dd587b4be1be4f5991d">Textbox::drawTo</a></div><div class="ttdeci">void drawTo(RenderWindow &amp;window)</div><div class="ttdoc">Dibuja los elementos en pantalla.</div><div class="ttdef"><b>Definition:</b> Textbox.h:88</div></div>
+<div class="ttc" id="a_textbox_8h_html_afba17fd121bcd7abc852f1ae1f3abb58"><div class="ttname"><a href="_textbox_8h.html#afba17fd121bcd7abc852f1ae1f3abb58">ENTER_KEY</a></div><div class="ttdeci">#define ENTER_KEY</div><div class="ttdef"><b>Definition:</b> Textbox.h:12</div></div>
+<div class="ttc" id="aclass_textbox_html_a892bca073c6e664d0ef560f824362cda"><div class="ttname"><a href="class_textbox.html#a892bca073c6e664d0ef560f824362cda">Textbox::typedOn</a></div><div class="ttdeci">void typedOn(Event input)</div><div class="ttdoc">Ingresa los caracteres seleccionados por el usuario.</div><div class="ttdef"><b>Definition:</b> Textbox.h:97</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

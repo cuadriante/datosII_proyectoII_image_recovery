@@ -1,0 +1,8 @@
+<map id="ScreenSetter.h" name="ScreenSetter.h">
+<area shape="rect" id="node1" title=" " alt="" coords="118,5,234,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,85,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="109,155,256,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="292,155,367,181"/>
+<area shape="rect" id="node5" href="$_textbox_8h.html" title=" " alt="" coords="213,80,299,107"/>
+<area shape="rect" id="node6" href="$_button_8h.html" title="Crea botones solicitados por la clase ScreenSetter." alt="" coords="61,80,139,107"/>
+</map>
