@@ -32,25 +32,60 @@ private:
     int startPointY = 0;
 
 public:
+    /**
+* @brief Constructor
+* @param width, height, colorList, randomize, startPointX, startPointY
+*/
     Individual(int width, int height, vector<ColorInfo> *colorList, bool randomize, int startPointX,
                int startPointY);
+    /**
+     * @brief crea individuo con genoma vacio o aleatorio
+     * @param randomize
+     */
 
     void createIndividual(bool randomize);
+
 
     void updateFitness3(ImageInfo * idealCharacteristics);
 
     void updateFitness2(ImageInfo * idealCharacteristics);
 
+    /**
+     * @brief actualiza el fitness del individuo segun caracteristicas ideales
+     * @param idealCharacteristics
+     */
     void updateFitness(ImageInfo *idealCharacteristics);
-
+/**
+ * @brief obtiene el fitness del individuo
+ * @return
+ */
     double getFitness() const;
 
+    /**
+     * @brief obtiene el genoma del individuo
+     * @return
+     */
     vector<char> getGenome() const;
 
+    /**
+     * @brief actualiza el genoma del individuo
+     * @param newGenome
+     * @param idealCharacteristics
+     */
     void setGenome(const vector<char> & newGenome, ImageInfo *idealCharacteristics);
 
+    /**
+     * @brief actualiza un gen del genoma del individuo
+     * @param index
+     * @param newGene
+     */
     void setGene(int index, char newGene);
 
+    /**
+     * @brief obtiene gen del genoma del individuo segun index
+     * @param index
+     * @return
+     */
     char getGene(int index);
 
 };

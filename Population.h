@@ -34,29 +34,59 @@ private:
 
 public:
 
+    /**
+ * @brief Constructor
+ * @param imageHandler, idealCharacteristics, colorList
+ */
     Population(ImageHandler * imageHandler, ImageInfo * idealCharacteristics, vector<ColorInfo> * colorList);
 
+    /**
+ * @brief Crea poblacion inicial
+ */
     void createInitialPopulation();
-
+    /**
+  * @brief Selecciona mejores individuos segun fitness
+  */
     void selection();
-
+    /**
+  * @brief Combina genoma de dos individuos padres para formar hijos, aplica inversion y mutacion
+  */
     void crossover();
-
+    /**
+  * @brief Cambia ciertos pixeles de ciertos individuos por el siguiente color en la lista
+  * @param individual
+  */
     void mutation(Individual *individual);
-
+    /**
+  * @brief Cambia una fila de pixeles de ciertos individuos por diferentes colores en la lista
+   * @param individual
+     */
     void inversion(Individual *individual);
-
+    /**
+  * @brief Despliega la solucion final en la imagen
+   * @param individual
+     */
     void solution(Individual * individual);
-
+    /**
+  * @brief Crea archivo XML de la generacion actual
+  */
     void CreateXMLFile();
-
+    /**
+  * @brief Obtiene la generacion
+  */
     int getGeneration() const;
-
+    /**
+   * @brief ACtualiza la maxima generacion
+   */
     void setMaxGeneration(int maxGeneration);
-
+    /**
+   * @brief Compara dos individuos segun su fitness
+    * @param a, b
+     */
     static bool compareFitness(Individual * a, Individual *b);
-
-
+    /**
+   * @brief obtiene la maxima generacion
+   */
 
     int getMaxGeneration() const;
 
