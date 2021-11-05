@@ -1,6 +1,10 @@
-//
-// Created by cuadriante on 24/10/21.
-//
+/**
+ * @file ImageInfo.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Análisis de la información de la imagen
+ */
 
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEINFO_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEINFO_H

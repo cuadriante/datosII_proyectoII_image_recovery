@@ -1,6 +1,10 @@
-//
-// Created by cuadriante on 11/10/21.
-//
+/**
+ * @file ColorInfo.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Administración de color
+ */
 
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_COLORINFO_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_COLORINFO_H

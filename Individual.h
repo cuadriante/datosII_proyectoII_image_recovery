@@ -1,6 +1,10 @@
-//
-// Created by cuadriante on 20/10/21.
-//
+/**
+ * @file Individual.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Individuo de una población
+ */
 
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_INDIVIDUAL_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_INDIVIDUAL_H

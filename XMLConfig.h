@@ -1,6 +1,10 @@
-//
-// Created by cuadriante on 3/11/21.
-//
+/**
+ * @file XMLConfig.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Archivos XML
+ */
 
 //#ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_XMLCONFIG_H
 //#define DATOSII_PROYECTOII_IMAGE_RECOVERY_XMLCONFIG_H

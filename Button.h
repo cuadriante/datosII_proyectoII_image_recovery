@@ -1,3 +1,12 @@
+/**
+ * @file Button.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Gregory Alpízar
+ * @title Botones para GUI
+ * @brief Crea botones solicitados por la clase ScreenSetter
+ */
+
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_BUTTON_H
 
@@ -9,57 +18,44 @@ using namespace sf;
 
 class Button {
 public:
+
+    /**
+     * @brief Constructor
+     */
     Button() {
         button.setSize({230, 59});
     }
 
-//    Button(string t, Vector2f size, int charSize, Color bgColor, Color textColor, string directory) {
-//        text.setString(t);
-//        text.setColor(textColor);
-//        text.setCharacterSize(charSize);
-//
-//        image.loadFromFile(directory);
-//        button.setTexture(&image);
-//
-//        button.setSize(size);
-//        button.setFillColor(bgColor);
-//
-//    }
-
-    void SetSize(Vector2f size) {
-        button.setSize(size);
-    }
-
-    void setFont(Font &font) {
-        text.setFont(font);
-    }
-
+    /**
+     * @brief Establece la imagen mostrada sobre el botón
+     * @param directory Directorio de la imagen elegida
+     */
     void setImage(string directory) {
         image.loadFromFile(directory);
         button.setTexture(&image);
     }
 
-    void setBackColor(Color color) {
-        button.setFillColor(color);
-    }
-
-    void setTextColor(Color color) {
-        text.setColor(color);
-    }
-
+    /**
+     * @brief Establece la posición en pantalla
+     * @param pos Vector de dos fraccionarias para las posiciones X y Y
+     */
     void setPosition(Vector2f pos) {
         button.setPosition(pos);
-
-        float xPos = (pos.x + button.getGlobalBounds().width / 3) - (text.getGlobalBounds().width / 2);
-        float yPos = (pos.y + button.getGlobalBounds().height / 4) - (text.getGlobalBounds().width / 2);
-        text.setPosition({xPos, yPos});
     }
 
+    /**
+     * @brief Dibuja el botón en la pantalla
+     * @param window Pantalla a utilizar
+     */
     void drawTo(RenderWindow &window) {
         window.draw(button);
-        window.draw(text);
     }
 
+    /**
+     * @brief Detecta la posición del mouse para determinar si este se encuentra sobre el botón
+     * @param window Ventana en uso
+     * @return Un valor afirmativo o negativo
+     */
     bool isMouseOver(RenderWindow &window) {
         float mouseX = Mouse::getPosition(window).x;
         float mouseY = Mouse::getPosition(window).y;
@@ -79,7 +75,6 @@ public:
 
 private:
     RectangleShape button;
-    Text text;
     Texture image;
 };
 

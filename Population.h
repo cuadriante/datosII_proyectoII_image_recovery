@@ -1,6 +1,10 @@
-//
-// Created by cuadriante on 20/10/21.
-//
+/**
+ * @file Population.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Población de individuos
+ */
 
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_POPULATION_H

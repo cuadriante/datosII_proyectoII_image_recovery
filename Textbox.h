@@ -1,3 +1,11 @@
+/**
+ * @file Textbox.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Gregory Alpízar
+ * @title Entradas de texto para usuario
+ */
+
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_TEXTBOX_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_TEXTBOX_H
 #define DELETE_KEY 8
@@ -14,6 +22,10 @@ using namespace std;
 
 class Textbox {
 public:
+
+    /**
+     * @brief Constructor
+     */
     Textbox() {
         textbox.setCharacterSize(27);
         textbox.setColor(Color::Black);
@@ -22,15 +34,28 @@ public:
         textbox.setString("Press 'Enter' key and write the image path");
     }
 
+    /**
+     * @brief Establece la fuente de texto a utilizar
+     * @param font Fuente a utilizar
+     */
     void setFont(Font &font) {
         textbox.setFont(font);
     }
 
+    /**
+     * @brief Establece la posición de la entrada de texto en la pantalla
+     * @param pos Vector de dos fraccionarios con los valores para X y Y
+     */
     void setPosition(Vector2f pos) {
         background.setPosition(95,100);
         textbox.setPosition(pos);
     }
 
+    /**
+     * @brief Establece si el usuario puede escribir o no
+     * @param sel Indicación para habilitar o deshabilitar
+     * @param screen pantalla mostrada
+     */
     void setSelected(bool sel, int screen) {
         isSelected = sel;
         if (!sel) {
@@ -48,15 +73,27 @@ public:
         }
     }
 
+    /**
+     * @brief Obtiene la entrada de texto del usuario
+     * @return Cadena de texto del usuario
+     */
     string getText() {
         return text.str();
     }
 
+    /**
+     * @brief Dibuja los elementos en pantalla
+     * @param window Ventana en uso
+     */
     void drawTo(RenderWindow &window) {
         window.draw(background);
         window.draw(textbox);
     }
 
+    /**
+     * @brief Ingresa los caracteres seleccionados por el usuario
+     * @param input 
+     */
     void typedOn(Event input) {
         if (isSelected) {
             int charTyped = input.text.unicode;

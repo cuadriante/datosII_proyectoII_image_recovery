@@ -1,11 +1,15 @@
-//
-// Created by cuadriante on 10/10/21.
-//
+/**
+ * @file ImageHandler.h
+ * @version 1.0
+ * @date 04 de noviembre de 2021
+ * @author Adriana Calderón
+ * @title Análisis de imágenes
+ */
 
 #ifndef DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEHANDLER_H
 #define DATOSII_PROYECTOII_IMAGE_RECOVERY_IMAGEHANDLER_H
 
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <random>
 #include "ColorInfo.h"
