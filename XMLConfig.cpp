@@ -17,7 +17,7 @@ XMLConfig::XMLConfig(vector<Individual *> searchSpace, int genomeSize, int gener
         pt.add_child("population.individual", child);
         child.clear();
     }
-    boost::property_tree::xml_parser::write_xml("XML/generation" + to_string(generation) + ".xml", pt);
+    //boost::property_tree::xml_parser::write_xml("XML/generation" + to_string(generation) + ".xml", pt);
 }
 
 void XMLConfig::clearFile() {

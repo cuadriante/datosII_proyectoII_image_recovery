@@ -56,7 +56,7 @@ int startUI() {
                         if (interface == 1) {
                             displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/Selected recovButton.jpeg");
                         } else if (interface == 2) {
-                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/elected choose.png");
+                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/selected choose.png");
                         }
                     } else {
                         if (interface == 1) {
@@ -73,7 +73,7 @@ int startUI() {
                             cout << "Input string cannot be empty!!\n";
                         } else {
                             if (interface == 1) {
-                                imagepath = displayer.getText();
+                                imagepath = "/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/images/" + displayer.getText();
                                 displayer.setImage(imagepath);
                                 imageHandler.analyzeImage(imagepath);
                                 // #####################################################################################
@@ -102,7 +102,7 @@ int startUI() {
                                 // "imagen resultado" para mostrarla en pantalla
 
                                 // A este setImage hay que configurarle bien el path de las imagenes de salida
-                                displayer.setImage("output/out" + to_string(imageGenerations - 2) + ".png");
+                                displayer.setImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/images/output/out" + to_string(imageGenerations - 2) + ".png");
                                 generationIndex = imageGenerations - 2;
                                 displayer.setIndex(generationIndex + 1);
                             }
@@ -126,7 +126,7 @@ int startUI() {
                     displayer.setIndex(generationIndex + 1);
 
                     //Aquí también tiene que cambiar el path
-                    displayer.setImage("output/out" + to_string(generationIndex) + ".png");
+                    displayer.setImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/images/output/out" + to_string(generationIndex) + ".png");
                 }
             }
             if (Keyboard::isKeyPressed(Keyboard::Right)) {

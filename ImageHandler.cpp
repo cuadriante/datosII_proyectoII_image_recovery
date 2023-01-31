@@ -180,7 +180,7 @@ void ImageHandler::recolorWhiteRectangle(const vector<char> &newPixelSetIndex, i
 
 void ImageHandler::saveChangesToImageFile(int generation) {
 //    image.saveToFile("output/out.png");
-    image.saveToFile("output/out" + to_string(generation - 1) + ".png");
+    image.saveToFile("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/images/output/out" + to_string(generation - 1) + ".png");
 }
 
 const vector<ColorInfo> &ImageHandler::getWhiteRectangle() const {
