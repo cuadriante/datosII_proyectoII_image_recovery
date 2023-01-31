@@ -28,7 +28,7 @@ public:
      */
     ScreenSetter(int interface) {
         screen = interface;
-        GistLight.loadFromFile("GistLight.otf");
+        GistLight.loadFromFile("arial.ttf");
         index.setFont(GistLight);
         index.setCharacterSize(45);
         index.setColor(Color(39,137,179,255));
@@ -59,15 +59,15 @@ public:
             textbox.setFillColor(Color(189,195,199,100));
             textbox.setPosition(97,430);
             btn.setPosition({655,480});
-            btn.setImage("appMedia/images/RecovButton.png");
-            titleTexture.loadFromFile("appMedia/images/Name.png");
+            btn.setImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/RecovButton.png");
+            titleTexture.loadFromFile("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/Name.png");
             title.setTexture(&titleTexture);
             title.setPosition({100,200});
             title.setSize({800,229});
         } else if (screen == 2) {
             generationsEntry.setFont(GistLight);
             generationsEntry.setSelected(false, screen);
-            setBackground("appMedia/images/generation background.png", Vector2f(1000,800));
+            setBackground("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/generation background.png", Vector2f(1000,800));
             image.setSize({250,250});
             image.setPosition(110,490);
             generationsEntry.setPosition({110, 430});
@@ -75,9 +75,9 @@ public:
             textbox.setFillColor(Color(189,195,199,100));
             textbox.setPosition(97,430);
             btn.setPosition({655,480});
-            btn.setImage("appMedia/images/choose.png");
+            btn.setImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/choose.png");
         } else if (screen == 3) {
-            setBackground("appMedia/images/generation display.png", Vector2f(1000,800));
+            setBackground("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/generation display.png", Vector2f(1000,800));
         }
     }
 

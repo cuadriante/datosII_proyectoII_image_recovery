@@ -26,7 +26,7 @@ int startUI() {
 
     ScreenSetter displayer(interface);
 
-    displayer.setBackground("appMedia/images/Background.png",Vector2f(1000,800));
+    displayer.setBackground("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/Background.png",Vector2f(1000,800));
 
     displayer.setDisplay(window);
 
@@ -54,15 +54,15 @@ int startUI() {
                 case Event::MouseMoved:
                     if (displayer.isMouseOver(window)) {
                         if (interface == 1) {
-                            displayer.setBtnImage("appMedia/images/Selected recovButton.jpeg");
+                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/Selected recovButton.jpeg");
                         } else if (interface == 2) {
-                            displayer.setBtnImage("appMedia/images/selected choose.png");
+                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/elected choose.png");
                         }
                     } else {
                         if (interface == 1) {
-                            displayer.setBtnImage("appMedia/images/RecovButton.png");
+                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/RecovButton.png");
                         } else if (interface == 2) {
-                            displayer.setBtnImage("appMedia/images/choose.png");
+                            displayer.setBtnImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/appMedia/images/choose.png");
                         }
                     }
                     break;
