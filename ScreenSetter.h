@@ -28,7 +28,7 @@ public:
      */
     ScreenSetter(int interface) {
         screen = interface;
-        GistLight.loadFromFile("arial.ttf");
+        GistLight.loadFromFile("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/fonts/arial.ttf");
         index.setFont(GistLight);
         index.setCharacterSize(45);
         index.setColor(Color(39,137,179,255));
