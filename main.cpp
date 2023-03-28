@@ -139,7 +139,7 @@ int startUI() {
                     displayer.setIndex(generationIndex + 1);
 
                     // Aquí también tiene que cambiar el path
-                    displayer.setImage("output/out" + to_string(generationIndex) + ".png");
+                    displayer.setImage("/home/dimi/CLionProjects/datosII_proyectoII_image_recovery/images/output/out" + to_string(generationIndex) + ".png");
 
                 }
             }
